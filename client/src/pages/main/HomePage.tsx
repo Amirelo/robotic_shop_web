@@ -1,7 +1,20 @@
 const HomePage = () => {
   return (
     <div>
+      {/* Navigation */}
       <header>
+        <nav style={{ display: "flex", justifyContent: "space-around" }}>
+          <p>Free shipping on your first order</p>
+          <div
+            style={{ display: "flex", justifyContent: "space-around", gap: 16 }}
+          >
+            <img src="/icons/ic_search.svg" alt="" />
+            <p>Contact us</p>
+            <p>Location</p>
+            <p>Sign In</p>
+          </div>
+        </nav>
+
         <nav
           style={{
             display: "flex",
@@ -14,10 +27,72 @@ const HomePage = () => {
           <a href="#">Explore</a>
           <a href="#">Robotic kits</a>
           <a href="#">Robots</a>
-          <a href="#">Contacts</a>
         </nav>
       </header>
-      <main style={{ paddingInline: "5%" }}>
+      <main>
+        {/* Search bar */}
+        <div style={{ display: "flex", justifyContent: "center", }}>
+          <div
+            style={{
+              display: "flex",
+              marginBottom: 20,
+              border: "1px solid black",
+              borderRadius: 4,
+              width: "35%",
+              height: 40,
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Search.."
+              style={{
+                height: 40,
+                flex: 1,
+                border: "none",
+              }}
+            />
+            <div
+              style={{
+                width: 40,
+                height: 40,
+                backgroundColor: "gold",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <img style={{ width: 30 }} src="/icons/ic_search.svg" alt="" />
+            </div>
+          </div>
+        </div>
+        {/* Category */}
+        <div
+          style={{
+            width: 200,
+            display: "flex",
+            position: "relative",
+            textAlign: "center",
+            borderRadius:4, overflow:'hidden' 
+          }}
+        >
+          <img
+            style={{width: "100%", position: "relative" }}
+            src="https://images.pexels.com/photos/1476321/pexels-photo-1476321.jpeg"
+            alt=""
+          />
+          <p
+            style={{
+              width: "100%",
+              position: "absolute",
+              bottom: 0,
+              backgroundImage:
+                "linear-gradient(to top,gold 20%, rgba(255,0,0,0))",
+            }}
+          >
+            Robot parts
+          </p>
+        </div>
+        
         <div
           style={{
             display: "flex",

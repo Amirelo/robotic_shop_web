@@ -5,8 +5,8 @@ interface Props {
   children: string;
 }
 
-const LinkButton = (props: Props) => {
+const ButtonLink = (props: Props) => {
   return <NavLink to={props.to}>{props.children}</NavLink>;
 };
 
-export default LinkButton;
+export default ButtonLink;

@@ -4,62 +4,13 @@ import React from "react";
 // Components
 import { CustomText } from "../../components";
 import { SearchBar } from "../../features/products";
+import TopNavigation from "../../features/navigation/TopNavigation";
 
 const HomePage = () => {
-  const [showSearch, setShowSearch] = React.useState(false);
-
-  const onSearchIconPressed = () => {
-    setShowSearch(prev => !prev);
-  };
+  
 
   return (
     <div>
-      {/* Navigation */}
-      <header>
-        <nav style={{ display: "flex", justifyContent: "flex-end", alignItems:'center', height:52, gap: 16 }}>
-        {/* Search bar */}
-        {showSearch ? (
-              <SearchBar/>
-            ) : (
-              <></>
-            )}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-around",
-              gap: 16,
-              paddingRight: 20,
-            }}
-          >
-            
-            
-            <img
-            width={24}
-            height={24}
-              src="/icons/ic_search.svg"
-              onClick={onSearchIconPressed}
-              alt=""
-            />
-            <p>Contact us</p>
-            <p>Location</p>
-            <p>Sign In</p>
-          </div>
-        </nav>
-
-        <nav
-          style={{
-            display: "flex",
-            justifyContent: "space-around",
-            width: "50%",
-            margin: "auto",
-          }}
-        >
-          <a href="#">Home</a>
-          <a href="#">Explore</a>
-          <a href="#">Robotic kits</a>
-          <a href="#">Robots</a>
-        </nav>
-      </header>
       <main>
         {/* Category */}
         <div

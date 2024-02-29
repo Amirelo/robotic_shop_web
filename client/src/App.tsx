@@ -1,11 +1,11 @@
 // Pages
-import { HomePage } from './pages/main';
 import './App.css';
+import AppNavigation from './pages/AppNavigation';
 
 function App() {
   return (
     <div>
-      <HomePage/>
+      <AppNavigation/>
     </div>
   );
 }

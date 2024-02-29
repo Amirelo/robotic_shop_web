@@ -1,14 +1,45 @@
+// React and libs
+import React from "react";
+
+// Components
+import { CustomText } from "../../components";
+import { SearchBar } from "../../features/products";
+
 const HomePage = () => {
+  const [showSearch, setShowSearch] = React.useState(false);
+
+  const onSearchIconPressed = () => {
+    setShowSearch(prev => !prev);
+  };
+
   return (
     <div>
       {/* Navigation */}
       <header>
-        <nav style={{ display: "flex", justifyContent: "space-around" }}>
-          <p>Free shipping on your first order</p>
+        <nav style={{ display: "flex", justifyContent: "flex-end", alignItems:'center', height:52, gap: 16 }}>
+        {/* Search bar */}
+        {showSearch ? (
+              <SearchBar/>
+            ) : (
+              <></>
+            )}
           <div
-            style={{ display: "flex", justifyContent: "space-around", gap: 16 }}
+            style={{
+              display: "flex",
+              justifyContent: "space-around",
+              gap: 16,
+              paddingRight: 20,
+            }}
           >
-            <img src="/icons/ic_search.svg" alt="" />
+            
+            
+            <img
+            width={24}
+            height={24}
+              src="/icons/ic_search.svg"
+              onClick={onSearchIconPressed}
+              alt=""
+            />
             <p>Contact us</p>
             <p>Location</p>
             <p>Sign In</p>
@@ -30,41 +61,6 @@ const HomePage = () => {
         </nav>
       </header>
       <main>
-        {/* Search bar */}
-        <div style={{ display: "flex", justifyContent: "center", }}>
-          <div
-            style={{
-              display: "flex",
-              marginBottom: 20,
-              border: "1px solid black",
-              borderRadius: 4,
-              width: "35%",
-              height: 40,
-            }}
-          >
-            <input
-              type="text"
-              placeholder="Search.."
-              style={{
-                height: 40,
-                flex: 1,
-                border: "none",
-              }}
-            />
-            <div
-              style={{
-                width: 40,
-                height: 40,
-                backgroundColor: "gold",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <img style={{ width: 30 }} src="/icons/ic_search.svg" alt="" />
-            </div>
-          </div>
-        </div>
         {/* Category */}
         <div
           style={{
@@ -72,11 +68,12 @@ const HomePage = () => {
             display: "flex",
             position: "relative",
             textAlign: "center",
-            borderRadius:4, overflow:'hidden' 
+            borderRadius: 4,
+            overflow: "hidden",
           }}
         >
           <img
-            style={{width: "100%", position: "relative" }}
+            style={{ width: "100%", position: "relative" }}
             src="https://images.pexels.com/photos/1476321/pexels-photo-1476321.jpeg"
             alt=""
           />
@@ -92,7 +89,7 @@ const HomePage = () => {
             Robot parts
           </p>
         </div>
-        
+
         <div
           style={{
             display: "flex",

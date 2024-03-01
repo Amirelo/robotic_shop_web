@@ -5,6 +5,7 @@ import React from "react";
 import { CustomText } from "../../components";
 import { SearchBar } from "../../features/products";
 import TopNavigation from "../../features/navigation/TopNavigation";
+import ProductBanner from "../../features/products/ProductBanner";
 
 const HomePage = () => {
   
@@ -12,6 +13,9 @@ const HomePage = () => {
   return (
     <div>
       <main>
+
+        <ProductBanner/>
+
         {/* Category */}
         <div
           style={{

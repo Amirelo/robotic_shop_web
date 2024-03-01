@@ -3,14 +3,22 @@ import React from "react";
 interface Props {
   children: string;
   fontWeight?: React.CSSProperties["fontWeight"];
-  styleType?: keyof typeof textStyles;
+  preset?: keyof typeof textStyles;
+  color?: React.CSSProperties["color"];
   onClick?(): void;
 }
 
 const CustomText = (props: Props) => {
-  const textType = props.styleType ? props.styleType : "normal";
+  const textType = props.preset ? props.preset : "normal";
   return (
-    <p onClick={props.onClick} style={{ fontWeight: props.fontWeight, ...textStyles[textType] }}>
+    <p
+      onClick={props.onClick}
+      style={{
+        fontWeight: props.fontWeight,
+        ...textStyles[textType],
+        color: props.color,
+      }}
+    >
       {props.children}
     </p>
   );
@@ -20,10 +28,10 @@ export default CustomText;
 
 const textStyles: { [key: string]: React.CSSProperties } = {
   header: {
-    fontSize: 22,
+    fontSize: 60,
   },
   subHeader: {
-    fontSize: 20,
+    fontSize: 54,
   },
   title: {
     fontSize: 18,

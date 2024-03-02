@@ -6,6 +6,7 @@ interface Props {
   preset?: keyof typeof textStyles;
   color?: React.CSSProperties["color"];
   onClick?(): void;
+  marginBottom?: React.CSSProperties['marginBottom']
 }
 
 const CustomText = (props: Props) => {
@@ -17,6 +18,7 @@ const CustomText = (props: Props) => {
         fontWeight: props.fontWeight,
         ...textStyles[textType],
         color: props.color,
+        marginBottom:props.marginBottom,
       }}
     >
       {props.children}

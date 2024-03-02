@@ -6,6 +6,7 @@ interface Props{
     alt?: string;
     width?: React.CSSProperties['width'];
     height?: React.CSSProperties['height'];
+    marginBottom?: React.CSSProperties['marginBottom']
     preset?: keyof typeof presetStyles;
 
 }
@@ -16,6 +17,7 @@ const CustomImage = (props:Props) => {
             ...presetStyles[props.preset ?? 'icon'],
             objectFit:'cover',
             borderRadius: 4,
+            marginBottom: props.marginBottom
         }} src={props.src} alt={props.alt} />
     )
 }
@@ -28,6 +30,6 @@ const presetStyles: {[key:string]: React.CSSProperties} = {
         height:24
     },
     banner:{
-        width: '50%',
+        width: '40%',
     }
 }

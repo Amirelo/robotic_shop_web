@@ -3,13 +3,13 @@ import React from "react";
 
 // Components
 import { CustomText } from "../../components";
-import { ProductBanner } from "../../features/products";
+import { ItemBanner } from "../../features/products";
 
 const HomePage = () => {
   return (
     <div style={{display:'flex', justifyContent:'center'}}>
       <main style={{width:'90%'}}>
-        <ProductBanner 
+        <ItemBanner 
         title="Buy some stuff"
         src="https://images.pexels.com/photos/20222375/pexels-photo-20222375/free-photo-of-scruffy-dog-in-meadow.jpeg">
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -21,7 +21,7 @@ const HomePage = () => {
           the release of Letraset sheets containing Lorem Ipsum passages, and
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
-        </ProductBanner>
+        </ItemBanner>
         {/* Category */}
         <div
           style={{

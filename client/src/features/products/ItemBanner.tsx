@@ -15,7 +15,7 @@ interface Props{
   src: string;
 }
 
-const ProductBanner = (props:Props) => {
+const ItemBanner = (props:Props) => {
   return (
     <div style={styles.body}>
       <div style={{ width: "40%" }}>
@@ -39,7 +39,7 @@ const ProductBanner = (props:Props) => {
   );
 };
 
-export default ProductBanner;
+export default ItemBanner;
 
 // Styles - Banner
 const styles: { [key: string]: React.CSSProperties } = {

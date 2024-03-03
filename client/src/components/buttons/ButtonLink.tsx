@@ -1,6 +1,8 @@
+// React and libs
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+// Properties
 interface Props {
   to: string;
   children: string;

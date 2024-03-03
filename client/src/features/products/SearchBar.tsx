@@ -1,36 +1,15 @@
+// React and libs
+import React from "react";
+
+// Components
+import { CustomImage } from "../../components";
+
 const SearchBar = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        border: "1px solid black",
-        borderRadius: 4,
-        height: 40,
-        width: "30%",
-      }}
-    >
-      <input
-        type="text"
-        placeholder="Search.."
-        style={{
-          height: 40,
-          flex: 1,
-          border: "none",
-          paddingLeft: 20,
-        }}
-      />
-      <div
-        style={{
-          width: 40,
-          height: 40,
-          backgroundColor: "gold",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <img style={{ width: 30 }} src="/icons/ic_search.svg" alt="" />
+    <div style={styles.body}>
+      <input type="text" placeholder="Search.." style={styles.input} />
+      <div style={styles.image_box}>
+        <CustomImage src="/icons/ic_search.svg"/>
       </div>
     </div>
   );
@@ -38,9 +17,30 @@ const SearchBar = () => {
 
 export default SearchBar;
 
-const transitionStyles: { [key: string]: React.CSSProperties } = {
-  entering: { borderColor: "blue" },
-  entered: { borderColor: "blue" },
-  exiting: { borderColor: "black" },
-  exited: { borderColor: "black" },
+// Styles
+const styles: { [key: string]: React.CSSProperties } = {
+  body: {
+    height: 40,
+    borderRadius: 4,
+    border: "1px solid black",
+    overflow: "hidden",
+    width: "30%",
+    display: "flex",
+    alignItems: "center",
+  },
+  input: {
+    height: 40,
+    flex: 1,
+    border: "none",
+    paddingLeft: 20,
+  },
+  image_box: {
+    width: 40,
+    height: 40,
+    backgroundColor: "gold",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    cursor:'pointer'
+  },
 };

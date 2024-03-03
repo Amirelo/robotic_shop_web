@@ -1,3 +1,2 @@
-import CustomText from "./CustomText";
-
-export {CustomText}
+export { default as CustomText } from "./CustomText";
+export { default as CustomImage } from "./CustomImage";

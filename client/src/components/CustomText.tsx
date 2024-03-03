@@ -1,24 +1,26 @@
+// React and libs
 import React from "react";
 
+// Properties
 interface Props {
   children: string;
   fontWeight?: React.CSSProperties["fontWeight"];
   preset?: keyof typeof textStyles;
   color?: React.CSSProperties["color"];
   onClick?(): void;
-  marginBottom?: React.CSSProperties['marginBottom']
+  marginBottom?: React.CSSProperties["marginBottom"];
 }
 
 const CustomText = (props: Props) => {
-  const textType = props.preset ? props.preset : "normal";
+  // Set default preset if not found
   return (
     <p
       onClick={props.onClick}
       style={{
         fontWeight: props.fontWeight,
-        ...textStyles[textType],
+        ...textStyles[props.preset ?? "normal"],
         color: props.color,
-        marginBottom:props.marginBottom,
+        marginBottom: props.marginBottom,
       }}
     >
       {props.children}
@@ -28,6 +30,7 @@ const CustomText = (props: Props) => {
 
 export default CustomText;
 
+// Styles - Text
 const textStyles: { [key: string]: React.CSSProperties } = {
   header: {
     fontSize: 60,

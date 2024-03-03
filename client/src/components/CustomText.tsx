@@ -9,6 +9,8 @@ interface Props {
   color?: React.CSSProperties["color"];
   onClick?(): void;
   marginBottom?: React.CSSProperties["marginBottom"];
+  maxLines?: number;
+  style?: React.CSSProperties
 }
 
 const CustomText = (props: Props) => {
@@ -21,6 +23,9 @@ const CustomText = (props: Props) => {
         ...textStyles[props.preset ?? "normal"],
         color: props.color,
         marginBottom: props.marginBottom,
+        maxLines: props.maxLines,
+        textOverflow:'ellipsis',
+        ...props.style
       }}
     >
       {props.children}

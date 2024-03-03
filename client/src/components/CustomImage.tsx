@@ -44,4 +44,7 @@ const imageStyles: { [key: string]: React.CSSProperties } = {
   banner: {
     width: "40%",
   },
+  fit: {
+    width:'100%',
+  }
 };

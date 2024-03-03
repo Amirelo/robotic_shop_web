@@ -16,9 +16,11 @@ const TextButton = (props: Props) => {
       style={{
         ...styles.button,
         marginBottom: props.marginBottom,
+        borderWidth:0,
+        cursor:'pointer',
       }}
     >
-      <CustomText preset={"title"}>{props.children}</CustomText>
+      <CustomText preset={"subTitle"}>{props.children}</CustomText>
     </button>
   );
 };
@@ -28,8 +30,8 @@ export default TextButton;
 // Style - Button
 const styles: { [key: string]: React.CSSProperties } = {
   button: {
-    backgroundColor: "green",
-    paddingInline: 20,
+    backgroundColor: "#FFFFF0",
     borderRadius: 4,
+    width:'100%'
   },
 };

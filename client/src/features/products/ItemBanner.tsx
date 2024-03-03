@@ -24,7 +24,7 @@ const ItemBanner = (props:Props) => {
           {props.title}
         </CustomText>
         {/* Text - Body */}
-        <CustomText preset={"title"} color="white" marginBottom={20}>
+        <CustomText preset={"title"} color="white" maxLines={1} marginBottom={20}>
           {props.children}
         </CustomText>
         {/* Button - shop */}

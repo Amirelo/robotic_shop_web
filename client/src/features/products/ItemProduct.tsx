@@ -16,7 +16,7 @@ const ItemProduct = (props: Props) => {
   return (
     <article style={{...styles.body}}>
       <CustomImage
-        src="https://cdn.pixabay.com/photo/2017/05/10/19/29/robot-2301646_1280.jpg"
+        src={props.data.image}
         preset={"fit"}
       />
       {/* Product Name */}
@@ -55,6 +55,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     backgroundColor: "gold",
     padding: 8,
     borderRadius: 4,
-    width: 150,
+    width: '20%',
   },
 };

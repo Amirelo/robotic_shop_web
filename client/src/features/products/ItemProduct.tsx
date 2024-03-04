@@ -5,6 +5,7 @@ import { TextButton } from "../../components/buttons";
 
 // Models
 import { ProductModel } from "../../models";
+import { priceFormat } from "../../utils/Utilities";
 
 // Properties
 interface Props {
@@ -19,6 +20,7 @@ const ItemProduct = (props: Props) => {
       <CustomImage
         src={props.data.image}
         preset={"fit"}
+        marginBottom={8}
       />
       </div>
       {/* Product Name */}
@@ -26,11 +28,11 @@ const ItemProduct = (props: Props) => {
       {/* Product Price */}
       <div style={{ display: "flex", gap: 16 }}>
         {/* New price */}
-        <CustomText>{props.data.price.toString()}</CustomText>
+        <CustomText>{priceFormat(props.data.price)}</CustomText>
         {/* Old price */}
         {props.data.discount.length > 0 ? (
           <CustomText style={{ textDecorationLine: "line-through" }}>
-            {props.data.price.toString()}
+            {priceFormat(props.data.price)}
           </CustomText>
         ) : (
           <></>

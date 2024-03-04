@@ -10,8 +10,11 @@ interface Props {
 const CustomList = (props: Props) => {
   return (
     <div>
+        <div style={styles.title}>
       <CustomText preset={"title"} marginBottom={8}>{props.title+''}</CustomText>
-    <div style={styles.body}>
+      <CustomText>See more</CustomText>
+      </div>
+    <div style={styles.items}>
       {props.list.map((data) => props.render(data))}
     </div>
     </div>
@@ -21,11 +24,15 @@ const CustomList = (props: Props) => {
 export default CustomList;
 
 const styles: { [key: string]: React.CSSProperties } = {
-  body: {
+  items: {
     display: "flex",
     flexWrap: "wrap",
     gap: 16,
     justifyContent: "space-between",
     marginBottom: 40,
   },
+  title:{
+    display:'flex',
+    justifyContent:'space-between'
+  }
 };

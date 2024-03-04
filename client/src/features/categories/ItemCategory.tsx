@@ -33,6 +33,7 @@ const styles: {[key:string]: React.CSSProperties} = {
         textAlign: "center",
         borderRadius: 20,
         overflow: "hidden",
+        cursor:'pointer',
     },
     textFrame:{
         width: "100%",

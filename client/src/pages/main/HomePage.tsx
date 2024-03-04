@@ -1,18 +1,17 @@
 // React and libs
 import React from "react";
 
+// Models
+import { CategoryModel, ProductModel } from "../../models";
+
 // Components
-import { CustomText } from "../../components";
 import { ItemBanner } from "../../features/products";
 import ItemProduct from "../../features/products/ItemProduct";
-import { CategoryModel, ProductModel } from "../../models";
 import ItemCategory from "../../features/categories/ItemCategory";
 import CustomList from "../../components/CustomList";
 
 const HomePage = () => {
-  const [listProducts, setListProducts] = React.useState<Array<ProductModel>>(
-    []
-  );
+  const [listProducts, setListProducts] = React.useState<Array<ProductModel>>([]);
   const [listCategories, setListCategories] = React.useState<Array<CategoryModel>>([]);
 
   React.useEffect(() => {
@@ -99,7 +98,7 @@ const HomePage = () => {
               render={(data) => <ItemCategory data={data}/>}/>
 
         <CustomList 
-              title="New Products" 
+              title="New Arrivals" 
               list={listProducts}
               render={(data) => <ItemProduct data={data}/>}/>
 

@@ -11,13 +11,18 @@ interface Props {
 }
 
 const TextButton = (props: Props) => {
+  const [hover,setHover] = React.useState(false)
+
   return (
     <button
+      onMouseEnter={()=> setHover(true)}
+      onMouseLeave={()=> setHover(false)}
       style={{
         ...styles.button,
         marginBottom: props.marginBottom,
         borderWidth:0,
         cursor:'pointer',
+        backgroundColor: hover ? "green" : "#FFFFF0",
       }}
     >
       <CustomText preset={"subTitle"}>{props.children}</CustomText>
@@ -30,8 +35,8 @@ export default TextButton;
 // Style - Button
 const styles: { [key: string]: React.CSSProperties } = {
   button: {
-    backgroundColor: "#FFFFF0",
     borderRadius: 4,
-    width:'100%'
+    width:'100%',
+    transition: '500ms'
   },
 };

@@ -1,5 +1,6 @@
 // React and libs
 import React from "react";
+import themes from "../preferences/theme/themes";
 
 // Properties
 interface Props {
@@ -21,7 +22,7 @@ const CustomText = (props: Props) => {
       style={{
         fontWeight: props.fontWeight,
         ...textStyles[props.preset ?? "normal"],
-        color: props.color,
+        color: props.color ?? themes['defaultTheme'].text,
         marginBottom: props.marginBottom,
         maxLines: props.maxLines,
         textOverflow:'ellipsis',

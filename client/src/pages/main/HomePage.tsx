@@ -74,7 +74,7 @@ const HomePage = () => {
   }, [listProducts]);
 
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div style={{ display: "flex", justifyContent: "center", }}>
       <main style={{ width: "90%" }}>
         <ItemBanner
         marginBottom={20}

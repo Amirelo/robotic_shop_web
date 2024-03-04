@@ -7,6 +7,7 @@ import { TextButton } from "../../components/buttons";
 
 // Utilities
 import { screenHeight } from "../../utils/Utilities";
+import themes from "../../preferences/theme/themes";
 
 // Interface
 interface Props{
@@ -46,7 +47,7 @@ export default ItemBanner;
 const styles: { [key: string]: React.CSSProperties } = {
   body: {
     height: screenHeight,
-    backgroundColor: "black",
+    backgroundColor: themes['defaultTheme'].text,
     borderRadius: 4,
     display: "flex",
     justifyContent: "space-around",

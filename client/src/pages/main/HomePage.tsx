@@ -5,16 +5,21 @@ import React from "react";
 import { CustomText } from "../../components";
 import { ItemBanner } from "../../features/products";
 import ItemProduct from "../../features/products/ItemProduct";
-import { ProductModel } from "../../models";
+import { CategoryModel, ProductModel } from "../../models";
 import ItemCategory from "../../features/categories/ItemCategory";
+import CustomList from "../../components/CustomList";
 
 const HomePage = () => {
   const [listProducts, setListProducts] = React.useState<Array<ProductModel>>(
     []
   );
+  const [listCategories, setListCategories] = React.useState<Array<CategoryModel>>([]);
 
   React.useEffect(() => {
     setListProducts([]);
+    setListCategories([]);
+
+    // Products
     var testItem = new ProductModel(1, "test product 1", "https://images.pexels.com/photos/18022560/pexels-photo-18022560/free-photo-of-close-up-of-a-raccoon.jpeg",50000, 29, "", false);
     setListProducts((prev) => [...prev, testItem]);
 
@@ -50,6 +55,19 @@ const HomePage = () => {
       false
     );
     setListProducts((prev) => [...prev, testItem4]);
+
+    // Categories
+    var testCate = new CategoryModel(1, "test category 1", "https://images.pexels.com/photos/20021296/pexels-photo-20021296/free-photo-of-lottery-scrabble-letters-on-a-wooden-table.jpeg","Test category 1");
+    setListCategories((prev) => [...prev, testCate]);
+
+    var testCate1 = new CategoryModel(2, "test category 2", "https://images.pexels.com/photos/20021296/pexels-photo-20021296/free-photo-of-lottery-scrabble-letters-on-a-wooden-table.jpeg","Test category 2");
+    setListCategories((prev) => [...prev, testCate1]);
+    var testCate2 = new CategoryModel(3, "test category 3", "https://images.pexels.com/photos/20021296/pexels-photo-20021296/free-photo-of-lottery-scrabble-letters-on-a-wooden-table.jpeg","Test category 3");
+    setListCategories((prev) => [...prev, testCate2]);
+    var testCate3 = new CategoryModel(4, "test category 4", "https://images.pexels.com/photos/20021296/pexels-photo-20021296/free-photo-of-lottery-scrabble-letters-on-a-wooden-table.jpeg","Test category 4");
+    setListCategories((prev) => [...prev, testCate3]);
+    var testCate4 = new CategoryModel(5, "test category 5", "https://images.pexels.com/photos/20021296/pexels-photo-20021296/free-photo-of-lottery-scrabble-letters-on-a-wooden-table.jpeg","Test category 5");
+    setListCategories((prev) => [...prev, testCate4]);
   }, []);
 
   React.useEffect(() => {
@@ -60,6 +78,7 @@ const HomePage = () => {
     <div style={{ display: "flex", justifyContent: "center" }}>
       <main style={{ width: "90%" }}>
         <ItemBanner
+        marginBottom={20}
           title="Buy some stuff"
           src="https://images.pexels.com/photos/20222375/pexels-photo-20222375/free-photo-of-scruffy-dog-in-meadow.jpeg"
         >
@@ -72,84 +91,32 @@ const HomePage = () => {
           the release of Letraset sheets containing Lorem Ipsum passages, and
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
-        </ItemBanner>
+        </ItemBanner >
         {/* Category */}
-        <ItemCategory/>
+        <CustomList 
+              title="Find product by Category" 
+              list={listCategories}
+              render={(data) => <ItemCategory data={data}/>}/>
 
-        <h2>New Products</h2>
-        <section
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 16,
-            justifyContent: "space-between",
-            marginBottom: 20,
-          }}
-        >
-          {listProducts.map((item, index) => (
-            <ItemProduct marginRight={index == listProducts.length-1 ? 'auto' :''} data={item} />
-          ))}
-        </section>
+        <CustomList 
+              title="New Products" 
+              list={listProducts}
+              render={(data) => <ItemProduct data={data}/>}/>
 
-        <h2>Robotics</h2>
-        <section
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 16,
-            justifyContent: "space-between",
-            marginBottom: 20,
-          }}
-        >
-          {listProducts.map((item) => (
-            <ItemProduct data={item} />
-          ))}
-        </section>
+        <CustomList 
+              title="Kits" 
+              list={listProducts}
+              render={(data) => <ItemProduct data={data}/>}/>
 
-        <h2>Kits</h2>
-        <section
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 16,
-            justifyContent: "space-between",
-            marginBottom: 20,
-          }}
-        >
-          {listProducts.map((item) => (
-            <ItemProduct data={item} />
-          ))}
-        </section>
+            <CustomList 
+              title="Parts" 
+              list={listProducts}
+              render={(data) => <ItemProduct data={data}/>}/>
 
-        <h2>Robots</h2>
-        <section
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 16,
-            justifyContent: "space-between",
-            marginBottom: 20,
-          }}
-        >
-         {listProducts.map((item) => (
-            <ItemProduct data={item} />
-          ))}
-        </section>
-
-        <h2>Parts</h2>
-        <section
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 16,
-            justifyContent: "space-between",
-            marginBottom: 20,
-          }}
-        >
-         {listProducts.map((item) => (
-            <ItemProduct data={item} />
-          ))}
-        </section>
+        <CustomList 
+              title="Robots" 
+              list={listProducts}
+              render={(data) => <ItemProduct data={data}/>}/>
       </main>
     </div>
   );

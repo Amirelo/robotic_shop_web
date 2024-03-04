@@ -1,16 +1,22 @@
 import React from "react"
 import { CustomImage, CustomText } from "../../components"
+import { CategoryModel } from "../../models";
 
-const ItemCategory = () => {
+interface Props{
+    marginBottom?: React.CSSProperties['marginBottom'];
+    data: CategoryModel
+}
+
+const ItemCategory = (props:Props) => {
     return (
 <div
           style={styles.body}
         >
-            <CustomImage preset={'fit'} src="https://images.pexels.com/photos/1476321/pexels-photo-1476321.jpeg"/>
+            <CustomImage preset={'fit'} src={props.data.image}/>
           
           
           <div style={styles.textFrame}>
-            <CustomText>Robot Parts</CustomText>
+            <CustomText preset={'title'}>{props.data.name}</CustomText>
           </div>
         </div>
     )
@@ -30,8 +36,12 @@ const styles: {[key:string]: React.CSSProperties} = {
     },
     textFrame:{
         width: "100%",
+        height:'20%',
         position: "absolute",
         bottom: 0,
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center',
         backgroundImage:
           "linear-gradient(to top,gold 20%, rgba(255,0,0,0))",
     }

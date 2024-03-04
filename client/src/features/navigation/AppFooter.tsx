@@ -27,7 +27,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     flexDirection: "row",
     justifyContent: "space-around",
     backgroundColor:'#FFFFF0',
-    paddingBlock: 12,
+    paddingBlock: 30,
   },
   column: {
     display: "flex",

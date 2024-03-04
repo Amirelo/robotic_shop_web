@@ -45,6 +45,7 @@ const textStyles: { [key: string]: React.CSSProperties } = {
   },
   title: {
     fontSize: 18,
+    fontWeight:'bold',
   },
   subTitle: {
     fontSize: 16,

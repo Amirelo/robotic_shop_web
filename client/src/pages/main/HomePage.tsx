@@ -6,6 +6,7 @@ import { CustomText } from "../../components";
 import { ItemBanner } from "../../features/products";
 import ItemProduct from "../../features/products/ItemProduct";
 import { ProductModel } from "../../models";
+import ItemCategory from "../../features/categories/ItemCategory";
 
 const HomePage = () => {
   const [listProducts, setListProducts] = React.useState<Array<ProductModel>>(
@@ -73,34 +74,7 @@ const HomePage = () => {
           including versions of Lorem Ipsum.
         </ItemBanner>
         {/* Category */}
-        <div
-          style={{
-            width: 200,
-            height: 300,
-            display: "flex",
-            position: "relative",
-            textAlign: "center",
-            borderRadius: 4,
-            overflow: "hidden",
-          }}
-        >
-          <img
-            style={{ width: "100%", position: "relative" }}
-            src="https://images.pexels.com/photos/1476321/pexels-photo-1476321.jpeg"
-            alt=""
-          />
-          <p
-            style={{
-              width: "100%",
-              position: "absolute",
-              bottom: 0,
-              backgroundImage:
-                "linear-gradient(to top,gold 20%, rgba(255,0,0,0))",
-            }}
-          >
-            Robot parts
-          </p>
-        </div>
+        <ItemCategory/>
 
         <h2>New Products</h2>
         <section

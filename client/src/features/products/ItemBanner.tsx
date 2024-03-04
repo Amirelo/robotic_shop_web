@@ -13,11 +13,12 @@ interface Props{
   children: string;
   title:string;
   src: string;
+  marginBottom?: React.CSSProperties['marginBottom']
 }
 
 const ItemBanner = (props:Props) => {
   return (
-    <div style={styles.body}>
+    <div style={{...styles.body, marginBottom: props.marginBottom}}>
       <div style={{ width: "40%" }}>
         {/* Text - Header */}
         <CustomText preset={"header"} color="white">

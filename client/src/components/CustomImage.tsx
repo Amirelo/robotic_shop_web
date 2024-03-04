@@ -46,6 +46,6 @@ const imageStyles: { [key: string]: React.CSSProperties } = {
   },
   fit: {
     width:'100%',
-    height:150
+    height:'100%',
   }
 };

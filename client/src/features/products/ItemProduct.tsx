@@ -15,10 +15,12 @@ interface Props {
 const ItemProduct = (props: Props) => {
   return (
     <article style={{...styles.body}}>
+      <div style={{width:'100%', height:150}}>
       <CustomImage
         src={props.data.image}
         preset={"fit"}
       />
+      </div>
       {/* Product Name */}
       <CustomText>{props.data.name}</CustomText>
       {/* Product Price */}

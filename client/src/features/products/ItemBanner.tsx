@@ -22,11 +22,11 @@ const ItemBanner = (props:Props) => {
     <div style={{...styles.body, marginBottom: props.marginBottom}}>
       <div style={{ width: "40%" }}>
         {/* Text - Header */}
-        <CustomText preset={"header"} color="white">
+        <CustomText preset={"header"}>
           {props.title}
         </CustomText>
         {/* Text - Body */}
-        <CustomText preset={"title"} color="white" maxLines={1} marginBottom={20}>
+        <CustomText preset={"title"} maxLines={1} marginBottom={20}>
           {props.children}
         </CustomText>
         {/* Button - shop */}
@@ -47,7 +47,7 @@ export default ItemBanner;
 const styles: { [key: string]: React.CSSProperties } = {
   body: {
     height: screenHeight,
-    backgroundColor: themes['defaultTheme'].text,
+    backgroundColor: themes['defaultTheme'].primary,
     borderRadius: 4,
     display: "flex",
     justifyContent: "space-around",

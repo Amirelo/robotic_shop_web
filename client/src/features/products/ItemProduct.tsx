@@ -6,6 +6,7 @@ import { TextButton } from "../../components/buttons";
 // Models
 import { ProductModel } from "../../models";
 import { priceFormat } from "../../utils/Utilities";
+import themes from "../../preferences/theme/themes";
 
 // Properties
 interface Props {
@@ -56,7 +57,7 @@ export default ItemProduct;
 
 const styles: { [key: string]: React.CSSProperties } = {
   body: {
-    backgroundColor: "gold",
+    backgroundColor: themes['defaultTheme'].primary,
     padding: 8,
     borderRadius: 4,
     width: '20%',

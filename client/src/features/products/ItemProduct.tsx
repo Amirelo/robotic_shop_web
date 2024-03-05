@@ -7,6 +7,7 @@ import { TextButton } from "../../components/buttons";
 import { ProductModel } from "../../models";
 import { priceFormat } from "../../utils/Utilities";
 import themes from "../../preferences/theme/themes";
+import RatingStars from "./RatingStars";
 
 // Properties
 interface Props {
@@ -25,7 +26,7 @@ const ItemProduct = (props: Props) => {
       />
       </div>
       {/* Product Name */}
-      <CustomText>{props.data.name}</CustomText>
+      <CustomText preset={'title'}>{props.data.name}</CustomText>
       {/* Product Price */}
       <div style={{ display: "flex", gap: 16 }}>
         {/* New price */}
@@ -40,7 +41,7 @@ const ItemProduct = (props: Props) => {
         )}
       </div>
       {/* Rating */}
-      <CustomText>Rating stars</CustomText>
+      <RatingStars rate={3}/>
       {/* Status */}
       <CustomText>
         {props.data.quantity > 0

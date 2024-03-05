@@ -22,6 +22,8 @@ const CustomImage = (props: Props) => {
         ...imageStyles[props.preset ?? "icon"],
         marginBottom: props.marginBottom,
         cursor: props.cursor,
+        color:'green',
+        fill:'green'
       }}
       src={props.src}
       alt={props.alt}

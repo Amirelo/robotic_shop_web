@@ -10,13 +10,19 @@ interface Props {
 const CustomList = (props: Props) => {
   return (
     <div>
+      {props.title ? (
         <div style={styles.title}>
-      <CustomText preset={"title"} marginBottom={8}>{props.title+''}</CustomText>
-      <CustomText>See more</CustomText>
+          <CustomText preset={"title"} marginBottom={8}>
+            {props.title + ""}
+          </CustomText>
+          <CustomText>See more</CustomText>
+        </div>
+      ) : (
+        <></>
+      )}
+      <div style={styles.items}>
+        {props.list.map((data) => props.render(data))}
       </div>
-    <div style={styles.items}>
-      {props.list.map((data) => props.render(data))}
-    </div>
     </div>
   );
 };
@@ -31,8 +37,8 @@ const styles: { [key: string]: React.CSSProperties } = {
     justifyContent: "space-between",
     marginBottom: 40,
   },
-  title:{
-    display:'flex',
-    justifyContent:'space-between'
-  }
+  title: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
 };

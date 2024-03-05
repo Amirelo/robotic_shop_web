@@ -1,0 +1,33 @@
+import React from "react";
+import { CustomText } from "../../components";
+
+interface Props{
+    children: any;
+    title: string;
+}
+
+const OptionBox = (props:Props) => {
+  return (
+    <div style={styles.body}>
+      <CustomText style={{ paddingRight: 4 }}>{props.title}</CustomText>
+      <select style={{ all: "unset" }}>
+       {props.children}
+      </select>
+    </div>
+  );
+};
+
+export default OptionBox;
+
+const styles: { [key: string]: React.CSSProperties } = {
+  body: {
+    display: "flex",
+    alignItems: "center",
+    border: "1px solid black",
+    borderRadius: 4,
+    width: "fit-content",
+    paddingInline: 12,
+    paddingBlock: 4,
+    overflow: "hidden",
+  },
+};

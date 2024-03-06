@@ -35,7 +35,7 @@ const FilterOption = (props: Props) => {
           src={"/icons/ic_grid_view.svg"}
           preset={"box"}
           backgroundcolor={
-            props.currentView ? themes["defaultTheme"].primary : ""
+            props.currentView ? themes["defaultTheme"].primary : "white"
           }
           onClick={()=> props.onViewChanged(true)}
         />
@@ -43,7 +43,7 @@ const FilterOption = (props: Props) => {
           src={"/icons/ic_list.svg"}
           preset={"box"}
           backgroundcolor={
-            !props.currentView ? themes["defaultTheme"].primary : ""
+            !props.currentView ? themes["defaultTheme"].primary : "white"
           }
           onClick={()=> props.onViewChanged(false)}
         />

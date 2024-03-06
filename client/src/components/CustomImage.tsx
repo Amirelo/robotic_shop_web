@@ -23,8 +23,8 @@ const CustomImage = (props: Props) => {
         ...imageStyles.initial,
         ...imageStyles[props.preset ?? "icon"],
         marginBottom: props.marginBottom,
-        cursor: props.preset && imageStyles[props.preset]?.cursor ? imageStyles[props.preset]?.cursor : props.cursor,
-        backgroundColor: props.backgroundcolor,
+        cursor: props.cursor ? props.cursor : props.preset && imageStyles[props.preset]?.cursor ? imageStyles[props.preset]?.cursor : '',
+        backgroundColor: props.backgroundcolor ?  props.backgroundcolor : props.preset && imageStyles[props.preset]?.backgroundColor ? imageStyles[props.preset]?.backgroundColor : '',
         borderRadius:4,
       }}
       src={props.src}

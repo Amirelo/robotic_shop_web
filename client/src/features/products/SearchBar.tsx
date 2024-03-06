@@ -3,6 +3,7 @@ import React from "react";
 
 // Components
 import { CustomImage } from "../../components";
+import themes from "../../preferences/theme/themes";
 
 const SearchBar = () => {
   return (
@@ -37,7 +38,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   image_box: {
     width: 40,
     height: 40,
-    backgroundColor: "gold",
+    backgroundColor: themes['defaultTheme'].primary,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",

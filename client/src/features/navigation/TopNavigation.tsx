@@ -5,22 +5,15 @@ import React from "react";
 import { SearchBar } from "../products";
 import { ButtonLink } from "../../components/buttons";
 import { CustomImage } from "../../components";
+import { NavLink } from "react-router-dom";
 
 const TopNavigation = () => {
-  // Show/hide search bar
-  const [showSearch, setShowSearch] = React.useState(false);
-
-  const onSearchIconPressed = () => {
-    setShowSearch((prev) => !prev);
-  };
 
   return (
     <nav style={styles.body}>
       {/* Navigation - 1st line */}
       <div style={styles.top}>
         {/* Search bar */}
-        {showSearch ? <SearchBar /> : <></>}
-        <CustomImage src="/icons/ic_search.svg" onClick={onSearchIconPressed} />
         <ButtonLink to="#">Contact us</ButtonLink>
         <ButtonLink to="#">Location</ButtonLink>
         <ButtonLink to="#">Sign In</ButtonLink>

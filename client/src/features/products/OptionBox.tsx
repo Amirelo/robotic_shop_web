@@ -30,5 +30,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     paddingInline: 12,
     paddingBlock: 4,
     overflow: "hidden",
+    backgroundColor:'white'
   },
 };

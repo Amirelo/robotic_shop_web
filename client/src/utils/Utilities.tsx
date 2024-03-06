@@ -6,7 +6,6 @@ export const priceFormat = (price:number) =>{
     var newPrice = '';
     while(priceString.length > 3){
         newPrice += '.' + priceString.substring(priceString.length -3, 7)
-        console.log("New price:", priceString[priceString.length -3, priceString.length-1])
         price /= 1000
         priceString = price.toString()
     } 

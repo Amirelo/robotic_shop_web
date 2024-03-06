@@ -12,6 +12,7 @@ interface Props {
   cursor?: React.CSSProperties['cursor'];
   onClick?(): void;
   preset?: keyof typeof imageStyles;
+  backgroundcolor?: React.CSSProperties['backgroundColor']
 }
 
 const CustomImage = (props: Props) => {
@@ -22,9 +23,9 @@ const CustomImage = (props: Props) => {
         ...imageStyles.initial,
         ...imageStyles[props.preset ?? "icon"],
         marginBottom: props.marginBottom,
-        cursor: props.cursor,
-        color:'green',
-        fill:'green'
+        cursor: props.preset && imageStyles[props.preset]?.cursor ? imageStyles[props.preset]?.cursor : props.cursor,
+        backgroundColor: props.backgroundcolor,
+        borderRadius:4,
       }}
       src={props.src}
       alt={props.alt}

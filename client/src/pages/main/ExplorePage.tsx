@@ -7,9 +7,9 @@ import CustomList from "../../components/CustomList";
 import ItemProduct from "../../features/products/ItemProduct";
 import { CustomImage, CustomText } from "../../components";
 import OptionBox from "../../features/products/OptionBox";
-import themes from "../../preferences/theme/themes";
-import { ic_chevron_left, ic_chevron_right } from "../../assets/icons";
 import PaginationTab from "../../features/products/PaginationTab";
+import themes from "../../preferences/theme/themes";
+import FilterOption from "../../features/products/FilterOption";
 
 const ExplorePage = () => {
   const [listProducts, setListProducts] = React.useState<Array<ProductModel>>(
@@ -17,6 +17,9 @@ const ExplorePage = () => {
   );
   const [itemPerPage, setItemPerPage] = React.useState(12);
   const [page, setPage] = React.useState(1);
+  const [gridDisplay, setGridDisplay] = React.useState(true);
+  const [sort, setSort] = React.useState("");
+  const [search, setSearch] = React.useState("");
 
   React.useEffect(() => {
     setListProducts([]);
@@ -242,34 +245,18 @@ const ExplorePage = () => {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <main style={{ width: "90%", paddingTop: 20 }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            paddingBlock: 12,
-            alignItems: "center",
-          }}
-        >
-          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-            <CustomText>View as</CustomText>
-            <CustomImage src={"/icons/ic_grid_view.svg"} />
-            <CustomImage src={"/icons/ic_list.svg"} />
-          </div>
+       
 
-          <OptionBox title="Sort by" onChanged={(e)=>console.log('s')}>
-            <option value="">Popularity</option>
-            <option value="">Ratings</option>
-            <option value="">Date</option>
-            <option value="">Price: Low to high</option>
-            <option value="">Price: High to low</option>
-          </OptionBox>
-
-          <OptionBox title="Show" onChanged={(e)=>setItemPerPage(e.target?.value)}>
-            <option value="12">12/pages</option>
-            <option value="16">16/pages</option>
-            <option value="20">20/pages</option>
-          </OptionBox>
-        </div>
+        <FilterOption
+          search={search}
+          currentView={gridDisplay}
+          currentSort={sort}
+          currentItemPerPage={itemPerPage}
+          onViewChanged={(status) => setGridDisplay(status)}
+          onSearchChange={(text) => console.log(text)}
+          onSortChange={(text) => console.log("sort")}
+          onItemPerPageChange={(number) => setItemPerPage(number)}
+        />
 
         <CustomList
           list={listProducts.slice(
@@ -279,13 +266,13 @@ const ExplorePage = () => {
           render={(data) => <ItemProduct data={data} />}
         />
 
-          <PaginationTab 
-            data={listProducts} 
-            itemPerPage={itemPerPage} 
-            numOfTabs={Math.ceil(listProducts.length / itemPerPage)} 
-            currentPage={page}
-            pageChanged={(number) => setPage(number)}/>
-
+        <PaginationTab
+          data={listProducts}
+          itemPerPage={itemPerPage}
+          numOfTabs={Math.ceil(listProducts.length / itemPerPage)}
+          currentPage={page}
+          pageChanged={(number) => setPage(number)}
+        />
       </main>
     </div>
   );

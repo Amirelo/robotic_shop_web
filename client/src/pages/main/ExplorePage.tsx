@@ -290,11 +290,14 @@ const ExplorePage = () => {
 
 
           {listProducts.length / itemPerPage >= 1 ? (
-            [Array.from(
+            [
+              page > listProducts.length/itemPerPage -3 ?
+              <CustomText preset={'box'}>..........</CustomText> : <></>,
+              Array.from(
               Array(Math.ceil(listProducts.length / itemPerPage)).slice(0,3),
               (e, k) => {
                 return (
-                  k + 1 +(page-2) > 0 ?
+                  k + 1 +(page-2) > 0  && k + 1 +(page-3) < Math.ceil(listProducts.length / itemPerPage)?
                   <CustomText preset={"box"} onClick={() => setPage(k + 1 +(page-2))}>
                     {(k + 1 +(page-2)).toString()}
                   </CustomText>
@@ -303,10 +306,10 @@ const ExplorePage = () => {
               }
             ),
 
-            listProducts.length / itemPerPage >3 ?
+            listProducts.length / itemPerPage >3  && page < listProducts.length/itemPerPage -3 ?
             <CustomText preset={'box'}>..........</CustomText> :<></>,
 
-            listProducts.length /itemPerPage > 6 ?
+            listProducts.length /itemPerPage > 6 && page < listProducts.length/itemPerPage - 3?
             Array.from(
               Array(Math.ceil(listProducts.length / itemPerPage)).slice(Math.ceil(listProducts.length / itemPerPage )-3,Math.ceil(listProducts.length / itemPerPage)),
               (e, k) => {

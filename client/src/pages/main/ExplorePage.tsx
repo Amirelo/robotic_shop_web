@@ -9,6 +9,7 @@ import { CustomImage, CustomText } from "../../components";
 import OptionBox from "../../features/products/OptionBox";
 import themes from "../../preferences/theme/themes";
 import { ic_chevron_left, ic_chevron_right } from "../../assets/icons";
+import PaginationTab from "../../features/products/PaginationTab";
 
 const ExplorePage = () => {
   const [listProducts, setListProducts] = React.useState<Array<ProductModel>>(
@@ -278,60 +279,13 @@ const ExplorePage = () => {
           render={(data) => <ItemProduct data={data} />}
         />
 
-        <div
-          style={{
-            display: "flex",
-            gap: 8,
-            justifyContent: "center",
-            marginBottom: 20,
-          }}
-        >
-          <CustomImage src={ic_chevron_left} preset={"box"} />
+          <PaginationTab 
+            data={listProducts} 
+            itemPerPage={itemPerPage} 
+            numOfTabs={Math.ceil(listProducts.length / itemPerPage)} 
+            currentPage={page}
+            pageChanged={(number) => setPage(number)}/>
 
-
-          {listProducts.length / itemPerPage >= 1 ? (
-            [
-              page > listProducts.length/itemPerPage -3 ?
-              <CustomText preset={'box'}>..........</CustomText> : <></>,
-              Array.from(
-              Array(Math.ceil(listProducts.length / itemPerPage)).slice(0,3),
-              (e, k) => {
-                return (
-                  k + 1 +(page-2) > 0  && k + 1 +(page-3) < Math.ceil(listProducts.length / itemPerPage)?
-                  <CustomText preset={"box"} onClick={() => setPage(k + 1 +(page-2))}>
-                    {(k + 1 +(page-2)).toString()}
-                  </CustomText>
-                  :<></>
-                );
-              }
-            ),
-
-            listProducts.length / itemPerPage >3  && page < listProducts.length/itemPerPage -3 ?
-            <CustomText preset={'box'}>..........</CustomText> :<></>,
-
-            listProducts.length /itemPerPage > 6 && page < listProducts.length/itemPerPage - 3?
-            Array.from(
-              Array(Math.ceil(listProducts.length / itemPerPage)).slice(Math.ceil(listProducts.length / itemPerPage )-3,Math.ceil(listProducts.length / itemPerPage)),
-              (e, k) => {
-                return (
-                  <CustomText preset={"box"} onClick={() => setPage(Math.ceil(listProducts.length / itemPerPage )-3 + k + 1)}>
-                    {(Math.ceil(listProducts.length / itemPerPage )-3 + k + 1).toString()}
-                  </CustomText>
-                );
-              }
-            )
-            :<></>
-          ]
-
-              
-              
-
-          ) : (
-            <></>
-          )}
-
-          <CustomImage src={ic_chevron_right} preset={"box"} />
-        </div>
       </main>
     </div>
   );

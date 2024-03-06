@@ -4,13 +4,14 @@ import { CustomText } from "../../components";
 interface Props{
     children: any;
     title: string;
+    onChanged(e:any): void
 }
 
 const OptionBox = (props:Props) => {
   return (
     <div style={styles.body}>
       <CustomText style={{ paddingRight: 4 }}>{props.title}</CustomText>
-      <select style={{ all: "unset" }}>
+      <select style={{ all: "unset" }} onChange={(e:any)=>props.onChanged(e)}>
        {props.children}
       </select>
     </div>

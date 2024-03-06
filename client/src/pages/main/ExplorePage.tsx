@@ -255,7 +255,7 @@ const ExplorePage = () => {
             <CustomImage src={"/icons/ic_list.svg"} />
           </div>
 
-          <OptionBox title="Sort by">
+          <OptionBox title="Sort by" onChanged={(e)=>console.log('s')}>
             <option value="">Popularity</option>
             <option value="">Ratings</option>
             <option value="">Date</option>
@@ -263,7 +263,7 @@ const ExplorePage = () => {
             <option value="">Price: High to low</option>
           </OptionBox>
 
-          <OptionBox title="Show">
+          <OptionBox title="Show" onChanged={(e)=>setItemPerPage(e.target?.value)}>
             <option value="12">12/pages</option>
             <option value="16">16/pages</option>
             <option value="20">20/pages</option>

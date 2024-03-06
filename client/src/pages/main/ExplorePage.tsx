@@ -7,13 +7,15 @@ import CustomList from "../../components/CustomList";
 import ItemProduct from "../../features/products/ItemProduct";
 import { CustomImage, CustomText } from "../../components";
 import OptionBox from "../../features/products/OptionBox";
+import themes from "../../preferences/theme/themes";
+import { ic_chevron_left, ic_chevron_right } from "../../assets/icons";
 
 const ExplorePage = () => {
   const [listProducts, setListProducts] = React.useState<Array<ProductModel>>(
     []
   );
   const [itemPerPage, setItemPerPage] = React.useState(12);
-  const [page, setPage] = React.useState(1)
+  const [page, setPage] = React.useState(1);
 
   React.useEffect(() => {
     setListProducts([]);
@@ -93,6 +95,143 @@ const ExplorePage = () => {
     setListProducts((prev) => [...prev, testItem4]);
     setListProducts((prev) => [...prev, testItem4]);
     setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
+    setListProducts((prev) => [...prev, testItem4]);
   }, []);
 
   React.useEffect(() => {
@@ -102,8 +241,15 @@ const ExplorePage = () => {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <main style={{ width: "90%", paddingTop: 20 }}>
-        <div style={{display:'flex', justifyContent:'space-between', paddingBlock:12, alignItems:'center'}}>
-          <div style={{ display: "flex", gap: 8, alignContent: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            paddingBlock: 12,
+            alignItems: "center",
+          }}
+        >
+          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
             <CustomText>View as</CustomText>
             <CustomImage src={"/icons/ic_grid_view.svg"} />
             <CustomImage src={"/icons/ic_list.svg"} />
@@ -125,9 +271,64 @@ const ExplorePage = () => {
         </div>
 
         <CustomList
-          list={listProducts.slice((page-1) * itemPerPage, itemPerPage)}
+          list={listProducts.slice(
+            (page - 1) * itemPerPage,
+            itemPerPage * page
+          )}
           render={(data) => <ItemProduct data={data} />}
         />
+
+        <div
+          style={{
+            display: "flex",
+            gap: 8,
+            justifyContent: "center",
+            marginBottom: 20,
+          }}
+        >
+          <CustomImage src={ic_chevron_left} preset={"box"} />
+
+
+          {listProducts.length / itemPerPage >= 1 ? (
+            [Array.from(
+              Array(Math.ceil(listProducts.length / itemPerPage)).slice(0,3),
+              (e, k) => {
+                return (
+                  k + 1 +(page-2) > 0 ?
+                  <CustomText preset={"box"} onClick={() => setPage(k + 1 +(page-2))}>
+                    {(k + 1 +(page-2)).toString()}
+                  </CustomText>
+                  :<></>
+                );
+              }
+            ),
+
+            listProducts.length / itemPerPage >3 ?
+            <CustomText preset={'box'}>..........</CustomText> :<></>,
+
+            listProducts.length /itemPerPage > 6 ?
+            Array.from(
+              Array(Math.ceil(listProducts.length / itemPerPage)).slice(Math.ceil(listProducts.length / itemPerPage )-3,Math.ceil(listProducts.length / itemPerPage)),
+              (e, k) => {
+                return (
+                  <CustomText preset={"box"} onClick={() => setPage(Math.ceil(listProducts.length / itemPerPage )-3 + k + 1)}>
+                    {(Math.ceil(listProducts.length / itemPerPage )-3 + k + 1).toString()}
+                  </CustomText>
+                );
+              }
+            )
+            :<></>
+          ]
+
+              
+              
+
+          ) : (
+            <></>
+          )}
+
+          <CustomImage src={ic_chevron_right} preset={"box"} />
+        </div>
       </main>
     </div>
   );

@@ -11,7 +11,7 @@ interface Props {
   onClick?(): void;
   marginBottom?: React.CSSProperties["marginBottom"];
   maxLines?: number;
-  style?: React.CSSProperties
+  style?: React.CSSProperties;
 }
 
 const CustomText = (props: Props) => {
@@ -22,11 +22,11 @@ const CustomText = (props: Props) => {
       style={{
         fontWeight: props.fontWeight,
         ...textStyles[props.preset ?? "normal"],
-        color: props.color ?? themes['defaultTheme'].text,
+        color: props.color ?? themes["defaultTheme"].text,
         marginBottom: props.marginBottom,
         maxLines: props.maxLines,
-        textOverflow:'ellipsis',
-        ...props.style
+        textOverflow: "ellipsis",
+        ...props.style,
       }}
     >
       {props.children}
@@ -46,7 +46,7 @@ const textStyles: { [key: string]: React.CSSProperties } = {
   },
   title: {
     fontSize: 18,
-    fontWeight:'bold',
+    fontWeight: "bold",
   },
   subTitle: {
     fontSize: 16,
@@ -56,5 +56,13 @@ const textStyles: { [key: string]: React.CSSProperties } = {
   },
   small: {
     fontSize: 12,
+  },
+  box: {
+    paddingBlock: 8,
+    paddingInline: 12,
+    borderRadius: 4,
+    backgroundColor: themes["defaultTheme"].primary,
+    width: "fit-content",
+    cursor:'pointer'
   },
 };

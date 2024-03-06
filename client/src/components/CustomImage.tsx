@@ -1,5 +1,6 @@
 // React and libs
 import React from "react";
+import themes from "../preferences/theme/themes";
 
 // Properties
 interface Props {
@@ -49,5 +50,12 @@ const imageStyles: { [key: string]: React.CSSProperties } = {
   fit: {
     width:'100%',
     height:'100%',
+  },
+  box:{
+    borderRadius:4,
+    paddingBlock:8,
+    paddingInline:12,
+    backgroundColor: themes['defaultTheme'].primary,
+    cursor: 'pointer'
   }
 };

@@ -5,6 +5,8 @@ import ic_list_view from "./ic_list.svg";
 import ic_search from "./ic_search.svg";
 import ic_star from "./ic_star.svg";
 import ic_star_outline from "./ic_star_outline.svg";
+import ic_chevron_left from "./ic_chevron_left.svg";
+import ic_chevron_right from "./ic_chevron_right.svg";
 
 export {
   ic_cart,
@@ -14,4 +16,6 @@ export {
   ic_search,
   ic_star,
   ic_star_outline,
+  ic_chevron_left,
+  ic_chevron_right,
 };

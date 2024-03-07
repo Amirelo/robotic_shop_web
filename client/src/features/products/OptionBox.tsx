@@ -1,5 +1,6 @@
 import React from "react";
-import { CustomText } from "../../components";
+import { CustomImage, CustomText } from "../../components";
+import { ic_cart } from "../../assets/icons";
 
 interface Props{
     children: any;
@@ -9,11 +10,13 @@ interface Props{
 
 const OptionBox = (props:Props) => {
   return (
+    <div>
     <div style={styles.body}>
-      <CustomText style={{ paddingRight: 4 }}>{props.title}</CustomText>
-      <select style={{ all: "unset" }} onChange={(e:any)=>props.onChanged(e)}>
+      <CustomText style={styles.text}>{props.title}</CustomText>
+      <select style={styles.select} onChange={(e:any)=>props.onChanged(e)}>
        {props.children}
       </select>
+    </div>
     </div>
   );
 };
@@ -32,4 +35,10 @@ const styles: { [key: string]: React.CSSProperties } = {
     overflow: "hidden",
     backgroundColor:'white'
   },
+  select:{
+    all: "unset",
+  },
+  text:{
+    paddingRight:4
+  }
 };

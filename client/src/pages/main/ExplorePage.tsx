@@ -5,10 +5,7 @@ import React from "react";
 import { ProductModel } from "../../models";
 import CustomList from "../../components/CustomList";
 import ItemProduct from "../../features/products/ItemProduct";
-import { CustomImage, CustomText } from "../../components";
-import OptionBox from "../../features/products/OptionBox";
 import PaginationTab from "../../features/products/PaginationTab";
-import themes from "../../preferences/theme/themes";
 import FilterOption from "../../features/products/FilterOption";
 
 const ExplorePage = () => {

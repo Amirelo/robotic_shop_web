@@ -9,51 +9,22 @@ import { ItemBanner } from "../../features/products";
 import ItemProduct from "../../features/products/ItemProduct";
 import ItemCategory from "../../features/categories/ItemCategory";
 import CustomList from "../../components/CustomList";
+import { getAllProducts } from "../../services/ProductServices";
 
 const HomePage = () => {
   const [listProducts, setListProducts] = React.useState<Array<ProductModel>>([]);
   const [listCategories, setListCategories] = React.useState<Array<CategoryModel>>([]);
 
+  const getData = async() => {
+    const products:Array<ProductModel> = await getAllProducts();
+    setListProducts(products)
+  }
+
+
   React.useEffect(() => {
     setListProducts([]);
     setListCategories([]);
-
-    // Products
-    var testItem = new ProductModel(1, "test product 1", "https://images.pexels.com/photos/18022560/pexels-photo-18022560/free-photo-of-close-up-of-a-raccoon.jpeg",50000, 29, "", false);
-    setListProducts((prev) => [...prev, testItem]);
-
-    var testItem1 = new ProductModel(
-      2,
-      "test product 2",
-      "https://images.pexels.com/photos/18178746/pexels-photo-18178746/free-photo-of-jellyfish-in-nature.jpeg",
-      63000,
-      254,
-      "60",
-      false
-    );
-    setListProducts((prev) => [...prev, testItem1]);
-    var testItem2 = new ProductModel(
-      3,
-      "test product 3",
-      "https://images.pexels.com/photos/18189033/pexels-photo-18189033/free-photo-of-meerkat.jpeg",
-      36000,
-      154,
-      "",
-      false
-    );
-    setListProducts((prev) => [...prev, testItem2]);
-    var testItem3 = new ProductModel(4, "test product 4", "https://images.pexels.com/photos/18004061/pexels-photo-18004061/free-photo-of-scott-en-la-playa.jpeg", 24000, 63, "", false);
-    setListProducts((prev) => [...prev, testItem3]);
-    var testItem4 = new ProductModel(
-      5,
-      "test product 5",
-      "https://images.pexels.com/photos/18175117/pexels-photo-18175117/free-photo-of-closeup-of-a-yawning-lioness.jpeg",
-      26000,
-      95,
-      "5",
-      false
-    );
-    setListProducts((prev) => [...prev, testItem4]);
+    getData();
 
     // Categories
     var testCate = new CategoryModel(1, "test category 1", "https://images.pexels.com/photos/20021296/pexels-photo-20021296/free-photo-of-lottery-scrabble-letters-on-a-wooden-table.jpeg","Test category 1");

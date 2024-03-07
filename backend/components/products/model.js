@@ -11,6 +11,7 @@ const ProductSchema = new Schema({
     totalRating: { type: Number },
     discount: { type: String },
     sold: { type: Number },
+    images: {type: Array},
     categoryID: { type: ObjectId, ref: 'categories' },
 })
 

@@ -20,7 +20,7 @@ const ItemProduct = (props: Props) => {
     <article style={{...styles.body}}>
       <div style={{width:'100%', height:150}}>
       <CustomImage
-        src={props.data.image}
+        src={props.data.images[0]}
         preset={"fit"}
         marginBottom={8}
       />

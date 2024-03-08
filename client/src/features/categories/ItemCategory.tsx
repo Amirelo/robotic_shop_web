@@ -16,7 +16,7 @@ const ItemCategory = (props: Props) => {
       <div
         style={{
           ...styles.textFrame,
-          backgroundImage: `linear-gradient(to top,${themes['defaultTheme'].primary} 20%, rgba(255,0,0,0))`,
+          backgroundImage: `linear-gradient(to top,${themes['defaultTheme'].primary} 60%, rgba(255,0,0,0))`,
         }}
       >
         <CustomText preset={"title"}>{props.data.name}</CustomText>
@@ -37,10 +37,13 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: 20,
     overflow: "hidden",
     cursor: "pointer",
+    borderWidth:1,
+    borderStyle:'solid',
+    borderColor:'green',
   },
   textFrame: {
     width: "100%",
-    height: "20%",
+    height: "30%",
     position: "absolute",
     bottom: 0,
     display: "flex",

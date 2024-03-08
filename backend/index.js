@@ -10,6 +10,7 @@ mongoose.connect('mongodb+srv://testadmin:123@robotic.33wnnsp.mongodb.net/main?r
 .catch((error) => console.log("DB connect - ERROR:", error))
 
 const productRouter = require('./routes/ProductRoute')
+const categoryRouter = require('./routes/CategoryRoute')
 
 
 const PORT = process.env.PORT || 3001
@@ -25,6 +26,7 @@ app.get('/api', (req, res) => {
 })
 
 app.use('/api/product', productRouter)
+app.use('/api/category', categoryRouter)
 
 app.use(express.static(path.resolve(__dirname, '../client/build')))
 

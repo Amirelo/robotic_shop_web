@@ -56,7 +56,7 @@ exports.signUp = async (username, password, email) => {
 exports.changeUserPassword = async (email, password) => {
     const user = await userModel.findOne({email:email})
     if (user != null){
-        const hashedPassword = hashPassword(pass)
+        const hashedPassword = hashPassword(password)
         userModel.updateOne({email: email}, {password: hashedPassword})
         console.log("SERVICES - Change User Password - Success")
         return true

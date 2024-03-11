@@ -9,3 +9,8 @@ exports.getMoreProducts = async() => {
     const data = await productService.getMoreProducts();
     return data
 }
+
+exports.getProductsByCategoryId = async(categoryID, limit) => {
+    const data = await productService.getProductsByCategoryId(categoryID, limit)
+    return data
+}

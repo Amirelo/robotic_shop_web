@@ -5,7 +5,7 @@ import React from "react";
 import { CategoryModel, ProductModel } from "../../models";
 
 // Services
-import { getAllProducts } from "../../services/ProductServices";
+import { getAllProducts, getProductsByCategoryID } from "../../services/ProductServices";
 import { getAllCategories } from "../../services/CategoryServices";
 
 // Components
@@ -23,6 +23,8 @@ const HomePage = () => {
     Array<CategoryModel>
   >([]);
 
+  const [listProductKit, setListProductKit] = React.useState<Array<ProductModel>>([])
+
   const getData = async () => {
     // Get all products
     const products: Array<ProductModel> = await getAllProducts();
@@ -31,6 +33,13 @@ const HomePage = () => {
     // Get all categories
     const categories: Array<CategoryModel> = await getAllCategories();
     setListCategories(categories);
+    console.log("Categories:", categories)
+
+    const cateKit:CategoryModel = categories.filter(item => item.name.toLowerCase().includes("kit"))[0]
+    console.log('Kit category:', cateKit)
+    const prodsKit = await getProductsByCategoryID(cateKit.id)
+    setListProductKit(prodsKit)
+    console.log('Test fetch:', prodsKit)
   };
 
   React.useEffect(() => {
@@ -39,9 +48,6 @@ const HomePage = () => {
     getData();
   }, []);
 
-  React.useEffect(() => {
-    console.log("List products:", listProducts);
-  }, [listProducts]);
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
@@ -80,12 +86,12 @@ const HomePage = () => {
           render={(data) => <ItemProduct data={data} />}
         />
 
-        {/* <CustomList
+        {<CustomList
           title="Kits"
-          list={listProducts}
+          list={listProductKit}
           render={(data) => <ItemProduct data={data} />}
         />
-
+/*
         <CustomList
           title="Parts"
           list={listProducts}

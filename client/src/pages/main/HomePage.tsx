@@ -64,17 +64,23 @@ const HomePage = () => {
         {/* Category */}
         <CustomList
           title="Find product by Category"
-          list={listCategories.slice(0,6)}
+          list={listCategories.slice(0, 6)}
           render={(data) => <ItemCategory data={data} />}
         />
 
-        <CustomList
+        {/* <CustomList
           title="New Arrivals"
           list={listProducts}
           render={(data) => <ItemProduct data={data} />}
-        />
+        /> */}
 
         <CustomList
+          title="Populars"
+          list={listProducts.sort((a, b) =>  a.totalRating - b.totalRating).slice(0,8)}
+          render={(data) => <ItemProduct data={data} />}
+        />
+
+        {/* <CustomList
           title="Kits"
           list={listProducts}
           render={(data) => <ItemProduct data={data} />}
@@ -90,7 +96,7 @@ const HomePage = () => {
           title="Robots"
           list={listProducts}
           render={(data) => <ItemProduct data={data} />}
-        />
+        /> */}
       </main>
     </div>
   );

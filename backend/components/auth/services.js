@@ -1,4 +1,4 @@
-const userModel = require('./model')
+const authModel = require('./model')
 
 const bcrypt = require('bcrypt')
 const saltRounds = 10
@@ -24,7 +24,7 @@ const checkPassword = async (saltedPass, pass) => {
 }
 
 exports.signInWithPassword = async (email, password) => {
-    const user = await userModel.findOne({email:email})
+    const user = await authModel.findOne({email:email})
     console.log("user:", user)
     if (user != null) {
         const status = checkPassword(password, user.password)
@@ -44,7 +44,7 @@ exports.signInWithPassword = async (email, password) => {
 
 exports.signUp = async (username, password, email) => {
     const hashedPassword = hashPassword(password)
-    const item = new userModel({
+    const item = new authModel({
         username: username,
         password: hashedPassword,
         email: email
@@ -54,10 +54,10 @@ exports.signUp = async (username, password, email) => {
 }
 
 exports.changeUserPassword = async (email, password) => {
-    const user = await userModel.findOne({email:email})
+    const user = await authModel.findOne({email:email})
     if (user != null){
         const hashedPassword = hashPassword(password)
-        userModel.updateOne({email: email}, {password: hashedPassword})
+        authModel.updateOne({email: email}, {password: hashedPassword})
         console.log("SERVICES - Change User Password - Success")
         return true
     } 

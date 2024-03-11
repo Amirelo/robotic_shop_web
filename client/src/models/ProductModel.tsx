@@ -1,5 +1,5 @@
 class ProductModel {
-  id: number;
+  id: string;
   name: string;
   price: number;
   totalRating: number;
@@ -8,9 +8,10 @@ class ProductModel {
   sold: number;
   images: Array<string>;
   status: boolean;
+  categoryID: string;
 
   constructor(
-    id: number,
+    id: string,
     name: string,
     price: number,
     totalRating: number,
@@ -18,7 +19,8 @@ class ProductModel {
     discount: string,
     sold: number,
     images: Array<string>,
-    status: boolean
+    status: boolean,
+    categoryID:string,
   ) {
     this.id = id;
     this.name = name;
@@ -29,6 +31,7 @@ class ProductModel {
     this.sold = sold;
     this.images = images;
     this.status = status;
+    this.categoryID = categoryID;
   }
 }
 

@@ -9,7 +9,7 @@ mongoose.connect('mongodb+srv://testadmin:123@robotic.33wnnsp.mongodb.net/main?r
 .then(() => console.log('DB connect - SUCCESS'))
 .catch((error) => console.log("DB connect - ERROR:", error))
 
-const userRouter = require('./routes/UserRoute')
+const authRouter = require('./routes/AuthRoute')
 const productRouter = require('./routes/ProductRoute')
 const categoryRouter = require('./routes/CategoryRoute')
 
@@ -28,7 +28,7 @@ app.get('/api', (req, res) => {
     res.json({ message: "Api page" })
 })
 
-app.use('/api/auth', userRouter)
+app.use('/api/auth', authRouter)
 app.use('/api/product', productRouter)
 app.use('/api/category', categoryRouter)
 

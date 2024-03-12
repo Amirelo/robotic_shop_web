@@ -51,7 +51,7 @@ const ItemProduct = (props: Props) => {
           : "Out of stock"}
       </CustomText>
       {/* Button - Add To Cart */}
-      <TextButton style={{ marginBottom: "auto" }}>Add To Cart</TextButton>
+      <TextButton style={{ marginTop:'auto' }}>Add To Cart</TextButton>
     </article>
   );
 };
@@ -64,5 +64,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     padding: 8,
     borderRadius: 4,
     width: "20%",
+    display:'flex',
+    flexDirection:"column"
   },
 };

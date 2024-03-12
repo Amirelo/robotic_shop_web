@@ -1,6 +1,11 @@
+// React and libs
 import React from "react";
-import { CustomImage } from "../../components";
+
+// Assets
 import { ic_star, ic_star_outline } from "../../assets/icons";
+
+// Components
+import { CustomImage } from "../../components";
 
 interface Props{
   rate: number

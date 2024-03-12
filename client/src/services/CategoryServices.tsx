@@ -1,5 +1,8 @@
+// Models
 import { CategoryModel } from "../models";
 
+
+// Get all categories
 export const getAllCategories = async () => {
   const res = (await fetch("http://localhost:3001/api/category"))
     .json()

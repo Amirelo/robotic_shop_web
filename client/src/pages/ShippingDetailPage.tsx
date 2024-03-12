@@ -1,4 +1,5 @@
-import { CustomText } from "../../components"
+// Components
+import { CustomText } from "../components"
 
 const ShippingDetailPage = () => {
     return (

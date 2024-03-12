@@ -2,17 +2,19 @@
 import React from "react";
 
 // Models
-import { CategoryModel, ProductModel } from "../../models";
+import { CategoryModel, ProductModel } from "../models";
 
 // Services
-import { getAllProducts, getProductsByCategoryID } from "../../services/ProductServices";
-import { getAllCategories } from "../../services/CategoryServices";
+import {
+  getAllProducts,
+  getProductsByCategoryID,
+} from "../services/ProductServices";
+import { getAllCategories } from "../services/CategoryServices";
 
 // Components
-import { ItemBanner } from "../../features/products";
-import ItemProduct from "../../features/products/ItemProduct";
-import ItemCategory from "../../features/categories/ItemCategory";
-import CustomList from "../../components/CustomList";
+import { CustomList } from "../components";
+import { ItemCategory } from "../features/categories";
+import { ItemBanner, ItemProduct } from "../features/products";
 
 const HomePage = () => {
   // Fields
@@ -23,9 +25,15 @@ const HomePage = () => {
     Array<CategoryModel>
   >([]);
 
-  const [listProductKit, setListProductKit] = React.useState<Array<ProductModel>>([])
-  const [listProductArduino, setListProductArduino] = React.useState<Array<ProductModel>>([])
-  const [listProductParts, setListProductParts] = React.useState<Array<ProductModel>>([])
+  const [listProductKit, setListProductKit] = React.useState<
+    Array<ProductModel>
+  >([]);
+  const [listProductArduino, setListProductArduino] = React.useState<
+    Array<ProductModel>
+  >([]);
+  const [listProductParts, setListProductParts] = React.useState<
+    Array<ProductModel>
+  >([]);
 
   const getData = async () => {
     // Get all products
@@ -35,28 +43,34 @@ const HomePage = () => {
     // Get all categories
     const categories: Array<CategoryModel> = await getAllCategories();
     setListCategories(categories);
-    console.log("Categories:", categories)
+    console.log("Categories:", categories);
 
     // Get kit product
-    const cateKit:CategoryModel = categories.filter(item => item.name.toLowerCase().includes("kit"))[0]
-    console.log('Kit category:', cateKit)
-    const prodsKit = await getProductsByCategoryID(cateKit.id,8)
-    setListProductKit(prodsKit)
-    console.log("Products - kit:", prodsKit)
+    const cateKit: CategoryModel = categories.filter((item) =>
+      item.name.toLowerCase().includes("kit")
+    )[0];
+    console.log("Kit category:", cateKit);
+    const prodsKit = await getProductsByCategoryID(cateKit.id, 8);
+    setListProductKit(prodsKit);
+    console.log("Products - kit:", prodsKit);
 
     // Get arduino product
-    const cateArduino:CategoryModel = categories.filter(item => item.name.toLowerCase().includes("arduino"))[0]
-    console.log('arduino category:', cateKit)
-    const prodsArduino = await getProductsByCategoryID(cateArduino.id,8)
-    setListProductArduino(prodsArduino)
-    console.log("Products - arduino:", prodsArduino)
+    const cateArduino: CategoryModel = categories.filter((item) =>
+      item.name.toLowerCase().includes("arduino")
+    )[0];
+    console.log("arduino category:", cateKit);
+    const prodsArduino = await getProductsByCategoryID(cateArduino.id, 8);
+    setListProductArduino(prodsArduino);
+    console.log("Products - arduino:", prodsArduino);
 
     // Get parts product
-    const cateParts:CategoryModel = categories.filter(item => item.name.toLowerCase().includes("điện tử"))[0]
-    console.log('part category:', cateKit)
-    const prodsParts = await getProductsByCategoryID(cateParts.id,8)
-    setListProductParts(prodsParts)
-    console.log("Products - parts:", prodsParts)
+    const cateParts: CategoryModel = categories.filter((item) =>
+      item.name.toLowerCase().includes("điện tử")
+    )[0];
+    console.log("part category:", cateKit);
+    const prodsParts = await getProductsByCategoryID(cateParts.id, 8);
+    setListProductParts(prodsParts);
+    console.log("Products - parts:", prodsParts);
   };
 
   React.useEffect(() => {
@@ -64,7 +78,6 @@ const HomePage = () => {
     setListCategories([]);
     getData();
   }, []);
-
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
@@ -85,7 +98,6 @@ const HomePage = () => {
           including versions of Lorem Ipsum.
         </ItemBanner>
 
-          
         {/* Category */}
         <CustomList
           title="Find product by Category"
@@ -101,7 +113,9 @@ const HomePage = () => {
 
         <CustomList
           title="Populars"
-          list={listProducts.sort((a, b) =>  a.totalRating - b.totalRating).slice(0,8)}
+          list={listProducts
+            .sort((a, b) => a.totalRating - b.totalRating)
+            .slice(0, 8)}
           render={(data) => <ItemProduct data={data} />}
         />
 

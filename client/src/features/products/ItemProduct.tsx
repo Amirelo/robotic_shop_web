@@ -5,9 +5,12 @@ import { TextButton } from "../../components/buttons";
 
 // Models
 import { ProductModel } from "../../models";
-import { priceFormat, screenWidth } from "../../utils/Utilities";
-import themes from "../../preferences/theme/themes";
+
+// Components
 import RatingStars from "./RatingStars";
+
+// Utilities
+import { priceFormat, screenWidth } from "../../utils/Utilities";
 
 // Properties
 interface Props {

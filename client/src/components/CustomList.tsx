@@ -1,11 +1,14 @@
+// React and libs
 import React from "react";
+
+// Components
 import CustomText from "./CustomText";
 
 interface Props {
   title?: string;
   list: Array<any>;
   render(data: any): any;
-  onSeeMoreClicked?(): void
+  onSeeMoreClicked?(): void;
 }
 
 const CustomList = (props: Props) => {
@@ -16,7 +19,12 @@ const CustomList = (props: Props) => {
           <CustomText preset={"title"} marginBottom={8}>
             {props.title + ""}
           </CustomText>
-          <CustomText style={{cursor:"pointer", textDecoration:'underline'}} onClick={props.onSeeMoreClicked}>See more</CustomText>
+          <CustomText
+            style={{ cursor: "pointer", textDecoration: "underline" }}
+            onClick={props.onSeeMoreClicked}
+          >
+            See more
+          </CustomText>
         </div>
       ) : (
         <></>

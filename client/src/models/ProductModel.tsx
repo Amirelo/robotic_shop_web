@@ -20,7 +20,7 @@ class ProductModel {
     sold: number,
     images: Array<string>,
     status: boolean,
-    categoryID:string,
+    categoryID: string
   ) {
     this.id = id;
     this.name = name;

@@ -1,6 +1,13 @@
+// React and libs
 import React from "react";
-import { CustomImage, CustomText } from "../../components";
+
+// Models
 import { CategoryModel } from "../../models";
+
+// Components
+import { CustomImage, CustomText } from "../../components";
+
+// User Preferences
 import themes from "../../preferences/theme/themes";
 
 interface Props {
@@ -16,7 +23,7 @@ const ItemCategory = (props: Props) => {
       <div
         style={{
           ...styles.textFrame,
-          backgroundImage: `linear-gradient(to top,${themes['defaultTheme'].primary} 60%, rgba(255,0,0,0))`,
+          backgroundImage: `linear-gradient(to top,${themes["defaultTheme"].primary} 60%, rgba(255,0,0,0))`,
         }}
       >
         <CustomText preset={"title"}>{props.data.name}</CustomText>
@@ -37,9 +44,9 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: 20,
     overflow: "hidden",
     cursor: "pointer",
-    borderWidth:1,
-    borderStyle:'solid',
-    borderColor:'green',
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "green",
   },
   textFrame: {
     width: "100%",

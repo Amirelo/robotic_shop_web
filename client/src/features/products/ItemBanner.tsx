@@ -1,5 +1,6 @@
 // React and libs
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 // Components
 import { CustomText, CustomImage } from "../../components";
@@ -7,8 +8,9 @@ import { TextButton } from "../../components/buttons";
 
 // Utilities
 import { screenHeight } from "../../utils/Utilities";
+
+// User Preferences
 import themes from "../../preferences/theme/themes";
-import { useNavigate } from "react-router-dom";
 
 // Interface
 interface Props{

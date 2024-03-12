@@ -1,5 +1,10 @@
+// React and libs
 import React from "react";
+
+// Assets
 import { ic_chevron_left, ic_chevron_right } from "../../assets/icons";
+
+// Components
 import { CustomImage, CustomText } from "../../components";
 
 interface Props {

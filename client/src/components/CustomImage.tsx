@@ -9,10 +9,10 @@ interface Props {
   //   width?: React.CSSProperties["width"];
   //   height?: React.CSSProperties["height"];
   marginBottom?: React.CSSProperties["marginBottom"];
-  cursor?: React.CSSProperties['cursor'];
+  cursor?: React.CSSProperties["cursor"];
   onClick?(): void;
   preset?: keyof typeof imageStyles;
-  backgroundcolor?: React.CSSProperties['backgroundColor']
+  backgroundcolor?: React.CSSProperties["backgroundColor"];
 }
 
 const CustomImage = (props: Props) => {
@@ -22,11 +22,19 @@ const CustomImage = (props: Props) => {
       style={{
         ...imageStyles.initial,
         ...imageStyles[props.preset ?? "icon"],
-        transition:'500ms',
+        transition: "500ms",
         marginBottom: props.marginBottom,
-        cursor: props.cursor ? props.cursor : props.preset && imageStyles[props.preset]?.cursor ? imageStyles[props.preset]?.cursor : '',
-        backgroundColor: props.backgroundcolor ?  props.backgroundcolor : props.preset && imageStyles[props.preset]?.backgroundColor ? imageStyles[props.preset]?.backgroundColor : '',
-        borderRadius:4,
+        cursor: props.cursor
+          ? props.cursor
+          : props.preset && imageStyles[props.preset]?.cursor
+          ? imageStyles[props.preset]?.cursor
+          : "",
+        backgroundColor: props.backgroundcolor
+          ? props.backgroundcolor
+          : props.preset && imageStyles[props.preset]?.backgroundColor
+          ? imageStyles[props.preset]?.backgroundColor
+          : "",
+        borderRadius: 4,
       }}
       src={props.src}
       alt={props.alt}
@@ -50,14 +58,14 @@ const imageStyles: { [key: string]: React.CSSProperties } = {
     width: "40%",
   },
   fit: {
-    width:'100%',
-    height:'100%',
+    width: "100%",
+    height: "100%",
   },
-  box:{
-    borderRadius:4,
-    paddingBlock:8,
-    paddingInline:12,
-    backgroundColor: themes['defaultTheme'].primary,
-    cursor: 'pointer'
-  }
+  box: {
+    borderRadius: 4,
+    paddingBlock: 8,
+    paddingInline: 12,
+    backgroundColor: themes["defaultTheme"].primary,
+    cursor: "pointer",
+  },
 };

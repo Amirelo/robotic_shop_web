@@ -8,7 +8,7 @@ interface Props {
   to: string;
   children: string;
   marginBottom?: React.CSSProperties["marginBottom"];
-  hideActive?: boolean
+  hideActive?: boolean;
 }
 
 const ButtonLink = (props: Props) => {
@@ -26,14 +26,15 @@ const ButtonLink = (props: Props) => {
       }}
       style={{
         marginBottom: props.marginBottom,
-        color: active && !props.hideActive
-          ? themes["defaultTheme"].primary
-          : hover
-          ? themes["defaultTheme"].primary
-          : themes["defaultTheme"].text,
+        color:
+          active && !props.hideActive
+            ? themes["defaultTheme"].primary
+            : hover
+            ? themes["defaultTheme"].primary
+            : themes["defaultTheme"].text,
         transition: "500ms",
-        fontWeight: active ? "bold": "normal",
-        fontSize: active ? 20 : 16
+        fontWeight: active ? "bold" : "normal",
+        fontSize: active ? 20 : 16,
       }}
     >
       {props.children}

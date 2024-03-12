@@ -1,9 +1,15 @@
+// React and libs
 import React from "react";
-import themes from "../../preferences/theme/themes";
-import { CustomImage, CustomText } from "../../components";
-import OptionBox from "./OptionBox";
-import SearchBar from "./SearchBar";
+
+// Assets
 import { ic_filter_alt } from "../../assets/icons";
+
+// Components
+import { CustomImage, CustomText, OptionBox } from "../../components";
+import SearchBar from "./SearchBar";
+
+// User Preferences
+import themes from "../../preferences/theme/themes";
 
 interface Props {
   search: string;
@@ -83,8 +89,6 @@ const FilterOption = (props: Props) => {
         <CustomImage src={ic_filter_alt} />
         <CustomText>Advance search</CustomText>
       </div>
-
-      
     </div>
   );
 };

@@ -1,6 +1,6 @@
 // Pages
 import './App.css';
-import AppNavigation from './pages/AppNavigation';
+import AppNavigation from './pages/navigation/AppNavigation';
 
 function App() {
   return (

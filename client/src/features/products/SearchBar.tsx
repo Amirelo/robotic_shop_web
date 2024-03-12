@@ -3,6 +3,8 @@ import React from "react";
 
 // Components
 import { CustomImage } from "../../components";
+
+// User Preferences
 import themes from "../../preferences/theme/themes";
 
 const SearchBar = () => {
@@ -10,7 +12,7 @@ const SearchBar = () => {
     <div style={styles.body}>
       <input type="text" placeholder="Search.." style={styles.input} />
       <div style={styles.image_box}>
-        <CustomImage src="/icons/ic_search.svg"/>
+        <CustomImage src="/icons/ic_search.svg" />
       </div>
     </div>
   );
@@ -30,7 +32,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     alignItems: "center",
   },
   input: {
-    height: '100%',
+    height: "100%",
     flex: 1,
     border: "none",
     paddingLeft: 20,
@@ -38,10 +40,10 @@ const styles: { [key: string]: React.CSSProperties } = {
   image_box: {
     width: 56,
     height: 56,
-    backgroundColor: themes['defaultTheme'].primary,
+    backgroundColor: themes["defaultTheme"].primary,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    cursor:'pointer'
+    cursor: "pointer",
   },
 };

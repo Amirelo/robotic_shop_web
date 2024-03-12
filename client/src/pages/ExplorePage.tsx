@@ -2,12 +2,14 @@
 import React from "react";
 
 // Models
-import { ProductModel } from "../../models";
-import CustomList from "../../components/CustomList";
-import ItemProduct from "../../features/products/ItemProduct";
-import PaginationTab from "../../features/products/PaginationTab";
-import FilterOption from "../../features/products/FilterOption";
-import { getAllProducts } from "../../services/ProductServices";
+import { ProductModel } from "../models";
+
+// Services
+import { getAllProducts } from "../services/ProductServices";
+
+// Components
+import { CustomList } from "../components";
+import { ItemProduct, PaginationTab, FilterOption } from "../features/products";
 
 const ExplorePage = () => {
   const [listProducts, setListProducts] = React.useState<Array<ProductModel>>(
@@ -19,24 +21,20 @@ const ExplorePage = () => {
   const [sort, setSort] = React.useState("");
   const [search, setSearch] = React.useState("");
 
-    const getData = async() => {
-      const products:Array<ProductModel> = await getAllProducts();
-      setListProducts(products)
-    }
+  const getData = async () => {
+    const products: Array<ProductModel> = await getAllProducts();
+    setListProducts(products);
+  };
 
   React.useEffect(() => {
     setListProducts([]);
 
-    getData()
-
+    getData();
   }, []);
-
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <main style={{ width: "90%", paddingTop: 20 }}>
-       
-
         <FilterOption
           search={search}
           currentView={gridDisplay}

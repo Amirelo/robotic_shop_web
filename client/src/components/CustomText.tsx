@@ -15,7 +15,6 @@ interface Props {
 }
 
 const CustomText = (props: Props) => {
-  // Set default preset if not found
   return (
     <p
       onClick={props.onClick}
@@ -64,6 +63,6 @@ const textStyles: { [key: string]: React.CSSProperties } = {
     borderRadius: 4,
     backgroundColor: themes["defaultTheme"].primary,
     width: "fit-content",
-    cursor:'pointer'
+    cursor: "pointer",
   },
 };

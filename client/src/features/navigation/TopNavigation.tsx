@@ -2,10 +2,7 @@
 import React from "react";
 
 // Components
-import { SearchBar } from "../products";
 import { ButtonLink } from "../../components/buttons";
-import { CustomImage } from "../../components";
-import { NavLink } from "react-router-dom";
 
 const TopNavigation = () => {
 

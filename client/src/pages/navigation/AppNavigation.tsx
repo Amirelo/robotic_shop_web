@@ -12,7 +12,6 @@ import {
   CartPage,
   OnSalePage,
   ContactPage,
-  LocationPage,
   ShippingDetailPage,
 } from "../";
 
@@ -29,7 +28,6 @@ const AppNavigation = () => {
           <Route path="/cart" Component={CartPage} />
           <Route path="/onsale" Component={OnSalePage} />
           <Route path="/contact" Component={ContactPage} />
-          <Route path="/location" Component={LocationPage} />
           <Route path="/shipping_and_return" Component={ShippingDetailPage} />
         </Routes>
 

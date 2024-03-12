@@ -4,5 +4,4 @@ export { default as ProductDetailPage } from "./ProductDetailPage";
 export { default as CartPage } from "./CartPage";
 export { default as OnSalePage } from "./OnSalePage";
 export { default as ContactPage } from "./ContactPage";
-export { default as LocationPage } from "./LocationPage";
 export { default as ShippingDetailPage } from "./ShippingDetailPage";

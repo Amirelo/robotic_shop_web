@@ -56,7 +56,7 @@ export default ItemBanner;
 const styles: { [key: string]: React.CSSProperties } = {
   body: {
     height: screenHeight,
-    backgroundColor: "black",
+    backgroundColor: themes['defaultTheme'].text,
     borderRadius: 4,
     display: "flex",
     justifyContent: "space-around",

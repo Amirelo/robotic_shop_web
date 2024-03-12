@@ -10,6 +10,7 @@
     "@types/node": "^16.18.83",
     "@types/react": "^18.2.59",
     "@types/react-dom": "^18.2.19",
+    "google-map-react": "^2.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.1",
@@ -40,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/google-map-react": "^2.1.10"
   }
 }

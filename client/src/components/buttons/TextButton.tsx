@@ -8,6 +8,7 @@ import CustomText from "../CustomText";
 interface Props {
   children: string;
   marginBottom?: React.CSSProperties["marginBottom"];
+  style?:React.CSSProperties
 }
 
 const TextButton = (props: Props) => {
@@ -23,6 +24,7 @@ const TextButton = (props: Props) => {
         borderWidth:0,
         cursor:'pointer',
         backgroundColor: hover ? "green" : "#FFFFF0",
+        ...props.style
       }}
     >
       <CustomText preset={"subTitle"}>{props.children}</CustomText>

@@ -26,6 +26,7 @@ const CustomText = (props: Props) => {
         marginBottom: props.marginBottom,
         maxLines: props.maxLines,
         textOverflow: "ellipsis",
+        lineClamp: props.maxLines,
         ...props.style,
       }}
     >

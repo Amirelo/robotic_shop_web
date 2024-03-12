@@ -7,13 +7,14 @@ const AppFooter = () => {
     <div style={styles.body}>
       <div style={styles.column}>
         <CustomText preset={"title"}>Information:</CustomText>
-        <ButtonLink to="#">About us</ButtonLink>
-        <ButtonLink to="#">Shipping and returns</ButtonLink>
+        <ButtonLink to="#" hideActive>About us</ButtonLink>
+        <ButtonLink to="#" hideActive>Location</ButtonLink>
+        <ButtonLink to="#" hideActive>Shipping and returns</ButtonLink>
       </div>
       <div style={styles.column}>
         <CustomText preset={"title"}>Contact</CustomText>
-        <ButtonLink to="#">Phone: 058 281 4653</ButtonLink>
-        <ButtonLink to="#">Email: trandang210799@gmail.com</ButtonLink>
+        <CustomText>Phone: 058 281 4653</CustomText>
+        <CustomText>Email: trandang210799@gmail.com</CustomText>
       </div>
     </div>
   );

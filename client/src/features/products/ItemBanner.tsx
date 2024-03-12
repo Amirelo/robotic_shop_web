@@ -8,6 +8,7 @@ import { TextButton } from "../../components/buttons";
 // Utilities
 import { screenHeight } from "../../utils/Utilities";
 import themes from "../../preferences/theme/themes";
+import { useNavigate } from "react-router-dom";
 
 // Interface
 interface Props{
@@ -18,19 +19,25 @@ interface Props{
 }
 
 const ItemBanner = (props:Props) => {
+  const navigate = useNavigate()
+
+  const onShopClicked =() =>{
+    navigate('/explore')
+  }
+
   return (
     <div style={{...styles.body, marginBottom: props.marginBottom}}>
       <div style={{ width: "40%" }}>
         {/* Text - Header */}
-        <CustomText preset={"header"}>
+        <CustomText preset={"header"} color={themes['defaultTheme'].background}>
           {props.title}
         </CustomText>
         {/* Text - Body */}
-        <CustomText preset={"title"} maxLines={1} marginBottom={20}>
+        <CustomText preset={"title"} marginBottom={20} color={themes['defaultTheme'].background}>
           {props.children}
         </CustomText>
         {/* Button - shop */}
-        <TextButton>Shop</TextButton>
+        <TextButton onClicked={onShopClicked}>Shop</TextButton>
       </div>
       {/* Image */}
       <CustomImage
@@ -47,7 +54,7 @@ export default ItemBanner;
 const styles: { [key: string]: React.CSSProperties } = {
   body: {
     height: screenHeight,
-    backgroundColor: themes['defaultTheme'].primary,
+    backgroundColor: "black",
     borderRadius: 4,
     display: "flex",
     justifyContent: "space-around",

@@ -22,6 +22,7 @@ const CustomImage = (props: Props) => {
       style={{
         ...imageStyles.initial,
         ...imageStyles[props.preset ?? "icon"],
+        transition:'500ms',
         marginBottom: props.marginBottom,
         cursor: props.cursor ? props.cursor : props.preset && imageStyles[props.preset]?.cursor ? imageStyles[props.preset]?.cursor : '',
         backgroundColor: props.backgroundcolor ?  props.backgroundcolor : props.preset && imageStyles[props.preset]?.backgroundColor ? imageStyles[props.preset]?.backgroundColor : '',

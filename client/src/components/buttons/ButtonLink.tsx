@@ -8,17 +8,32 @@ interface Props {
   to: string;
   children: string;
   marginBottom?: React.CSSProperties["marginBottom"];
+  hideActive?: boolean
 }
 
 const ButtonLink = (props: Props) => {
   const [hover, setHover] = React.useState(false);
+  const [active, setActive] = React.useState(false);
 
   return (
     <NavLink
       to={props.to}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      style={{ marginBottom: props.marginBottom, color: hover ?  'green' : themes['defaultTheme'].text, transition:'500ms'}}
+      className={({ isActive }) => {
+        setActive(isActive);
+        return "";
+      }}
+      style={{
+        marginBottom: props.marginBottom,
+        color: active && !props.hideActive
+          ? themes["defaultTheme"].primary
+          : hover
+          ? themes["defaultTheme"].primary
+          : themes["defaultTheme"].text,
+        transition: "500ms",
+        fontWeight: active ? "bold": "normal"
+      }}
     >
       {props.children}
     </NavLink>

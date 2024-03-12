@@ -14,8 +14,8 @@ const TopNavigation = () => {
       {/* Navigation - 1st line */}
       <div style={styles.top}>
         {/* Search bar */}
-        <ButtonLink to="#">Contact us</ButtonLink>
-        <ButtonLink to="#">Location</ButtonLink>
+        <ButtonLink to="/contact">Contact us</ButtonLink>
+        <ButtonLink to="/location">Location</ButtonLink>
         <ButtonLink to="#">Sign In</ButtonLink>
       </div>
 
@@ -23,8 +23,8 @@ const TopNavigation = () => {
       <div style={styles.bottom}>
         <ButtonLink to="/">Home</ButtonLink>
         <ButtonLink to="/explore">Explore</ButtonLink>
-        <ButtonLink to="/explore">On Sale</ButtonLink>
-        <ButtonLink to="/explore">Cart</ButtonLink>
+        <ButtonLink to="/onsale">On Sale</ButtonLink>
+        <ButtonLink to="/cart">Cart</ButtonLink>
 
       </div>
     </nav>

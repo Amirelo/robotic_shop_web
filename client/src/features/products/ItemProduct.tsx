@@ -60,9 +60,9 @@ export default ItemProduct;
 
 const styles: { [key: string]: React.CSSProperties } = {
   body: {
-    backgroundColor: themes["defaultTheme"].primary,
     padding: 8,
     borderRadius: 4,
+    border:'1px solid black',
     width: screenWidth * 0.18,
     display:'flex',
     flexDirection:"column"

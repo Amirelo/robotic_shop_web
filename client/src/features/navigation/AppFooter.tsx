@@ -22,8 +22,8 @@ const AppFooter = () => {
       </div>
       <div style={styles.column}>
         <CustomText preset={"title"}>Contact</CustomText>
-        <CustomText>Phone: 058 281 4653</CustomText>
-        <CustomText>Email: trandang210799@gmail.com</CustomText>
+        <CustomText style={{cursor:'pointer'}} onClick={()=>{navigator.clipboard.writeText("0582814653")}}>Phone: 058 281 4653</CustomText>
+        <CustomText style={{cursor:'pointer'}} onClick={()=> {navigator.clipboard.writeText("trandang210799@gmail.com")}}>Email: trandang210799@gmail.com</CustomText>
       </div>
     </div>
   );

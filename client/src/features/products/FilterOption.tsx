@@ -79,17 +79,6 @@ const FilterOption = (props: Props) => {
         </OptionBox>
         <SearchBar onChangedText={(text) => props.onSearchChange(text)}/>
       </div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          cursor: "pointer",
-          width: "fit-content",
-        }}
-      >
-        <CustomImage src={ic_filter_alt} />
-        <CustomText>Advance search</CustomText>
-      </div>
     </div>
   );
 };

@@ -8,6 +8,7 @@ import ic_star_outline from "./ic_star_outline.svg";
 import ic_chevron_left from "./ic_chevron_left.svg";
 import ic_chevron_right from "./ic_chevron_right.svg";
 import ic_filter_alt from "./ic_filter_alt.png";
+import ic_add from "./ic_add.svg";
 
 export {
   ic_cart,
@@ -20,4 +21,5 @@ export {
   ic_chevron_left,
   ic_chevron_right,
   ic_filter_alt,
+  ic_add,
 };

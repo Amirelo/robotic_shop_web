@@ -5,7 +5,7 @@ import { TextButton } from "../../components/buttons";
 
 // Models
 import { ProductModel } from "../../models";
-import { priceFormat } from "../../utils/Utilities";
+import { priceFormat, screenWidth } from "../../utils/Utilities";
 import themes from "../../preferences/theme/themes";
 import RatingStars from "./RatingStars";
 
@@ -63,7 +63,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     backgroundColor: themes["defaultTheme"].primary,
     padding: 8,
     borderRadius: 4,
-    width: "20%",
+    width: screenWidth * 0.18,
     display:'flex',
     flexDirection:"column"
   },

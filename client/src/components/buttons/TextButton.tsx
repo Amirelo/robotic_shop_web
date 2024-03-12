@@ -15,6 +15,7 @@ interface Props {
   onClicked?(): void;
   backgroundColor?: React.CSSProperties["backgroundColor"];
   hasButton?: boolean
+  onAddButtonClicked?(): void
 }
 
 const TextButton = (props: Props) => {
@@ -43,7 +44,7 @@ const TextButton = (props: Props) => {
     >
       <CustomText preset={"subTitle"}>{props.children}</CustomText>
       {props.hasButton?
-      <CustomImage src={ic_add} preset={"box"} backgroundcolor={themes['defaultTheme'].primary}/>
+      <CustomImage src={ic_add} preset={"box"} backgroundcolor={themes['defaultTheme'].primary} onClick={props.onAddButtonClicked}/>
 :<></>}
     </button>
   );

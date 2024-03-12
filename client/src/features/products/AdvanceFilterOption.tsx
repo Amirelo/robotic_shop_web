@@ -8,6 +8,10 @@ import { CategoryModel } from "../../models";
 import { CustomText } from "../../components";
 import { TextButton } from "../../components/buttons";
 import themes from "../../preferences/theme/themes";
+import {
+  getAllSubCategories,
+} from "../../services/SubCategoryServices";
+import { CategoryList } from "../categories";
 
 interface Props {
   categories?: Array<CategoryModel>;
@@ -15,21 +19,29 @@ interface Props {
 }
 
 const AdvanceFilterOption = (props: Props) => {
+  const [listSubCategories, setListSubCategories] = React.useState<Array<any>>(
+    []
+  );
+
+  const getData = async () => {
+    const subCate = await getAllSubCategories();
+    setListSubCategories(subCate);
+  };
+
+  React.useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div style={props.style}>
       <CustomText preset={"title"}>Categories</CustomText>
       <div>
         {props.categories?.map((item) => {
           return (
-            <>
-            <TextButton
-              style={{ width: "90%", textAlign: "left" }}
-              backgroundColor={themes["defaultTheme"].background}
-              hasButton
-            >
-              {item.name}
-            </TextButton>
-            </>
+          <CategoryList category={item} subCategories={listSubCategories
+                .filter((subCate) => subCate.categoryID == item.id)}/>
+
+              
           );
         })}
       </div>

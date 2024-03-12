@@ -31,9 +31,9 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: 4,
     width: "fit-content",
     paddingInline: 12,
-    paddingBlock: 4,
+    paddingBlock: 14,
     overflow: "hidden",
-    backgroundColor:'white'
+    backgroundColor:'white',
   },
   select:{
     all: "unset",

@@ -43,7 +43,7 @@ const ItemProduct = (props: Props) => {
         )}
       </div>
       {/* Rating */}
-      <RatingStars rate={3} />
+      <RatingStars rate={props.data.totalRating} />
       {/* Status */}
       <CustomText>
         {props.data.quantity > 0

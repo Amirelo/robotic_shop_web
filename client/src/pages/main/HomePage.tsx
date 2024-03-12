@@ -85,7 +85,7 @@ const HomePage = () => {
           including versions of Lorem Ipsum.
         </ItemBanner>
 
-        
+          
         {/* Category */}
         <CustomList
           title="Find product by Category"

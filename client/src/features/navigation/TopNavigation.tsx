@@ -23,8 +23,9 @@ const TopNavigation = () => {
       <div style={styles.bottom}>
         <ButtonLink to="/">Home</ButtonLink>
         <ButtonLink to="/explore">Explore</ButtonLink>
-        <ButtonLink to="#">Robotic kits</ButtonLink>
-        <ButtonLink to="#">Robots</ButtonLink>
+        <ButtonLink to="/explore">On Sale</ButtonLink>
+        <ButtonLink to="/explore">Cart</ButtonLink>
+
       </div>
     </nav>
   );

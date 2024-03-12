@@ -21,7 +21,7 @@ export default SearchBar;
 // Styles
 const styles: { [key: string]: React.CSSProperties } = {
   body: {
-    height: 40,
+    height: 56,
     borderRadius: 4,
     border: "1px solid black",
     overflow: "hidden",
@@ -30,14 +30,14 @@ const styles: { [key: string]: React.CSSProperties } = {
     alignItems: "center",
   },
   input: {
-    height: 40,
+    height: '100%',
     flex: 1,
     border: "none",
     paddingLeft: 20,
   },
   image_box: {
-    width: 40,
-    height: 40,
+    width: 56,
+    height: 56,
     backgroundColor: themes['defaultTheme'].primary,
     display: "flex",
     alignItems: "center",

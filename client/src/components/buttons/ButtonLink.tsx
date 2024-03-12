@@ -32,7 +32,8 @@ const ButtonLink = (props: Props) => {
           ? themes["defaultTheme"].primary
           : themes["defaultTheme"].text,
         transition: "500ms",
-        fontWeight: active ? "bold": "normal"
+        fontWeight: active ? "bold": "normal",
+        fontSize: active ? 20 : 16
       }}
     >
       {props.children}

@@ -22,6 +22,7 @@ import {
   SORT_RATING,
 } from "../constants/AppConstant";
 import { getAllCategories } from "../services/CategoryServices";
+import ItemProductList from "../features/products/ItemProductList";
 
 const ExplorePage = () => {
   const [listProducts, setListProducts] = React.useState<Array<ProductModel>>(
@@ -112,7 +113,7 @@ const ExplorePage = () => {
                 (page - 1) * itemPerPage,
                 itemPerPage * page
               )}
-              render={(data) => <ItemProduct data={data} />}
+              render={(data) => gridDisplay ? <ItemProduct data={data} /> : <ItemProductList data={data}/>}
             />
 
             <PaginationTab

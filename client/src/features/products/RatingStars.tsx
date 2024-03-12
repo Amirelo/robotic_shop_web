@@ -5,7 +5,7 @@ import React from "react";
 import { ic_star, ic_star_outline } from "../../assets/icons";
 
 // Components
-import { CustomImage } from "../../components";
+import { CustomImage, CustomText } from "../../components";
 
 interface Props{
   rate: number
@@ -19,6 +19,7 @@ const RatingStars = (props:Props) => {
       <CustomImage src={props.rate >=3 ? ic_star : ic_star_outline} />
       <CustomImage src={props.rate >=4 ? ic_star : ic_star_outline} />
       <CustomImage src={props.rate ==5 ? ic_star : ic_star_outline} />
+      <CustomText>{props.rate.toString()}</CustomText>
     </div>
   );
 };

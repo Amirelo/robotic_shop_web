@@ -8,6 +8,7 @@ import ContactPage from "./main/ContactPage";
 import LocationPage from "./main/LocationPage";
 import OnSalePage from "./main/OnSalePage";
 import ShippingDetailPage from "./main/ShippingDetailPage";
+import ProductDetailPage from "./main/ProductDetailPage";
 
 const AppNavigation = () => {
   return (
@@ -17,6 +18,7 @@ const AppNavigation = () => {
         <Routes>
           <Route path="/" Component={HomePage} />
           <Route path="/explore" Component={ExplorePage} />
+          <Route path="/product_detail" Component={ProductDetailPage} />
           <Route path="/cart" Component={CartPage}/>
           <Route path="/onsale" Component={OnSalePage}/>
           <Route path="/contact" Component={ContactPage}/>

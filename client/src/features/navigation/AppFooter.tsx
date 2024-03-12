@@ -7,9 +7,9 @@ const AppFooter = () => {
     <div style={styles.body}>
       <div style={styles.column}>
         <CustomText preset={"title"}>Information:</CustomText>
-        <ButtonLink to="#" hideActive>About us</ButtonLink>
-        <ButtonLink to="#" hideActive>Location</ButtonLink>
-        <ButtonLink to="#" hideActive>Shipping and returns</ButtonLink>
+        <ButtonLink to="/contact" hideActive>About us</ButtonLink>
+        <ButtonLink to="/location" hideActive>Location</ButtonLink>
+        <ButtonLink to="/shipping_and_return" hideActive>Shipping and returns</ButtonLink>
       </div>
       <div style={styles.column}>
         <CustomText preset={"title"}>Contact</CustomText>

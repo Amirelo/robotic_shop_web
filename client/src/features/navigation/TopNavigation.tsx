@@ -16,7 +16,7 @@ const TopNavigation = () => {
         {/* Search bar */}
         <ButtonLink to="/contact">Contact us</ButtonLink>
         <ButtonLink to="/location">Location</ButtonLink>
-        <ButtonLink to="#">Sign In</ButtonLink>
+        <ButtonLink to="#" hideActive>Sign In</ButtonLink>
       </div>
 
       {/* Navigation - 2nd line */}

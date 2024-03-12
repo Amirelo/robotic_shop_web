@@ -77,7 +77,7 @@ const FilterOption = (props: Props) => {
           <option value="16">16/pages</option>
           <option value="20">20/pages</option>
         </OptionBox>
-        <SearchBar />
+        <SearchBar onChangedText={(text) => props.onSearchChange(text)}/>
       </div>
       <div
         style={{

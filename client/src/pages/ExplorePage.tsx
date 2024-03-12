@@ -16,6 +16,7 @@ const ExplorePage = () => {
   const [listProducts, setListProducts] = React.useState<Array<ProductModel>>(
     []
   );
+  const [listProdsFiltered, setListProdsFiltered] = React.useState<Array<ProductModel>>([])
   const [itemPerPage, setItemPerPage] = React.useState(12);
   const [page, setPage] = React.useState(1);
   const [gridDisplay, setGridDisplay] = React.useState(true);
@@ -26,10 +27,10 @@ const ExplorePage = () => {
   const getData = async () => {
     const products: Array<ProductModel> = await getAllProducts();
     setListProducts(products);
+    setListProdsFiltered(products);
   };
 
   React.useEffect(() => {
-    setListProducts([]);
 
     getData();
   }, []);
@@ -41,18 +42,25 @@ const ExplorePage = () => {
         listProducts.sort((a,b) => b.sold - a.sold)
         break
       case SORT_RATING:
-        setListProducts(prev => prev.sort((a,b) => b.totalRating - a.totalRating))
+        setListProdsFiltered(prev => prev.sort((a,b) => b.totalRating - a.totalRating))
         break
       case SORT_PRICE_HL:
-        setListProducts(prev => prev.sort((a,b) => b.price - a.price))
+        setListProdsFiltered(prev => prev.sort((a,b) => b.price - a.price))
         break
       case SORT_PRICE_LH:
         console.log("Change price")
-        setListProducts(prev => prev.sort((a,b) => a.price - b.price))
+        setListProdsFiltered(prev => prev.sort((a,b) => a.price - b.price))
         break
     }
     setDataChanged(!dataChanged)
   },[sort])
+
+  React.useEffect(()=>{
+    console.log('Searching...')
+    const filteredList = listProducts.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
+    setListProdsFiltered(filteredList)
+    setDataChanged(!dataChanged)
+  },[search])
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
@@ -63,13 +71,13 @@ const ExplorePage = () => {
           currentSort={sort}
           currentItemPerPage={itemPerPage}
           onViewChanged={(status) => setGridDisplay(status)}
-          onSearchChange={(text) => console.log(text)}
+          onSearchChange={(text) => setSearch(text)}
           onSortChange={(text) => setSort(text)}
           onItemPerPageChange={(number) => setItemPerPage(number)}
         />
 
         <CustomList
-          list={listProducts.slice(
+          list={listProdsFiltered.slice(
             (page - 1) * itemPerPage,
             itemPerPage * page
           )}

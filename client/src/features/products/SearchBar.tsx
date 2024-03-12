@@ -8,14 +8,18 @@ import { CustomImage } from "../../components";
 import themes from "../../preferences/theme/themes";
 import { ic_search } from "../../assets/icons";
 
-const SearchBar = () => {
+interface Props{
+  onChangedText?(text:string): void
+}
+
+const SearchBar = (props:Props) => {
   const [hover, setHover] = React.useState(false);
   return (
     <div style={styles.body}>
       <input
         type="text"
         placeholder="Search.."
-        
+        onChange={(e)=>props.onChangedText ? props.onChangedText(e.target.value) : ''}
         style={styles.input}
       />
       <div

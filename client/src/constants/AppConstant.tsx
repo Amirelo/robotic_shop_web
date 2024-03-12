@@ -1,0 +1,5 @@
+export const SORT_POPULAR = "POPULARSORT"
+export const SORT_PRICE_HL = "POPULARHL"
+export const SORT_PRICE_LH = "POPULARLH"
+export const SORT_RATING = "RATINGS"
+export const SORT_PRICE_DATE = "DATE"

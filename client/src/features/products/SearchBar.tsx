@@ -6,13 +6,14 @@ import { CustomImage } from "../../components";
 
 // User Preferences
 import themes from "../../preferences/theme/themes";
+import { ic_search } from "../../assets/icons";
 
 const SearchBar = () => {
   return (
     <div style={styles.body}>
       <input type="text" placeholder="Search.." style={styles.input} />
       <div style={styles.image_box}>
-        <CustomImage src="/icons/ic_search.svg" />
+        <CustomImage src={ic_search} />
       </div>
     </div>
   );

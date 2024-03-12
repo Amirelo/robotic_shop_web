@@ -2,7 +2,7 @@
 import React from "react";
 
 // Assets
-import { ic_filter_alt } from "../../assets/icons";
+import { ic_filter_alt, ic_grid_view, ic_list_view } from "../../assets/icons";
 
 // Components
 import { CustomImage, CustomText, OptionBox } from "../../components";
@@ -10,6 +10,7 @@ import SearchBar from "./SearchBar";
 
 // User Preferences
 import themes from "../../preferences/theme/themes";
+import { SORT_POPULAR, SORT_PRICE_HL, SORT_PRICE_LH, SORT_RATING } from "../../constants/AppConstant";
 
 interface Props {
   search: string;
@@ -40,7 +41,7 @@ const FilterOption = (props: Props) => {
         >
           <CustomText>View as</CustomText>
           <CustomImage
-            src={"/icons/ic_grid_view.svg"}
+            src={ic_grid_view}
             preset={"box"}
             backgroundcolor={
               props.currentView ? themes["defaultTheme"].primary : "white"
@@ -48,7 +49,7 @@ const FilterOption = (props: Props) => {
             onClick={() => props.onViewChanged(true)}
           />
           <CustomImage
-            src={"/icons/ic_list.svg"}
+            src={ic_list_view}
             preset={"box"}
             backgroundcolor={
               !props.currentView ? themes["defaultTheme"].primary : "white"
@@ -61,11 +62,10 @@ const FilterOption = (props: Props) => {
           title="Sort by"
           onChanged={(e) => props.onSortChange(e.target.value)}
         >
-          <option value="Popularity">Popularity</option>
-          <option value="Ratings">Ratings</option>
-          <option value="Date">Date</option>
-          <option value="Price: Low to high">Price: Low to high</option>
-          <option value="Price: High to low">Price: High to low</option>
+          <option value={SORT_POPULAR}>Popularity</option>
+          <option value={SORT_RATING}>Ratings</option>
+          <option value={SORT_PRICE_LH}>Price: Low to high</option>
+          <option value={SORT_PRICE_HL}>Price: High to low</option>
         </OptionBox>
 
         <OptionBox

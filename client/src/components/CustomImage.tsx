@@ -16,9 +16,13 @@ interface Props {
 }
 
 const CustomImage = (props: Props) => {
+  const [hover, setHover] = React.useState(false);
+
   return (
     <img
       onClick={props.onClick}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
       style={{
         ...imageStyles.initial,
         ...imageStyles[props.preset ?? "icon"],
@@ -30,9 +34,9 @@ const CustomImage = (props: Props) => {
           ? imageStyles[props.preset]?.cursor
           : "",
         backgroundColor: props.backgroundcolor
-          ? props.backgroundcolor
-          : props.preset && imageStyles[props.preset]?.backgroundColor
-          ? imageStyles[props.preset]?.backgroundColor
+          ? hover
+            ? themes["defaultTheme"].primary_hover
+            : props.backgroundcolor
           : "",
         borderRadius: 4,
       }}
@@ -65,7 +69,6 @@ const imageStyles: { [key: string]: React.CSSProperties } = {
     borderRadius: 4,
     paddingBlock: 8,
     paddingInline: 12,
-    backgroundColor: themes["defaultTheme"].primary,
     cursor: "pointer",
   },
 };

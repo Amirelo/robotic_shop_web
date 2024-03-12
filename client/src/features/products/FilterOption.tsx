@@ -37,6 +37,7 @@ const FilterOption = (props: Props) => {
             borderRadius: 4,
             paddingInline: 12,
             paddingBlock: 8,
+            border: '1px solid black',
           }}
         >
           <CustomText>View as</CustomText>
@@ -44,7 +45,7 @@ const FilterOption = (props: Props) => {
             src={ic_grid_view}
             preset={"box"}
             backgroundcolor={
-              props.currentView ? themes["defaultTheme"].primary : "white"
+              props.currentView ? themes["defaultTheme"].primary : themes['defaultTheme'].background
             }
             onClick={() => props.onViewChanged(true)}
           />
@@ -52,7 +53,7 @@ const FilterOption = (props: Props) => {
             src={ic_list_view}
             preset={"box"}
             backgroundcolor={
-              !props.currentView ? themes["defaultTheme"].primary : "white"
+              !props.currentView ? themes["defaultTheme"].primary : themes['defaultTheme'].background
             }
             onClick={() => props.onViewChanged(false)}
           />
@@ -104,6 +105,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: 8,
     marginBottom: 4,
     alignItems: "center",
-    backgroundColor: themes["defaultTheme"].primary,
+    border:'1px solid black',
+    backgroundColor: themes['defaultTheme'].primary
   },
 };

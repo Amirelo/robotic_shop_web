@@ -1,3 +1,6 @@
+// React and libs
+import { useNavigate } from "react-router-dom";
+
 // Components
 import React from "react";
 import { CustomImage, CustomText } from "../../components";
@@ -19,8 +22,15 @@ interface Props {
 }
 
 const ItemProduct = (props: Props) => {
+  const navigate = useNavigate()
+
+  const onProductPressed = () => {
+    navigate('/product_detail')
+  }
+
   return (
     <article style={{ ...styles.body }}>
+      <div onClick={onProductPressed} style={{cursor:'pointer'}}>
       <div style={{ width: "100%", height: 150 }}>
         <CustomImage
           src={props.data.images[0]}
@@ -53,6 +63,7 @@ const ItemProduct = (props: Props) => {
           ? `Instock: ${props.data.quantity} units`
           : "Out of stock"}
       </CustomText>
+      </div>
       {/* Button - Add To Cart */}
       <TextButton style={{ marginTop:'auto' }}>Add To Cart</TextButton>
     </article>

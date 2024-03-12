@@ -9,10 +9,23 @@ import themes from "../../preferences/theme/themes";
 import { ic_search } from "../../assets/icons";
 
 const SearchBar = () => {
+  const [hover, setHover] = React.useState(false);
   return (
     <div style={styles.body}>
-      <input type="text" placeholder="Search.." style={styles.input} />
-      <div style={styles.image_box}>
+      <input
+        type="text"
+        placeholder="Search.."
+        
+        style={styles.input}
+      />
+      <div
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+        style={{
+          ...styles.image_box,
+          backgroundColor: hover ? themes['defaultTheme'].primary_hover : '',
+        }}
+      >
         <CustomImage src={ic_search} />
       </div>
     </div>
@@ -31,6 +44,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     width: "30%",
     display: "flex",
     alignItems: "center",
+    backgroundColor: themes["defaultTheme"].background,
   },
   input: {
     height: "100%",
@@ -41,10 +55,11 @@ const styles: { [key: string]: React.CSSProperties } = {
   image_box: {
     width: 56,
     height: 56,
-    backgroundColor: themes["defaultTheme"].primary,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
+    borderLeft: "1px solid black",
+    transition:'500ms'
   },
 };

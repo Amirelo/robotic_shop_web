@@ -44,6 +44,7 @@ const ExplorePage = () => {
   const [sort, setSort] = React.useState("");
   const [search, setSearch] = React.useState("");
   const [dataChanged, setDataChanged] = React.useState(false);
+  const [selcetedCategory, setSelectedCategory] = React.useState("")
 
   const getData = async () => {
     const products: Array<ProductModel> = await getAllProducts();
@@ -55,21 +56,24 @@ const ExplorePage = () => {
 
     if (location.state.category) {
       console.log("Received category:", location.state.category);
+      setSelectedCategory(location.state.category.id)
     }
   };
 
-  const [selcetedCategory, setSelectedCategory] = React.useState("")
 
   React.useEffect(() => {
     getData();
   }, []);
 
   const getDataAgain = async() =>{
+    console.log("Get data again")
     var products:Array<ProductModel> = []
     if(selcetedCategory.length >0){
       products = await getProductsByCategoryID(selcetedCategory, 50)
       setListProdsFiltered(products)
       console.log("New product", products)
+    } else{
+      console.log("category empty")
     }
 
     switch (sort) {

@@ -73,4 +73,13 @@ const imageStyles: { [key: string]: React.CSSProperties } = {
     paddingInline: 12,
     cursor: "pointer",
   },
+  detail:{
+    width:'100%',
+    height:'60%',
+    border: '1px solid black'
+  },
+  detail_small:{
+    width:'20%',
+    border: '1px solid black'
+  }
 };

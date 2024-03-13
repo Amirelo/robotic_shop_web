@@ -5,11 +5,12 @@ import React from "react";
 import { CategoryModel } from "../../models";
 
 // Components
-import { CustomText } from "../../components";
+import { CustomImage, CustomText } from "../../components";
 import { TextButton } from "../../components/buttons";
 import themes from "../../preferences/theme/themes";
 import { getAllSubCategories } from "../../services/SubCategoryServices";
 import { CategoryList } from "../categories";
+import { ic_expand } from "../../assets/icons";
 
 interface Props {
   categories?: Array<CategoryModel>;
@@ -20,6 +21,10 @@ const AdvanceFilterOption = (props: Props) => {
   const [listSubCategories, setListSubCategories] = React.useState<Array<any>>(
     []
   );
+
+  const [showPrice, setShowPrice] = React.useState(false);
+  const [showCategories, setShowCategories] = React.useState(false);
+  const [showStockStatus, setShowStockStatus] = React.useState(false);
 
   const getData = async () => {
     const subCate = await getAllSubCategories();
@@ -40,36 +45,57 @@ const AdvanceFilterOption = (props: Props) => {
           marginBottom: 20,
         }}
       >
-        <CustomText preset={"title"}>Price</CustomText>
         <div
           style={{
             display: "flex",
             justifyContent: "space-between",
-            marginBottom: 10,
+            alignItems: "center",
           }}
         >
-          <CustomText>Min (đ)</CustomText>
-          <CustomText>Max (đ)</CustomText>
+          <CustomText preset={"title"}>Price</CustomText>
+          <CustomImage
+            onClick={() => setShowPrice(!showPrice)}
+            style={{ transform: `rotate(${showPrice ? "180deg" : "0deg"})` }}
+            src={ic_expand}
+          />
         </div>
         <div
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginBottom: 10,
+            maxHeight: showPrice ? 400 : 0,
+            overflow: "hidden",
+            transition: "500ms",
           }}
         >
-          <input
-            type="number"
-            style={{ width: "30%", height: 40, paddingLeft: 8 }}
-            placeholder="Min"
-          />
-          <input
-            type="number"
-            style={{ width: "30%", height: 40, paddingLeft: 8 }}
-            placeholder="Max"
-          />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginBottom: 10,
+            }}
+          >
+            <CustomText>Min (đ)</CustomText>
+            <CustomText>Max (đ)</CustomText>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginBottom: 10,
+            }}
+          >
+            <input
+              type="number"
+              style={{ width: "30%", height: 40, paddingLeft: 8 }}
+              placeholder="Min"
+            />
+            <input
+              type="number"
+              style={{ width: "30%", height: 40, paddingLeft: 8 }}
+              placeholder="Max"
+            />
+          </div>
+          <TextButton>Apply</TextButton>
         </div>
-        <TextButton>Apply</TextButton>
       </div>
 
       <div
@@ -80,31 +106,85 @@ const AdvanceFilterOption = (props: Props) => {
           marginBottom: 20,
         }}
       >
-        <CustomText preset={"title"}>Categories</CustomText>
-        {props.categories?.map((item) => {
-          return (
-            <CategoryList
-              category={item}
-              subCategories={listSubCategories.filter(
-                (subCate) => subCate.categoryID == item.id
-              )}
-            />
-          );
-        })}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <CustomText preset={"title"}>Categories</CustomText>
+          <CustomImage
+            onClick={() => setShowCategories(!showCategories)}
+            style={{
+              transform: `rotate(${showCategories ? "180deg" : "0deg"})`,
+            }}
+            src={ic_expand}
+          />
+        </div>
+        <div
+          style={{
+            maxHeight: showCategories ? 500 : 0,
+            overflow: "hidden",
+            transition: "500ms",
+          }}
+        >
+          {props.categories?.map((item) => {
+            return (
+              <CategoryList
+                category={item}
+                subCategories={listSubCategories.filter(
+                  (subCate) => subCate.categoryID == item.id
+                )}
+              />
+            );
+          })}
+        </div>
       </div>
 
       <div style={{ border: "1px solid black", padding: 12, borderRadius: 4 }}>
-        <CustomText preset={"title"}>Stock status</CustomText>
-        <div style={{display:'flex', flexDirection:'column'}}>
-        <label>
-          <input type="checkbox" name="availability" style={{ marginRight: 4 }} />
-          Available
-        </label>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <CustomText preset={"title"}>Stock status</CustomText>
+          <CustomImage
+            onClick={() => setShowStockStatus(!showStockStatus)}
+            style={{
+              transform: `rotate(${showStockStatus ? "180deg" : "0deg"})`,
+            }}
+            src={ic_expand}
+          />
+        </div>
+        <div
+          style={{
+            maxHeight: showStockStatus ? 500 : 0,
+            overflow: "hidden",
+            transition: "500ms",
+          }}
+        >
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <label>
+              <input
+                type="checkbox"
+                name="availability"
+                style={{ marginRight: 4 }}
+              />
+              Available
+            </label>
 
-        <label>
-          <input type="checkbox" name="availability" style={{ marginRight: 4 }} />
-          Unavailable
-        </label>
+            <label>
+              <input
+                type="checkbox"
+                name="availability"
+                style={{ marginRight: 4 }}
+              />
+              Unavailable
+            </label>
+          </div>
         </div>
       </div>
     </div>

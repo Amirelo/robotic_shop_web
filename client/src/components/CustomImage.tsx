@@ -13,6 +13,7 @@ interface Props {
   onClick?(): void;
   preset?: keyof typeof imageStyles;
   backgroundcolor?: React.CSSProperties["backgroundColor"];
+  style?: React.CSSProperties;
 }
 
 const CustomImage = (props: Props) => {
@@ -39,6 +40,7 @@ const CustomImage = (props: Props) => {
             : props.backgroundcolor
           : "",
         borderRadius: 4,
+        ...props.style,
       }}
       src={props.src}
       alt={props.alt}

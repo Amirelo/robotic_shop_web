@@ -16,12 +16,17 @@ interface Props {
   categories?: Array<CategoryModel>;
   style?: React.CSSProperties;
   onCategoryClicked?(id: string): void;
+  setMinPrice?: any;
+  setMaxPrice?: any;
+  onApplyClicked?(): void
 }
 
 const AdvanceFilterOption = (props: Props) => {
   const [listSubCategories, setListSubCategories] = React.useState<Array<any>>(
     []
   );
+  const [minPrice, setMinPrice] = React.useState<number>()
+  const [maxPrice, setMaxPrice] = React.useState<number>()
 
   const [showPrice, setShowPrice] = React.useState(false);
   const [showCategories, setShowCategories] = React.useState(false);
@@ -31,6 +36,16 @@ const AdvanceFilterOption = (props: Props) => {
     const subCate = await getAllSubCategories();
     setListSubCategories(subCate);
   };
+
+  const updateMinPrice = (value:number) => {
+    setMinPrice(value)
+    props.setMinPrice(value)
+  }
+
+  const updateMaxPrice = (value:number) => {
+    setMaxPrice(value)
+    props.setMaxPrice(value)
+  }
 
   React.useEffect(() => {
     getData();
@@ -88,14 +103,18 @@ const AdvanceFilterOption = (props: Props) => {
               type="number"
               style={{ width: "30%", height: 40, paddingLeft: 8 }}
               placeholder="Min"
+              value={minPrice}
+              onChange={(e) => updateMinPrice(Number(e.target.value))}
             />
             <input
               type="number"
               style={{ width: "30%", height: 40, paddingLeft: 8 }}
               placeholder="Max"
+              value={maxPrice}
+              onChange={(e) => updateMaxPrice(Number(e.target.value))}
             />
           </div>
-          <TextButton>Apply</TextButton>
+          <TextButton onClicked={props.onApplyClicked}>Apply</TextButton>
         </div>
       </div>
 

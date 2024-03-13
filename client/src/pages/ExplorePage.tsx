@@ -44,7 +44,10 @@ const ExplorePage = () => {
   const [sort, setSort] = React.useState("");
   const [search, setSearch] = React.useState("");
   const [dataChanged, setDataChanged] = React.useState(false);
+
   const [selcetedCategory, setSelectedCategory] = React.useState("")
+  const [minPrice, setMinPrice] = React.useState<number>()
+  const [maxPrice, setMaxPrice] = React.useState<number>()
 
   const getData = async () => {
     const products: Array<ProductModel> = await getAllProducts();
@@ -54,12 +57,31 @@ const ExplorePage = () => {
     const categories: Array<CategoryModel> = await getAllCategories();
     setListCategories(categories);
 
-    if (location.state.category) {
+    if (location.state?.category) {
       console.log("Received category:", location.state.category);
       setSelectedCategory(location.state.category.id)
     }
   };
 
+  const onCategoryClicked = (id: string) => {
+    console.log("Category ID:", id);
+    setSelectedCategory(id)
+  };
+
+  const onPriceApplied = () => {
+    console.log("apply price click, maxprice: "+maxPrice + ", minprice:" + minPrice)
+    var products = listProdsFiltered
+    if(minPrice){
+      products = products.filter(item => item.price > minPrice)
+    }
+    if(maxPrice) {
+      products = products.filter(item => item.price < maxPrice)
+    }
+    console.log("Filtered list:", products)
+
+    setListProdsFiltered(products)
+    setDataChanged(!dataChanged)
+  }
 
   React.useEffect(() => {
     getData();
@@ -101,10 +123,6 @@ const ExplorePage = () => {
     
   }, [sort, selcetedCategory]);
 
-  const onCategoryClicked = (id: string) => {
-    console.log("Category ID:", id);
-    setSelectedCategory(id)
-  };
 
   React.useEffect(() => {
     console.log("Searching...");
@@ -133,6 +151,9 @@ const ExplorePage = () => {
             onCategoryClicked={(id: string) => onCategoryClicked(id)}
             style={{ flex: 2 }}
             categories={listCategories}
+            setMinPrice={(amount:number) => setMinPrice(amount)}
+            setMaxPrice={(amount:number) => setMaxPrice(amount)}
+            onApplyClicked = {onPriceApplied}
           />
 
           <div style={{ flex: 8 }}>

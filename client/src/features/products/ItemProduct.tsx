@@ -25,7 +25,7 @@ const ItemProduct = (props: Props) => {
   const navigate = useNavigate()
 
   const onProductPressed = () => {
-    navigate('/product_detail')
+    navigate('/product_detail', { state: { product: props.data } })
   }
 
   return (

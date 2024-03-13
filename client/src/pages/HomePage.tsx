@@ -15,6 +15,7 @@ import { getAllCategories } from "../services/CategoryServices";
 import { CustomList } from "../components";
 import { ItemCategory } from "../features/categories";
 import { ItemBanner, ItemProduct } from "../features/products";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   // Fields
@@ -34,6 +35,8 @@ const HomePage = () => {
   const [listProductParts, setListProductParts] = React.useState<
     Array<ProductModel>
   >([]);
+
+  const navigate =useNavigate()
 
   const getData = async () => {
     // Get all products
@@ -73,6 +76,11 @@ const HomePage = () => {
     console.log("Products - parts:", prodsParts);
   };
 
+  // On Category clicked
+  const onCategoryClicked = (data:CategoryModel) => {
+    navigate('/explore', {state:{category: data}})
+  }
+
   React.useEffect(() => {
     setListProducts([]);
     setListCategories([]);
@@ -102,7 +110,7 @@ const HomePage = () => {
         <CustomList
           title="Find product by Category"
           list={listCategories.slice(0, 6)}
-          render={(data) => <ItemCategory data={data} />}
+          render={(data) => <ItemCategory data={data} onClicked={()=>onCategoryClicked(data)} />}
         />
 
         {/* <CustomList

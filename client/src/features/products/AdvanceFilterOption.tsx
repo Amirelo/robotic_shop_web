@@ -15,6 +15,7 @@ import { ic_expand } from "../../assets/icons";
 interface Props {
   categories?: Array<CategoryModel>;
   style?: React.CSSProperties;
+  onCategoryClicked?(id: string): void;
 }
 
 const AdvanceFilterOption = (props: Props) => {
@@ -124,7 +125,7 @@ const AdvanceFilterOption = (props: Props) => {
         </div>
         <div
           style={{
-            maxHeight: showCategories ? 500 : 0,
+            maxHeight: showCategories ? 1000 : 0,
             overflow: "hidden",
             transition: "500ms",
           }}
@@ -132,6 +133,7 @@ const AdvanceFilterOption = (props: Props) => {
           {props.categories?.map((item) => {
             return (
               <CategoryList
+                onCategoryClick={()=> props.onCategoryClicked ? props.onCategoryClicked(item.id) : ''}
                 category={item}
                 subCategories={listSubCategories.filter(
                   (subCate) => subCate.categoryID == item.id

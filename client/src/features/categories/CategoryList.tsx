@@ -7,6 +7,7 @@ import themes from "../../preferences/theme/themes";
 interface Props {
   category: CategoryModel;
   subCategories: Array<any>;
+  onCategoryClick?(): void;
 }
 
 const CategoryList = (props: Props) => {
@@ -18,17 +19,27 @@ const CategoryList = (props: Props) => {
         style={{ width: "90%", textAlign: "left" }}
         backgroundColor={themes["defaultTheme"].background}
         hasButton
-        onAddButtonClicked={()=>setShowSubCategories(!showSubCategories)}
+        onClicked={props.onCategoryClick}
+        onAddButtonClicked={() => setShowSubCategories(!showSubCategories)}
       >
         {props.category.name}
       </TextButton>
       <div
-        style={{maxHeight: showSubCategories ? 250 : 0, height: "100%", overflow: "hidden", transition:'500ms' }}
+        style={{
+          maxHeight: showSubCategories ? 250 : 0,
+          height: "100%",
+          overflow: "hidden",
+          transition: "500ms",
+        }}
       >
         {props.subCategories.length > 0 ? (
           props.subCategories
             .filter((subCate) => subCate.categoryID == props.category.id)
-            .map((filtered) => <CustomText>{filtered.name}</CustomText>)
+            .map((filtered) => (
+              <TextButton backgroundColor={themes["defaultTheme"].background}>
+                {filtered.name}
+              </TextButton>
+            ))
         ) : (
           <></>
         )}

@@ -5,7 +5,7 @@ import React from "react";
 import { CategoryModel, ProductModel } from "../models";
 
 // Services
-import { getAllProducts } from "../services/ProductServices";
+import { getAllProducts, getProductsByCategoryID } from "../services/ProductServices";
 
 // Components
 import { CustomList } from "../components";
@@ -23,6 +23,7 @@ import {
 } from "../constants/AppConstant";
 import { getAllCategories } from "../services/CategoryServices";
 import ItemProductList from "../features/products/ItemProductList";
+import { useLocation } from "react-router-dom";
 
 const ExplorePage = () => {
   const [listProducts, setListProducts] = React.useState<Array<ProductModel>>(
@@ -32,9 +33,10 @@ const ExplorePage = () => {
     Array<ProductModel>
   >([]);
 
-  const [listCategories, setListCategories] = React.useState<Array<CategoryModel>>(
-    []
-  );
+  const [listCategories, setListCategories] = React.useState<
+    Array<CategoryModel>
+  >([]);
+  const location = useLocation();
 
   const [itemPerPage, setItemPerPage] = React.useState(12);
   const [page, setPage] = React.useState(1);
@@ -49,34 +51,56 @@ const ExplorePage = () => {
     setListProdsFiltered(products);
 
     const categories: Array<CategoryModel> = await getAllCategories();
-    setListCategories(categories)
+    setListCategories(categories);
+
+    if (location.state.category) {
+      console.log("Received category:", location.state.category);
+    }
   };
+
+  const [selcetedCategory, setSelectedCategory] = React.useState("")
 
   React.useEffect(() => {
     getData();
   }, []);
 
-  React.useEffect(() => {
-    console.log("Sort changed:", sort);
+  const getDataAgain = async() =>{
+    var products:Array<ProductModel> = []
+    if(selcetedCategory.length >0){
+      products = await getProductsByCategoryID(selcetedCategory, 50)
+      setListProdsFiltered(products)
+      console.log("New product", products)
+    }
+
     switch (sort) {
       case SORT_POPULAR:
-        listProducts.sort((a, b) => b.sold - a.sold);
+        setListProdsFiltered(products.sort((a, b) => b.sold - a.sold));
         break;
       case SORT_RATING:
-        setListProdsFiltered((prev) =>
-          prev.sort((a, b) => b.totalRating - a.totalRating)
+        setListProdsFiltered(products.sort((a, b) => b.totalRating - a.totalRating)
         );
         break;
       case SORT_PRICE_HL:
-        setListProdsFiltered((prev) => prev.sort((a, b) => b.price - a.price));
+        setListProdsFiltered(products.sort((a, b) => b.price - a.price));
         break;
       case SORT_PRICE_LH:
         console.log("Change price");
-        setListProdsFiltered((prev) => prev.sort((a, b) => a.price - b.price));
+        setListProdsFiltered(products.sort((a, b) => a.price - b.price));
         break;
     }
     setDataChanged(!dataChanged);
-  }, [sort]);
+    
+  }
+
+  React.useEffect(() => {
+    getDataAgain()
+    
+  }, [sort, selcetedCategory]);
+
+  const onCategoryClicked = (id: string) => {
+    console.log("Category ID:", id);
+    setSelectedCategory(id)
+  };
 
   React.useEffect(() => {
     console.log("Searching...");
@@ -101,9 +125,9 @@ const ExplorePage = () => {
           onItemPerPageChange={(number) => setItemPerPage(number)}
         />
         <div style={{ display: "flex" }}>
-
-          <AdvanceFilterOption 
-            style={{ flex: 2 }} 
+          <AdvanceFilterOption
+            onCategoryClicked={(id: string) => onCategoryClicked(id)}
+            style={{ flex: 2 }}
             categories={listCategories}
           />
 
@@ -113,7 +137,13 @@ const ExplorePage = () => {
                 (page - 1) * itemPerPage,
                 itemPerPage * page
               )}
-              render={(data) => gridDisplay ? <ItemProduct data={data} /> : <ItemProductList data={data}/>}
+              render={(data) =>
+                gridDisplay ? (
+                  <ItemProduct data={data} />
+                ) : (
+                  <ItemProductList data={data} />
+                )
+              }
             />
 
             <PaginationTab

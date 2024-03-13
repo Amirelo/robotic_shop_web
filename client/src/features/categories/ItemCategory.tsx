@@ -13,11 +13,12 @@ import themes from "../../preferences/theme/themes";
 interface Props {
   marginBottom?: React.CSSProperties["marginBottom"];
   data: CategoryModel;
+  onClicked?(): void
 }
 
 const ItemCategory = (props: Props) => {
   return (
-    <div style={styles.body}>
+    <div style={styles.body} onClick={props.onClicked}>
       <CustomImage preset={"fit"} src={props.data.image} />
 
       <div

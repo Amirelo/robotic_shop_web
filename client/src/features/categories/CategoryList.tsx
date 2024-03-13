@@ -36,7 +36,7 @@ const CategoryList = (props: Props) => {
           props.subCategories
             .filter((subCate) => subCate.categoryID == props.category.id)
             .map((filtered) => (
-              <TextButton backgroundColor={themes["defaultTheme"].background}>
+              <TextButton style={{textAlign:'left', paddingLeft:20}} backgroundColor={themes["defaultTheme"].background}>
                 {filtered.name}
               </TextButton>
             ))

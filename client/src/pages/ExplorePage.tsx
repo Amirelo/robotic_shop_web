@@ -5,7 +5,10 @@ import React from "react";
 import { CategoryModel, ProductModel } from "../models";
 
 // Services
-import { getAllProducts, getProductsByCategoryID } from "../services/ProductServices";
+import {
+  getAllProducts,
+  getProductsByCategoryID,
+} from "../services/ProductServices";
 
 // Components
 import { CustomList } from "../components";
@@ -45,9 +48,9 @@ const ExplorePage = () => {
   const [search, setSearch] = React.useState("");
   const [dataChanged, setDataChanged] = React.useState(false);
 
-  const [selcetedCategory, setSelectedCategory] = React.useState("")
-  const [minPrice, setMinPrice] = React.useState<number>()
-  const [maxPrice, setMaxPrice] = React.useState<number>()
+  const [selcetedCategory, setSelectedCategory] = React.useState("");
+  const [minPrice, setMinPrice] = React.useState<number>();
+  const [maxPrice, setMaxPrice] = React.useState<number>();
 
   const getData = async () => {
     const products: Array<ProductModel> = await getAllProducts();
@@ -59,43 +62,45 @@ const ExplorePage = () => {
 
     if (location.state?.category) {
       console.log("Received category:", location.state.category);
-      setSelectedCategory(location.state.category.id)
+      setSelectedCategory(location.state.category.id);
     }
   };
 
   const onCategoryClicked = (id: string) => {
     console.log("Category ID:", id);
-    setSelectedCategory(id)
+    setSelectedCategory(id);
   };
 
   const onPriceApplied = () => {
-    console.log("apply price click, maxprice: "+maxPrice + ", minprice:" + minPrice)
-    var products = listProdsFiltered
-    if(minPrice){
-      products = products.filter(item => item.price > minPrice)
+    console.log(
+      "apply price click, maxprice: " + maxPrice + ", minprice:" + minPrice
+    );
+    var products = listProdsFiltered;
+    if (minPrice) {
+      products = products.filter((item) => item.price > minPrice);
     }
-    if(maxPrice) {
-      products = products.filter(item => item.price < maxPrice)
+    if (maxPrice) {
+      products = products.filter((item) => item.price < maxPrice);
     }
-    console.log("Filtered list:", products)
+    console.log("Filtered list:", products);
 
-    setListProdsFiltered(products)
-    setDataChanged(!dataChanged)
-  }
+    setListProdsFiltered(products);
+    setDataChanged(!dataChanged);
+  };
 
   React.useEffect(() => {
     getData();
   }, []);
 
-  const getDataAgain = async() =>{
-    console.log("Get data again")
-    var products:Array<ProductModel> = []
-    if(selcetedCategory.length >0){
-      products = await getProductsByCategoryID(selcetedCategory, 50)
-      setListProdsFiltered(products)
-      console.log("New product", products)
-    } else{
-      console.log("category empty")
+  const getDataAgain = async () => {
+    console.log("Get data again");
+    var products: Array<ProductModel> = listProdsFiltered;
+    if (selcetedCategory.length > 0) {
+      products = await getProductsByCategoryID(selcetedCategory, 50);
+      setListProdsFiltered(products);
+      console.log("New product", products);
+    } else {
+      console.log("category empty");
     }
 
     switch (sort) {
@@ -103,7 +108,8 @@ const ExplorePage = () => {
         setListProdsFiltered(products.sort((a, b) => b.sold - a.sold));
         break;
       case SORT_RATING:
-        setListProdsFiltered(products.sort((a, b) => b.totalRating - a.totalRating)
+        setListProdsFiltered(
+          products.sort((a, b) => b.totalRating - a.totalRating)
         );
         break;
       case SORT_PRICE_HL:
@@ -115,14 +121,11 @@ const ExplorePage = () => {
         break;
     }
     setDataChanged(!dataChanged);
-    
-  }
+  };
 
   React.useEffect(() => {
-    getDataAgain()
-    
+    getDataAgain();
   }, [sort, selcetedCategory]);
-
 
   React.useEffect(() => {
     console.log("Searching...");
@@ -151,9 +154,9 @@ const ExplorePage = () => {
             onCategoryClicked={(id: string) => onCategoryClicked(id)}
             style={{ flex: 2 }}
             categories={listCategories}
-            setMinPrice={(amount:number) => setMinPrice(amount)}
-            setMaxPrice={(amount:number) => setMaxPrice(amount)}
-            onApplyClicked = {onPriceApplied}
+            setMinPrice={(amount: number) => setMinPrice(amount)}
+            setMaxPrice={(amount: number) => setMaxPrice(amount)}
+            onApplyClicked={onPriceApplied}
           />
 
           <div style={{ flex: 8 }}>
@@ -171,15 +174,17 @@ const ExplorePage = () => {
               }
             />
 
-            {listProdsFiltered.length/itemPerPage > 1 ?
-            <PaginationTab
-              data={listProdsFiltered}
-              itemPerPage={itemPerPage}
-              numOfTabs={Math.ceil(listProdsFiltered.length / itemPerPage)}
-              currentPage={page}
-              pageChanged={(number) => setPage(number)}
-            />
-:<></>}
+            {listProdsFiltered.length / itemPerPage > 1 ? (
+              <PaginationTab
+                data={listProdsFiltered}
+                itemPerPage={itemPerPage}
+                numOfTabs={Math.ceil(listProdsFiltered.length / itemPerPage)}
+                currentPage={page}
+                pageChanged={(number) => setPage(number)}
+              />
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </main>

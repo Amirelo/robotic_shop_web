@@ -150,13 +150,15 @@ const ExplorePage = () => {
               }
             />
 
+            {listProdsFiltered.length/itemPerPage > 1 ?
             <PaginationTab
-              data={listProducts}
+              data={listProdsFiltered}
               itemPerPage={itemPerPage}
-              numOfTabs={Math.ceil(listProducts.length / itemPerPage)}
+              numOfTabs={Math.ceil(listProdsFiltered.length / itemPerPage)}
               currentPage={page}
               pageChanged={(number) => setPage(number)}
             />
+:<></>}
           </div>
         </div>
       </main>

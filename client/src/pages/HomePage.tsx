@@ -38,6 +38,10 @@ const HomePage = () => {
 
   const navigate =useNavigate()
 
+    const onSeemoreClicked = () => {
+      navigate('/explore')
+    }
+
   const getData = async () => {
     // Get all products
     const products: Array<ProductModel> = await getAllProducts();
@@ -109,6 +113,7 @@ const HomePage = () => {
         {/* Category */}
         <CustomList
           title="Find product by Category"
+          onSeeMoreClicked={onSeemoreClicked}
           list={listCategories.slice(0, 6)}
           render={(data) => <ItemCategory data={data} onClicked={()=>onCategoryClicked(data)} />}
         />
@@ -121,6 +126,7 @@ const HomePage = () => {
 
         <CustomList
           title="Populars"
+          onSeeMoreClicked={onSeemoreClicked}
           list={listProducts
             .sort((a, b) => a.totalRating - b.totalRating)
             .slice(0, 8)}
@@ -129,18 +135,21 @@ const HomePage = () => {
 
         <CustomList
           title="Kits"
+          onSeeMoreClicked={onSeemoreClicked}
           list={listProductKit}
           render={(data) => <ItemProduct data={data} />}
         />
 
         <CustomList
           title="Arduino"
+          onSeeMoreClicked={onSeemoreClicked}
           list={listProductArduino}
           render={(data) => <ItemProduct data={data} />}
         />
 
         <CustomList
           title="Parts"
+          onSeeMoreClicked={onSeemoreClicked}
           list={listProductParts}
           render={(data) => <ItemProduct data={data} />}
         />

@@ -24,12 +24,21 @@ interface Props {
 const ItemProductList = (props: Props) => {
   const navigate = useNavigate();
 
+  const [display, setDisplay] = React.useState(false)
+  const [hover, setHover] = React.useState(false);
+
   const onProductPressed = () => {
     navigate("/product_detail", { state: { product: props.data } });
   };
 
+  React.useEffect(()=>{
+    setDisplay(true)
+  },[])
+
   return (
-    <article style={{ ...styles.body }}>
+    <article style={{boxShadow: hover ? "-2px 2px 5px" : "", transition:'250ms'}} >
+    <div style={{ ...styles.body, transform: display ? 'scale(1)': 'scale(0)', overflow:'hidden', transition:'1000ms'  }}onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}>
       <div
         onClick={onProductPressed}
         style={{ cursor: "pointer", display: "flex", marginBottom: 12 }}
@@ -72,6 +81,7 @@ const ItemProductList = (props: Props) => {
       </div>
       {/* Button - Add To Cart */}
       <TextButton style={{ marginTop: "auto" }}>Add To Cart</TextButton>
+    </div>
     </article>
   );
 };

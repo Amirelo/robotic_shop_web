@@ -14,6 +14,15 @@ const ProductDetailPage = () => {
   const [product, setProduct] = React.useState<ProductModel>(
     location.state.product
   );
+  const randomSongs = [
+    "https://www.youtube.com/embed/mKxzJzp6oes?si=pO21iRjxbc7X17sh", 
+    "https://www.youtube.com/embed/cJOkT28U4V4?si=ma7qcCAGyVp2CMlQ",
+    "https://www.youtube.com/embed/59uP6DOkYTM?si=cIvsYUT-9FV_4yET",
+    "https://www.youtube.com/embed/O71GdeeND68?si=rYeTvwq4vyrws0AZ",
+    "https://www.youtube.com/embed/ICOcEzXsEOI?si=eIjlM5MBxuBj7bKs"
+  ]
+
+  const [currentVideo, setCurrentVideo] = React.useState('')
 
   const [selectedImage, setSelectedImage] = React.useState(location.state.product.images[0])
 
@@ -23,6 +32,12 @@ const ProductDetailPage = () => {
       console.log("hover")
       setSelectedImage(img)
     }
+
+    React.useEffect(()=> {
+      const rando = Math.floor(Math.random() * randomSongs.length)
+      setCurrentVideo(randomSongs[rando])
+      console.log('random video:', rando,randomSongs[rando])
+    },[])
 
   return (
     <div
@@ -85,7 +100,7 @@ const ProductDetailPage = () => {
         <CustomText marginBottom={20}>{product.description}</CustomText>
         <iframe
         style={{marginLeft:'auto', marginRight:'auto', display:'block', width:'50%', height: screenWidth*0.25, marginBottom:20}}
-        src="https://www.youtube.com/embed/mKxzJzp6oes?si=pO21iRjxbc7X17sh" 
+        src={currentVideo}
         title="YouTube video player" 
         frameBorder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

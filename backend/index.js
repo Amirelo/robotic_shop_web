@@ -13,6 +13,7 @@ const authRouter = require('./routes/AuthRoute')
 const productRouter = require('./routes/ProductRoute')
 const categoryRouter = require('./routes/CategoryRoute')
 const subCategoryRouter = require('./routes/subCategoryRoute')
+const bannerRouter = require('./routes/BannerRoute')
 
 
 const PORT = process.env.PORT || 3001
@@ -33,6 +34,7 @@ app.use('/api/auth', authRouter)
 app.use('/api/product', productRouter)
 app.use('/api/category', categoryRouter)
 app.use('/api/sub_category', subCategoryRouter)
+app.use('/api/banner', bannerRouter)
 
 app.use(express.static(path.resolve(__dirname, '../client/build')))
 

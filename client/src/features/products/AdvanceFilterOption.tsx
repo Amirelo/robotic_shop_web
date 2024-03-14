@@ -7,7 +7,6 @@ import { CategoryModel } from "../../models";
 // Components
 import { CustomImage, CustomText } from "../../components";
 import { TextButton } from "../../components/buttons";
-import themes from "../../preferences/theme/themes";
 import { getAllSubCategories } from "../../services/SubCategoryServices";
 import { CategoryList } from "../categories";
 import { ic_expand } from "../../assets/icons";
@@ -19,6 +18,7 @@ interface Props {
   setMinPrice?: any;
   setMaxPrice?: any;
   onApplyClicked?(): void
+  onAvailableChecked?(status: boolean): void
 }
 
 const AdvanceFilterOption = (props: Props) => {
@@ -31,6 +31,8 @@ const AdvanceFilterOption = (props: Props) => {
   const [showPrice, setShowPrice] = React.useState(false);
   const [showCategories, setShowCategories] = React.useState(false);
   const [showStockStatus, setShowStockStatus] = React.useState(false);
+
+  const [showAvailable, setShowAvailable] = React.useState(true)
 
   const getData = async () => {
     const subCate = await getAllSubCategories();
@@ -47,9 +49,20 @@ const AdvanceFilterOption = (props: Props) => {
     props.setMaxPrice(value)
   }
 
+  const onAvailableChecked = (e:any) => {
+    const newStatus = !showAvailable
+    setShowAvailable(newStatus)
+    if (props.onAvailableChecked) {
+      props.onAvailableChecked(newStatus)
+    }
+  }
+
   React.useEffect(() => {
     getData();
   }, []);
+
+  React.useEffect(()=>{
+  },[showAvailable])
 
   return (
     <div style={{ ...props.style, paddingRight: 12 }}>
@@ -117,7 +130,7 @@ const AdvanceFilterOption = (props: Props) => {
           <TextButton onClicked={props.onApplyClicked}>Apply</TextButton>
         </div>
       </div>
-
+ {/* Categories */}
       <div
         style={{
           border: "1px solid black",
@@ -126,6 +139,7 @@ const AdvanceFilterOption = (props: Props) => {
           marginBottom: 20,
         }}
       >
+       
         <div
           style={{
             display: "flex",
@@ -163,6 +177,7 @@ const AdvanceFilterOption = (props: Props) => {
         </div>
       </div>
 
+{/* Stock status */}
       <div style={{ border: "1px solid black", padding: 12, borderRadius: 4 }}>
         <div
           style={{
@@ -193,17 +208,11 @@ const AdvanceFilterOption = (props: Props) => {
                 type="checkbox"
                 name="availability"
                 style={{ marginRight: 4 }}
+                checked={showAvailable}
+                onChange={(e)=> onAvailableChecked(e)}
+                
               />
               Available
-            </label>
-
-            <label>
-              <input
-                type="checkbox"
-                name="availability"
-                style={{ marginRight: 4 }}
-              />
-              Unavailable
             </label>
           </div>
         </div>

@@ -52,6 +52,9 @@ const ExplorePage = () => {
   const [minPrice, setMinPrice] = React.useState<number>();
   const [maxPrice, setMaxPrice] = React.useState<number>();
 
+  const [showAvailableStock, setShowAvailableStock] = React.useState(true)
+  const [showUnAvailableStock, setShowUnAvailableStock] = React.useState(true)
+
   const getData = async () => {
     const products: Array<ProductModel> = await getAllProducts();
     setListProducts(products);
@@ -94,13 +97,19 @@ const ExplorePage = () => {
 
   const getDataAgain = async () => {
     console.log("Get data again");
-    var products: Array<ProductModel> = listProdsFiltered;
+    var products: Array<ProductModel> = listProducts;
     if (selcetedCategory.length > 0) {
       products = await getProductsByCategoryID(selcetedCategory, 50);
       setListProdsFiltered(products);
       console.log("New product", products);
     } else {
       console.log("category empty");
+    }
+
+    if(!showAvailableStock){
+      console.log("Available status deactivate")
+      products = products.filter(item => item.quantity <= 0)
+      setListProdsFiltered(products)
     }
 
     switch (sort) {
@@ -120,12 +129,13 @@ const ExplorePage = () => {
         setListProdsFiltered(products.sort((a, b) => a.price - b.price));
         break;
     }
+    setListProdsFiltered(products)
     setDataChanged(!dataChanged);
   };
 
   React.useEffect(() => {
     getDataAgain();
-  }, [sort, selcetedCategory]);
+  }, [sort, selcetedCategory, showAvailableStock]);
 
   React.useEffect(() => {
     console.log("Searching...");
@@ -147,7 +157,7 @@ const ExplorePage = () => {
           onViewChanged={(status) => setGridDisplay(status)}
           onSearchChange={(text) => setSearch(text)}
           onSortChange={(text) => setSort(text)}
-          onItemPerPageChange={(number) => setItemPerPage(number)}
+          onItemPerPageChange={(number) => {setItemPerPage(number)}}
         />
         <div style={{ display: "flex" }}>
           <AdvanceFilterOption
@@ -157,6 +167,7 @@ const ExplorePage = () => {
             setMinPrice={(amount: number) => setMinPrice(amount)}
             setMaxPrice={(amount: number) => setMaxPrice(amount)}
             onApplyClicked={onPriceApplied}
+            onAvailableChecked={(status)=>{setShowAvailableStock(status); console.log("Changed:", status)}}
           />
 
           <div style={{ flex: 8 }}>

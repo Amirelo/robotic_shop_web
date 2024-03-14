@@ -23,3 +23,13 @@ exports.getProductsByCategoryId = async (categoryID, limit) => {
         console.log("SERVICES - Get Products By Category ID - Error:", error)
     }
 }
+
+exports.getProductsBySubCategoryId = async(subCateID, limit) => {
+    try {
+        const data = await productModel.find({ subCategoryID: subCateID }).limit(limit)
+        console.log("data:",data)
+        return data
+    } catch (error) {
+        console.log("SERVICES - Get Products By Category ID - Error:", error)
+    }
+}

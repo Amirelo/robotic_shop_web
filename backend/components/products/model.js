@@ -13,6 +13,7 @@ const ProductSchema = new Schema({
     sold: { type: Number },
     images: {type: Array},
     categoryID: { type: ObjectId, ref: 'categories' },
+    subCategoryID: {type:ObjectId, ref:'subCategories'}
 })
 
 module.exports = mongoose.model('products', ProductSchema)

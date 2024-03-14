@@ -8,6 +8,7 @@ interface Props {
   category: CategoryModel;
   subCategories: Array<any>;
   onCategoryClick?(): void;
+  onSubCategoryClick?(id:string):void;
 }
 
 const CategoryList = (props: Props) => {
@@ -36,7 +37,7 @@ const CategoryList = (props: Props) => {
           props.subCategories
             .filter((subCate) => subCate.categoryID == props.category.id)
             .map((filtered) => (
-              <TextButton style={{textAlign:'left', paddingLeft:20}} backgroundColor={themes["defaultTheme"].background}>
+              <TextButton onClicked={()=> props.onSubCategoryClick ? props.onSubCategoryClick(filtered.id) : ''} style={{textAlign:'left', paddingLeft:20}} backgroundColor={themes["defaultTheme"].background}>
                 {filtered.name}
               </TextButton>
             ))

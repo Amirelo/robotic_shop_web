@@ -15,6 +15,7 @@ interface Props {
   categories?: Array<CategoryModel>;
   style?: React.CSSProperties;
   onCategoryClicked?(id: string): void;
+  onSubCategoryClicked?(id:string): void;
   setMinPrice?: any;
   setMaxPrice?: any;
   onApplyClicked?(): void
@@ -167,6 +168,7 @@ const AdvanceFilterOption = (props: Props) => {
             return (
               <CategoryList
                 onCategoryClick={()=> props.onCategoryClicked ? props.onCategoryClicked(item.id) : ''}
+                onSubCategoryClick={(id:string) => props.onSubCategoryClicked ? props.onSubCategoryClicked(id) : ''}
                 category={item}
                 subCategories={listSubCategories.filter(
                   (subCate) => subCate.categoryID == item.id

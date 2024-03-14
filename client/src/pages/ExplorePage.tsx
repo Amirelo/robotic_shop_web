@@ -8,6 +8,7 @@ import { CategoryModel, ProductModel } from "../models";
 import {
   getAllProducts,
   getProductsByCategoryID,
+  getProductsBySubCategoryID,
 } from "../services/ProductServices";
 
 // Components
@@ -53,7 +54,7 @@ const ExplorePage = () => {
   const [maxPrice, setMaxPrice] = React.useState<number>();
 
   const [showAvailableStock, setShowAvailableStock] = React.useState(true)
-  const [showUnAvailableStock, setShowUnAvailableStock] = React.useState(true)
+  const [selectedSubCategory, setSelectedSubCategory] = React.useState('')
 
   const getData = async () => {
     const products: Array<ProductModel> = await getAllProducts();
@@ -73,6 +74,11 @@ const ExplorePage = () => {
     console.log("Category ID:", id);
     setSelectedCategory(id);
   };
+
+  const onSubCategoryClicked = (id:string) => {
+    setSelectedCategory('')
+    setSelectedSubCategory(id)
+  }
 
   const onPriceApplied = () => {
     console.log(
@@ -99,7 +105,17 @@ const ExplorePage = () => {
     console.log("Get data again");
     var products: Array<ProductModel> = listProducts;
     if (selcetedCategory.length > 0) {
+      console.log('category selected:', selectedSubCategory)
       products = await getProductsByCategoryID(selcetedCategory, 50);
+      setListProdsFiltered(products);
+      console.log("New product", products);
+    } else {
+      console.log("category empty");
+    }
+
+    if (selectedSubCategory.length > 0) {
+      console.log('sub category selected:', selectedSubCategory)
+      products = await getProductsBySubCategoryID(selectedSubCategory, 50);
       setListProdsFiltered(products);
       console.log("New product", products);
     } else {
@@ -135,7 +151,7 @@ const ExplorePage = () => {
 
   React.useEffect(() => {
     getDataAgain();
-  }, [sort, selcetedCategory, showAvailableStock]);
+  }, [sort, selcetedCategory, selectedSubCategory, showAvailableStock]);
 
   React.useEffect(() => {
     console.log("Searching...");
@@ -162,6 +178,7 @@ const ExplorePage = () => {
         <div style={{ display: "flex" }}>
           <AdvanceFilterOption
             onCategoryClicked={(id: string) => onCategoryClicked(id)}
+            onSubCategoryClicked={(id:string) => onSubCategoryClicked(id)}
             style={{ flex: 2 }}
             categories={listCategories}
             setMinPrice={(amount: number) => setMinPrice(amount)}

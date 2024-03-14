@@ -15,4 +15,11 @@ router.post('/getByCateID', async function (req, res, next) {
     res.status(200).json(data)
 })
 
+router.post('/getBySubCateID', async function (req,res,next){
+    const subCateID = req.body.subCategoryID
+    const limit = req.body.limit ?? 20
+    const data = await productController.getProductsBySubCategoryId(subCateID, limit)
+    res.status(200).json(data)
+})
+
 module.exports = router;

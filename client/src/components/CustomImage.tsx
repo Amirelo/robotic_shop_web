@@ -14,16 +14,32 @@ interface Props {
   preset?: keyof typeof imageStyles;
   backgroundcolor?: React.CSSProperties["backgroundColor"];
   style?: React.CSSProperties;
+  onMouseEnter?():void
+  onMouseLeave?():void
 }
 
 const CustomImage = (props: Props) => {
   const [hover, setHover] = React.useState(false);
 
+  const onUserMouseEnter = () => {
+    if (props.onMouseEnter){
+      props.onMouseEnter()
+    }
+    setHover(true)
+  }
+
+  const onUserMouseLeave = () => {
+    if (props.onMouseLeave){
+      props.onMouseLeave()
+    }
+    setHover(false)
+  }
+
   return (
     <img
       onClick={props.onClick}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      onMouseEnter={() => onUserMouseEnter()}
+      onMouseLeave={() => onUserMouseLeave()}
       style={{
         ...imageStyles.initial,
         ...imageStyles[props.preset ?? "icon"],

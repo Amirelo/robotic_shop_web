@@ -4,7 +4,7 @@ import { CustomImage, CustomText } from "../components";
 import React from "react";
 import { ProductModel } from "../models";
 import { RatingStars } from "../features/products";
-import { priceFormat } from "../utils/Utilities";
+import { priceFormat, screenWidth } from "../utils/Utilities";
 import { TextButton } from "../components/buttons";
 import { ic_add, ic_remove } from "../assets/icons";
 import themes from "../preferences/theme/themes";
@@ -15,6 +15,15 @@ const ProductDetailPage = () => {
     location.state.product
   );
 
+  const [selectedImage, setSelectedImage] = React.useState(location.state.product.images[0])
+
+  const [mainImgHover, setMainImgHover] = React.useState(false)
+
+    const onSubImageHover = (img:string) =>{
+      console.log("hover")
+      setSelectedImage(img)
+    }
+
   return (
     <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
@@ -24,14 +33,18 @@ const ProductDetailPage = () => {
           {/* Images */}
           <div style={{ flex: 1 }}>
             <CustomImage
-              src={product.images[0]}
+            style={{transform: mainImgHover ? 'scale(1.5)' : '',
+            transformOrigin: mainImgHover ? '0 0' : '',}}
+              src={selectedImage}
               preset={"detail"}
               marginBottom={20}
+              onMouseEnter={()=>setMainImgHover(true)}
+              onMouseLeave={()=>setMainImgHover(false)}
             />
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               {product.images.length > 1 ? (
                 product.images.map((item) => (
-                  <CustomImage preset={"detail_small"} src={item} />
+                  <CustomImage onMouseEnter={()=>onSubImageHover(item)} preset={"detail_small"} src={item} />
                 ))
               ) : (
                 <></>
@@ -66,6 +79,17 @@ const ProductDetailPage = () => {
 
             <TextButton>Add to cart</TextButton>
           </div>
+        </div>
+        <div>
+        <CustomText preset={'title'}>Product Information</CustomText>
+        <CustomText marginBottom={20}>{product.description}</CustomText>
+        <iframe
+        style={{marginLeft:'auto', marginRight:'auto', display:'block', width:'50%', height: screenWidth*0.25, marginBottom:20}}
+        src="https://www.youtube.com/embed/mKxzJzp6oes?si=pO21iRjxbc7X17sh" 
+        title="YouTube video player" 
+        frameBorder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowFullScreen></iframe>
         </div>
       </div>
     </div>

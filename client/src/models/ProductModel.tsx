@@ -2,6 +2,7 @@ class ProductModel {
   id: string;
   name: string;
   price: number;
+  description: string;
   totalRating: number;
   quantity: number;
   discount: string;
@@ -14,6 +15,7 @@ class ProductModel {
     id: string,
     name: string,
     price: number,
+    description: string,
     totalRating: number,
     quantity: number,
     discount: string,
@@ -25,6 +27,7 @@ class ProductModel {
     this.id = id;
     this.name = name;
     this.price = price;
+    this.description = description;
     this.totalRating = totalRating;
     this.quantity = quantity;
     this.discount = discount;

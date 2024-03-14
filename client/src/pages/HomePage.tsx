@@ -2,7 +2,7 @@
 import React from "react";
 
 // Models
-import { CategoryModel, ProductModel } from "../models";
+import { BannerModel, CategoryModel, ProductModel } from "../models";
 
 // Services
 import {
@@ -16,9 +16,11 @@ import { CustomList } from "../components";
 import { ItemCategory } from "../features/categories";
 import { ItemBanner, ItemProduct } from "../features/products";
 import { useNavigate } from "react-router-dom";
+import { getActiveBanner } from "../services/BannerServices";
 
 const HomePage = () => {
   // Fields
+  const [listBanners, setListBanners] = React.useState<Array<BannerModel>>([])
   const [listProducts, setListProducts] = React.useState<Array<ProductModel>>(
     []
   );
@@ -43,6 +45,10 @@ const HomePage = () => {
     }
 
   const getData = async () => {
+    // Get Active banners
+    const banners: Array<BannerModel> = await getActiveBanner()
+    setListBanners(banners)
+
     // Get all products
     const products: Array<ProductModel> = await getAllProducts();
     setListProducts(products);
@@ -94,21 +100,11 @@ const HomePage = () => {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <main style={{ width: "90%" }}>
+        {listBanners.length > 0 ?
         <ItemBanner
-          marginBottom={20}
-          title="Buy some stuff"
-          src="https://images.pexels.com/photos/20222375/pexels-photo-20222375/free-photo-of-scruffy-dog-in-meadow.jpeg"
-        >
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
-        </ItemBanner>
+        data={listBanners[0]}
+          marginBottom={20}/>
+          :<></>}
 
         {/* Category */}
         <CustomList

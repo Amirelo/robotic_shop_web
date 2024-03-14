@@ -11,12 +11,11 @@ import { screenHeight } from "../../utils/Utilities";
 
 // User Preferences
 import themes from "../../preferences/theme/themes";
+import { BannerModel } from "../../models";
 
 // Interface
 interface Props{
-  children: string;
-  title:string;
-  src: string;
+  data: BannerModel;
   marginBottom?: React.CSSProperties['marginBottom']
 }
 
@@ -32,11 +31,11 @@ const ItemBanner = (props:Props) => {
       <div style={{ width: "40%" }}>
         {/* Text - Header */}
         <CustomText preset={"header"} color={themes['defaultTheme'].background}>
-          {props.title}
+          {props.data.title}
         </CustomText>
         {/* Text - Body */}
         <CustomText preset={"title"} marginBottom={20} color={themes['defaultTheme'].background}>
-          {props.children}
+          {props.data.description}
         </CustomText>
         {/* Button - shop */}
         <TextButton onClicked={onShopClicked}>Shop</TextButton>
@@ -44,7 +43,7 @@ const ItemBanner = (props:Props) => {
       {/* Image */}
       <CustomImage
         preset={"banner"}
-        src={props.src}
+        src={props.data.image}
       />
     </div>
   );

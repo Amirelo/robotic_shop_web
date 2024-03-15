@@ -27,6 +27,7 @@ const ProductDetailPage = () => {
   const [selectedImage, setSelectedImage] = React.useState(
     location.state.product.images[0]
   );
+  const [quantity, setQuantity] = React.useState(0);
 
   const [mainImgHover, setMainImgHover] = React.useState(false);
 
@@ -40,6 +41,12 @@ const ProductDetailPage = () => {
     setCurrentVideo(randomSongs[rando]);
     console.log("random video:", rando, randomSongs[rando]);
   }, []);
+
+  const updateQuantity = (amount:number) => {
+    if(amount >0 && amount <=product.quantity || amount <0 && amount >0){
+      setQuantity(amount)
+    }
+  }
 
   return (
     <div
@@ -106,6 +113,7 @@ const ProductDetailPage = () => {
                 preset={"box"}
                 backgroundcolor={themes["defaultTheme"].primary}
                 src={ic_remove}
+                onClick={() => updateQuantity(quantity -1)}
               />
 
               <input
@@ -116,14 +124,16 @@ const ProductDetailPage = () => {
                   height: 20,
                   textAlign: "center",
                 }}
+                onChange={(e) => updateQuantity(Number(e.target.value))}
                 type="number"
-                value={0}
+                value={quantity}
               />
 
               <CustomImage
                 preset={"box"}
                 backgroundcolor={themes["defaultTheme"].primary}
                 src={ic_add}
+                onClick={() => updateQuantity(quantity+1)}
               />
             </div>
 
@@ -132,7 +142,14 @@ const ProductDetailPage = () => {
             </TextButton>
           </div>
         </div>
-        <div style={{border:'1px solid black', padding:20, borderRadius:4, marginBottom:20}}>
+        <div
+          style={{
+            border: "1px solid black",
+            padding: 20,
+            borderRadius: 4,
+            marginBottom: 20,
+          }}
+        >
           <CustomText preset={"title"}>Product Information</CustomText>
           <CustomText marginBottom={20}>{product.description}</CustomText>
           <iframe

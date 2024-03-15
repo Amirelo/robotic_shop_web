@@ -36,7 +36,7 @@ const ItemProductList = (props: Props) => {
   },[])
 
   return (
-    <article style={{boxShadow: hover ? "-2px 2px 5px" : "", transition:'250ms'}} >
+    <article style={{boxShadow: hover ? "-2px 2px 5px" : "", transition:'250ms', overflow:'hidden',borderRadius: 4,}} >
     <div style={{ ...styles.body, transform: display ? 'scale(1)': 'scale(0)', overflow:'hidden', transition:'1000ms'  }}onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}>
       <div
@@ -91,7 +91,8 @@ export default ItemProductList;
 const styles: { [key: string]: React.CSSProperties } = {
   body: {
     padding: 8,
-    borderRadius: 4,
+    overflow:'hidden',
+    borderRadius:4,
     border: "1px solid black",
     width: screenWidth * 0.3,
     display: "flex",

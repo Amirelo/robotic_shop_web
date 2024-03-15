@@ -42,7 +42,7 @@ const TextButton = (props: Props) => {
         ...props.style,
       }}
     >
-      <CustomText preset={"subTitle"}>{props.children}</CustomText>
+      <CustomText fontWeight={'bold'}>{props.children}</CustomText>
       {props.hasButton?
       <CustomImage src={ic_add} preset={"box"} backgroundcolor={themes['defaultTheme'].primary} onClick={props.onAddButtonClicked}/>
 :<></>}

@@ -105,15 +105,12 @@ const ExplorePage = () => {
     console.log("Get data again");
     var products: Array<ProductModel> = listProducts;
     if (selcetedCategory.length > 0) {
+      setSelectedSubCategory('')
       console.log('category selected:', selectedSubCategory)
       products = await getProductsByCategoryID(selcetedCategory, 50);
       setListProdsFiltered(products);
       console.log("New product", products);
-    } else {
-      console.log("category empty");
-    }
-
-    if (selectedSubCategory.length > 0) {
+    } else if (selectedSubCategory.length > 0) {
       console.log('sub category selected:', selectedSubCategory)
       products = await getProductsBySubCategoryID(selectedSubCategory, 50);
       setListProdsFiltered(products);
@@ -195,9 +192,9 @@ const ExplorePage = () => {
               )}
               render={(data) =>
                 gridDisplay ? (
-                  <ItemProduct data={data} />
+                  <ItemProduct key={data.id} data={data} />
                 ) : (
-                  <ItemProductList data={data} />
+                  <ItemProductList key={data.id} data={data} />
                 )
               }
             />

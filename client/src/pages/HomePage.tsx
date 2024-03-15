@@ -12,7 +12,7 @@ import {
 import { getAllCategories } from "../services/CategoryServices";
 
 // Components
-import { CustomList } from "../components";
+import { CustomList, CustomText } from "../components";
 import { ItemCategory } from "../features/categories";
 import { ItemBanner, ItemProduct } from "../features/products";
 import { useNavigate } from "react-router-dom";
@@ -107,6 +107,7 @@ const HomePage = () => {
           :<></>}
 
         {/* Category */}
+
         <CustomList
           title="Find product by Category"
           onSeeMoreClicked={onSeemoreClicked}

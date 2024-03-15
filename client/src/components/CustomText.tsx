@@ -24,11 +24,11 @@ const CustomText = (props: Props) => {
         ...textStyles[selectedStyle],
         color: props.color ?? themes["defaultTheme"].text,
         marginBottom: props.marginBottom,
-        maxHeight: props.maxLines ? props.maxLines * 20 : 500,
+        maxHeight: props.maxLines ? props.maxLines * 20 : 500 * 20,
         overflow: "hidden",
         textOverflow: "ellipsis",
         wordWrap: "break-word",
-        whiteSpace: "nowrap",
+        whiteSpace: props.maxLines ? "nowrap" : "",
         ...props.style,
       }}
     >

@@ -15,17 +15,20 @@ interface Props {
 }
 
 const CustomText = (props: Props) => {
+  const selectedStyle = props.preset ?? "normal";
   return (
     <p
       onClick={props.onClick}
       style={{
         fontWeight: props.fontWeight,
-        ...textStyles[props.preset ?? "normal"],
+        ...textStyles[selectedStyle],
         color: props.color ?? themes["defaultTheme"].text,
         marginBottom: props.marginBottom,
-        maxLines: props.maxLines,
+        maxHeight: props.maxLines ? props.maxLines * 20 : 500,
+        overflow: "hidden",
         textOverflow: "ellipsis",
-        lineClamp: props.maxLines,
+        wordWrap: "break-word",
+        whiteSpace: "nowrap",
         ...props.style,
       }}
     >

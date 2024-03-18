@@ -9,6 +9,7 @@ interface Props {
   list: Array<any>;
   render(data: any): any;
   onSeeMoreClicked?(): void;
+  
 }
 
 const CustomList = (props: Props) => {
@@ -40,11 +41,11 @@ export default CustomList;
 
 const styles: { [key: string]: React.CSSProperties } = {
   items: {
-    display: "flex",
-    flexWrap: "wrap",
+    display: 'grid',
     gap: 16,
-    justifyContent: "space-between",
     marginBottom: 40,
+    gridTemplateColumns: 'repeat(auto-fill, 15em)',
+    justifyContent:'space-between'
   },
   title: {
     display: "flex",

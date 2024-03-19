@@ -55,7 +55,7 @@ const CustomImage = (props: Props) => {
             ? themes["defaultTheme"].primary_hover
             : props.backgroundcolor
           : "",
-        borderRadius: 4,
+        borderRadius: imageStyles[props.preset ?? "icon"]?.borderRadius ? imageStyles[props.preset ?? "icon"].borderRadius : 4,
         ...props.style,
       }}
       src={props.src}
@@ -97,5 +97,14 @@ const imageStyles: { [key: string]: React.CSSProperties } = {
   detail_small:{
     width:'20%',
     border: '1px solid black'
+  },
+  social:{
+    width:40,
+    height:40
+  },
+  team:{
+    width:300,
+    height:300,
+    borderRadius: 150
   }
 };

@@ -13,9 +13,6 @@ const AppFooter = () => {
         <ButtonLink to="/contact" hideActive>
           About us
         </ButtonLink>
-        <ButtonLink to="/location" hideActive>
-          Location
-        </ButtonLink>
         <ButtonLink to="/shipping_and_return" hideActive>
           Shipping and returns
         </ButtonLink>
@@ -38,6 +35,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     justifyContent: "space-around",
     backgroundColor: "#FFFFF0",
     paddingBlock: 30,
+    marginTop:30
   },
   column: {
     display: "flex",

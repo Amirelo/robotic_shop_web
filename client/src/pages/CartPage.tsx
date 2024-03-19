@@ -4,6 +4,7 @@ import { CustomText } from "../components";
 import { TextButton } from "../components/buttons";
 
 const CartPage = () => {
+  const [totalPrice, setTotalPrice] = React.useState(0);
   return (
     <div>
       <div
@@ -14,7 +15,7 @@ const CartPage = () => {
           alignSelf: "center",
         }}
       >
-        <div style={{ flex: 2 }}>Cart</div>
+        <div style={{ flex: 2, display:'flex', alignItems:'center',justifyContent:'center'}}>Empty</div>
         <div
           style={{
             border: "1px solid black",
@@ -26,24 +27,62 @@ const CartPage = () => {
         >
           <div>
             <CustomText preset={"title"}>Cart Info</CustomText>
-            <CustomText>Deliver to: </CustomText>
-            <CustomText>Price: </CustomText>
-            <CustomText>Giao hàng:</CustomText>
-            <div style={{ display: 'flex', flexDirection:'column', paddingLeft:20, paddingBottom:10 }}>
-              <label>
-                <input type="radio" name="delivery_group" style={{ marginRight: 4 }} />
-                Quick delivery
-              </label>
-              <label>
-                <input type="radio" name="delivery_group" style={{ marginRight: 4 }} />
-                Normal delivery
-              </label>
-              <label>
-                <input type="radio" name="delivery_group" style={{ marginRight: 4 }} />
-                Cost-effective delivery
-              </label>
+            <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+              <CustomText>Deliver to: </CustomText>
+              <TextButton style={{ width: "fit-content", paddingInline: 8 }}>
+                Choose Address
+              </TextButton>
             </div>
-            <div style={{borderBottom: '1px solid lightgray', marginBottom:20}}></div>
+            <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+              <CustomText>Price: </CustomText>
+              <CustomText>{totalPrice.toString()}</CustomText>
+            </div>
+            <CustomText>Giao hàng:</CustomText>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                paddingLeft: 20,
+                paddingBottom: 10,
+              }}
+            >
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <label>
+                  <input
+                    type="radio"
+                    name="delivery_group"
+                    style={{ marginRight: 4 }}
+                  />
+                  Quick delivery
+                </label>
+                <CustomText>+50.000d</CustomText>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <label>
+                  <input
+                    type="radio"
+                    name="delivery_group"
+                    style={{ marginRight: 4 }}
+                  />
+                  Normal delivery
+                </label>
+                <CustomText>+100.000d</CustomText>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <label>
+                  <input
+                    type="radio"
+                    name="delivery_group"
+                    style={{ marginRight: 4 }}
+                  />
+                  Cost-effective delivery
+                </label>
+                <CustomText>+150.000d</CustomText>
+              </div>
+            </div>
+            <div
+              style={{ borderBottom: "1px solid lightgray", marginBottom: 20 }}
+            ></div>
             <CustomText>Total price:</CustomText>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <TextButton style={{ width: "40%" }}>Add Coupon</TextButton>

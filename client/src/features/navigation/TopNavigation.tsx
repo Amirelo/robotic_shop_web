@@ -12,15 +12,13 @@ const TopNavigation = () => {
       <div style={styles.top}>
         {/* Search bar */}
         <ButtonLink to="/contact">Contact us</ButtonLink>
-        <ButtonLink to="/location">Location</ButtonLink>
-        <ButtonLink to="#" hideActive>Sign In</ButtonLink>
+        <ButtonLink to="" hideActive>Sign In</ButtonLink>
       </div>
 
       {/* Navigation - 2nd line */}
       <div style={styles.bottom}>
         <ButtonLink to="/">Home</ButtonLink>
         <ButtonLink to="/explore">Explore</ButtonLink>
-        <ButtonLink to="/onsale">On Sale</ButtonLink>
         <ButtonLink to="/cart">Cart</ButtonLink>
 
       </div>

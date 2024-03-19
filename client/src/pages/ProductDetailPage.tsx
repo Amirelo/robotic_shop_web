@@ -55,11 +55,10 @@ const ProductDetailPage = () => {
       <div style={{ width: "90%" }}>
         <div style={{ display: "flex" }}>
           {/* Images */}
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, height:'fit-content', overflow:'hidden', paddingRight:4 }}>
             <CustomImage
               style={{
                 transform: mainImgHover ? "scale(2)" : "",
-                transformOrigin: mainImgHover ? "0 0" : "",
               }}
               src={selectedImage}
               preset={"detail"}
@@ -67,8 +66,8 @@ const ProductDetailPage = () => {
               onMouseEnter={() => setMainImgHover(true)}
               onMouseLeave={() => setMainImgHover(false)}
             />
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              {product.images.length > 1 ? (
+            <div style={{ display: "flex", justifyContent: "space-between", }}>
+              {product.images.length > 1 ? 
                 product.images.map((item) => (
                   <CustomImage
                     onMouseEnter={() => onSubImageHover(item)}
@@ -76,9 +75,9 @@ const ProductDetailPage = () => {
                     src={item}
                   />
                 ))
-              ) : (
+               : 
                 <></>
-              )}
+              }
             </div>
           </div>
           {/* Info */}

@@ -28,6 +28,7 @@ import {
 import { getAllCategories } from "../services/CategoryServices";
 import ItemProductList from "../features/products/ItemProductList";
 import { useLocation } from "react-router-dom";
+import { screenWidth } from "../utils/Utilities";
 
 const ExplorePage = () => {
   const [listProducts, setListProducts] = React.useState<Array<ProductModel>>(
@@ -186,6 +187,7 @@ const ExplorePage = () => {
 
           <div style={{ flex: 8 }}>
             <CustomList
+              width={gridDisplay ?  screenWidth*0.16 : screenWidth*0.3}
               list={listProdsFiltered.slice(
                 (page - 1) * itemPerPage,
                 itemPerPage * page

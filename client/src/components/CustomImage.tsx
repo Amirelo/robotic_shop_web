@@ -106,5 +106,9 @@ const imageStyles: { [key: string]: React.CSSProperties } = {
     width:300,
     height:300,
     borderRadius: 150
+  },
+  flag:{
+    width:40,
+    height:24
   }
 };

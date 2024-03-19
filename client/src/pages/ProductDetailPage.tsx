@@ -53,7 +53,7 @@ const ProductDetailPage = () => {
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
       <div style={{ width: "90%" }}>
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", marginBottom:20 }}>
           {/* Images */}
           <div style={{ flex: 1, height:'fit-content', overflow:'hidden', paddingRight:4 }}>
             <CustomImage

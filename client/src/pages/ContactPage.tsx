@@ -60,10 +60,10 @@ const ContactPage = () => {
                     <p style={{width:100, height:100, backgroundColor:'#5356FF', borderRadius:12, rotate:'45deg', position:'absolute'}}></p>
                     <p style={{width:100, height:100, backgroundColor:'#67C6E3', borderRadius:12, rotate:'45deg', position:'absolute', left:20}}></p>
                     <div style={{position:'relative',backgroundColor:"#5356FF", display:'flex', gap:16,padding:8, alignItems:'center', left:60, width:'100%', borderRadius:4}}>
-                        <div style={{width:40, height:40, borderRadius:4, backgroundColor:"#67C6E3", display:'flex', alignItems:'center', justifyContent:'center', color:'#5356FF', fontWeight:'bold', fontSize:20 }}>
-                        <p>1</p>
+                        <div style={{height:40, paddingInline:8, borderRadius:4, backgroundColor:"#67C6E3", display:'flex', alignItems:'center', justifyContent:'center', color:'#5356FF', fontWeight:'bold', fontSize:20 }}>
+                        <p>2023</p>
                         </div>
-                        <p style={{color:'white'}}>Testing</p>
+                        <p style={{color:'white'}}>Create company</p>
                     </div>
                 </div>
 
@@ -71,9 +71,9 @@ const ContactPage = () => {
                     <p style={{width:100, height:100, backgroundColor:'#5356FF', borderRadius:12, rotate:'45deg', position:'absolute', right:0}}></p>
                     <p style={{width:100, height:100, backgroundColor:'#67C6E3', borderRadius:12, rotate:'45deg', position:'absolute', right:20}}></p>
                     <div style={{position:'relative',backgroundColor:"#5356FF", display:'flex', gap:16,padding:8, alignItems:'center', right:60, width:'100%', borderRadius:4, justifyContent:'flex-end'}}>
-                        <p style={{color:'white'}}>Testing</p>
-                        <div style={{width:40, height:40, borderRadius:4, backgroundColor:"#67C6E3", display:'flex', alignItems:'center', justifyContent:'center', color:'#5356FF', fontWeight:'bold', fontSize:20 }}>
-                        <p>2</p>
+                        <p style={{color:'white'}}>Bankrupt</p>
+                        <div style={{height:40,paddingInline:8, borderRadius:4, backgroundColor:"#67C6E3", display:'flex', alignItems:'center', justifyContent:'center', color:'#5356FF', fontWeight:'bold', fontSize:20 }}>
+                        <p>2024</p>
                         </div>
                     </div>
                 </div>
@@ -105,16 +105,6 @@ const ContactPage = () => {
           <CustomImage preset={"team"} src={"https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg"}/>
           <CustomText preset={"title"}>Delivery man</CustomText>
           <CustomText preset={"subTitle"}>Random Guy 3</CustomText>
-          </article>
-          <article style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
-          <CustomImage preset={"team"} src={"https://images.pexels.com/photos/214574/pexels-photo-214574.jpeg"}/>
-          <CustomText preset={"title"}>Supplier</CustomText>
-          <CustomText preset={"subTitle"}>Random Girl 2</CustomText>
-          </article>
-          <article style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
-          <CustomImage preset={"team"} src={"https://images.pexels.com/photos/1933873/pexels-photo-1933873.jpeg"}/>
-          <CustomText preset={"title"}>EAT Lead</CustomText>
-          <CustomText preset={"subTitle"}>Random Guy 4</CustomText>
           </article>
           </div>
 </div>

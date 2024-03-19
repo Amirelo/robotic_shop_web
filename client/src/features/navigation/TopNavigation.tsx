@@ -3,6 +3,8 @@ import React from "react";
 
 // Components
 import { ButtonLink } from "../../components/buttons";
+import { CustomImage } from "../../components";
+import { flag_vn } from "../../assets/flags";
 
 const TopNavigation = () => {
 
@@ -11,6 +13,7 @@ const TopNavigation = () => {
       {/* Navigation - 1st line */}
       <div style={styles.top}>
         {/* Search bar */}
+        <CustomImage preset={'flag'} src={flag_vn}/>
         <ButtonLink to="/contact">Contact us</ButtonLink>
         <ButtonLink to="" hideActive>Sign In</ButtonLink>
       </div>

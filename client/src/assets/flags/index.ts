@@ -1,0 +1,1 @@
+export {default as flag_vn} from './flag_vn.svg'

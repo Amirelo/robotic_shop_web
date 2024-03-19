@@ -7,12 +7,15 @@ import CustomText from "./CustomText";
 interface Props {
   title?: string;
   list: Array<any>;
+  width?: number;
   render(data: any): any;
   onSeeMoreClicked?(): void;
   
 }
 
 const CustomList = (props: Props) => {
+  const curWdith = props.width + 'px'
+  console.log(curWdith)
   return (
     <div>
       {props.title ? (
@@ -30,7 +33,7 @@ const CustomList = (props: Props) => {
       ) : (
         <></>
       )}
-      <div style={styles.items}>
+      <div style={{...styles.items,gridTemplateColumns: `repeat(auto-fill, ${props.width+'px'})`,}}>
         {props.list.map((data) => props.render(data))}
       </div>
     </div>
@@ -43,8 +46,6 @@ const styles: { [key: string]: React.CSSProperties } = {
   items: {
     display: 'grid',
     gap: 16,
-    marginBottom: 40,
-    gridTemplateColumns: 'repeat(auto-fill, 15em)',
     justifyContent:'space-between'
   },
   title: {

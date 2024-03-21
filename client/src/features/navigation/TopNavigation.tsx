@@ -3,19 +3,31 @@ import React from "react";
 
 // Components
 import { ButtonLink } from "../../components/buttons";
-import { CustomImage } from "../../components";
+import { CustomImage, CustomText } from "../../components";
 import { flag_vn } from "../../assets/flags";
+import { ic_chevron_left, ic_darkmode, ic_lightmode } from "../../assets/icons";
+import themes from "../../preferences/theme/themes";
 
 const TopNavigation = () => {
-
+  const [showLanguages, setShowLanguages] = React.useState(false)
+  const [darkMode, setDarkMode] = React.useState(false)
   return (
     <nav style={styles.body}>
       {/* Navigation - 1st line */}
       <div style={styles.top}>
         {/* Search bar */}
+        <CustomImage onClick={()=>setDarkMode(!darkMode)} src={darkMode ? ic_lightmode : ic_darkmode}/>
+        <div style={{gap:4}}>
         <CustomImage preset={'flag'} src={flag_vn}/>
+        <CustomImage onClick={()=> setShowLanguages(!showLanguages)} src={ic_chevron_left} style={{rotate: showLanguages ? '90deg' : '-90deg'}}/>
+        <div style={{position:'absolute', maxHeight:showLanguages ? 500 : 0, transition:'250ms', overflow:'hidden'}}>
+          <CustomText>Tieng Viet</CustomText>
+          <CustomText>English</CustomText>
+        </div>
+
+        </div>
         <ButtonLink to="/contact">Contact us</ButtonLink>
-        <ButtonLink to="" hideActive>Sign In</ButtonLink>
+        <ButtonLink to="/signin" hideActive>Sign In</ButtonLink>
       </div>
 
       {/* Navigation - 2nd line */}

@@ -33,7 +33,7 @@ const CustomList = (props: Props) => {
       ) : (
         <></>
       )}
-      <div style={{...styles.items,gridTemplateColumns: `repeat(auto-fill, ${props.width+'px'})`,}}>
+      <div style={{...styles.items,gridTemplateColumns: `repeat(auto-fill, ${props.width ? curWdith : 240+'px'})`,}}>
         {props.list.map((data) => props.render(data))}
       </div>
     </div>

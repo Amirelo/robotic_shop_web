@@ -11,6 +11,8 @@ import ic_filter_alt from "./ic_filter_alt.png";
 import ic_add from "./ic_add.svg";
 import ic_expand from "./ic_expand.png";
 import ic_remove from "./ic_remove.svg";
+import ic_darkmode from "./dark_mode.svg";
+import ic_lightmode from "./light_mode.svg";
 
 export {
   ic_cart,
@@ -26,4 +28,6 @@ export {
   ic_add,
   ic_expand,
   ic_remove,
+  ic_darkmode,
+  ic_lightmode,
 };

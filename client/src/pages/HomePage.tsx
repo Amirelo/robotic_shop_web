@@ -17,6 +17,7 @@ import { ItemCategory } from "../features/categories";
 import { ItemBanner, ItemProduct } from "../features/products";
 import { useNavigate } from "react-router-dom";
 import { getActiveBanner } from "../services/BannerServices";
+import { screenWidth } from "../utils/Utilities";
 
 const HomePage = () => {
   // Fields

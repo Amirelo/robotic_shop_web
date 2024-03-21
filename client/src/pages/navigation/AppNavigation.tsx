@@ -14,6 +14,7 @@ import {
   ContactPage,
   ShippingDetailPage,
 } from "../";
+import SignInPage from "../SignInPage";
 
 const AppNavigation = () => {
   return (
@@ -23,6 +24,7 @@ const AppNavigation = () => {
 
         <Routes>
           <Route path="/" Component={HomePage} />
+          <Route path="/signin" Component={SignInPage}/>
           <Route path="/explore" Component={ExplorePage} />
           <Route path="/product_detail" Component={ProductDetailPage} />
           <Route path="/cart" Component={CartPage} />

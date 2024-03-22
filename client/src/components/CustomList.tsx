@@ -10,16 +10,16 @@ interface Props {
   width?: number;
   render(data: any): any;
   onSeeMoreClicked?(): void;
-  
+  marginBottom?: React.CSSProperties["marginBottom"];
 }
 
 const CustomList = (props: Props) => {
-  const curWdith = props.width + 'px'
-  console.log(curWdith)
+  const curWdith = props.width + "px";
+  console.log(curWdith);
   return (
-    <div>
+    <div style={{marginBottom: props.marginBottom}}>
       {props.title ? (
-        <div style={styles.title}>
+        <div style={{ ...styles.title }}>
           <CustomText preset={"title"} marginBottom={8}>
             {props.title + ""}
           </CustomText>
@@ -33,7 +33,14 @@ const CustomList = (props: Props) => {
       ) : (
         <></>
       )}
-      <div style={{...styles.items,gridTemplateColumns: `repeat(auto-fill, ${props.width ? curWdith : 240+'px'})`,}}>
+      <div
+        style={{
+          ...styles.items,
+          gridTemplateColumns: `repeat(auto-fill, ${
+            props.width ? curWdith : 240 + "px"
+          })`,
+        }}
+      >
         {props.list.map((data) => props.render(data))}
       </div>
     </div>
@@ -44,9 +51,9 @@ export default CustomList;
 
 const styles: { [key: string]: React.CSSProperties } = {
   items: {
-    display: 'grid',
+    display: "grid",
     gap: 16,
-    justifyContent:'space-between'
+    justifyContent: "space-between",
   },
   title: {
     display: "flex",

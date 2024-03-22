@@ -15,7 +15,16 @@ const CartPage = () => {
           alignSelf: "center",
         }}
       >
-        <div style={{ flex: 2, display:'flex', alignItems:'center',justifyContent:'center'}}>Empty</div>
+        <div
+          style={{
+            flex: 2,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          Empty
+        </div>
         <div
           style={{
             border: "1px solid black",
@@ -53,7 +62,7 @@ const CartPage = () => {
                     name="delivery_group"
                     style={{ marginRight: 4 }}
                   />
-                  Quick delivery
+                  Cost-effective delivery (4-10 days)
                 </label>
                 <CustomText>+50.000d</CustomText>
               </div>
@@ -64,7 +73,7 @@ const CartPage = () => {
                     name="delivery_group"
                     style={{ marginRight: 4 }}
                   />
-                  Normal delivery
+                  Normal delivery (1-3 days)
                 </label>
                 <CustomText>+100.000d</CustomText>
               </div>
@@ -75,7 +84,7 @@ const CartPage = () => {
                     name="delivery_group"
                     style={{ marginRight: 4 }}
                   />
-                  Cost-effective delivery
+                  Quick delivery (1h)
                 </label>
                 <CustomText>+150.000d</CustomText>
               </div>
@@ -83,10 +92,22 @@ const CartPage = () => {
             <div
               style={{ borderBottom: "1px solid lightgray", marginBottom: 20 }}
             ></div>
-            <CustomText>Total price:</CustomText>
+            <CustomText preset={"subTitle"} marginBottom={8}>
+              Total price:
+            </CustomText>
+            <CustomText preset={"title"}>Payment</CustomText>
+            <label>
+            <input
+              type="radio"
+              name="payment_group"
+              checked
+              style={{ marginRight: 4 }}
+            />
+            Cash
+            </label>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <TextButton style={{ width: "40%" }}>Add Coupon</TextButton>
-              <TextButton style={{ width: "40%" }}>To Payment</TextButton>
+              <TextButton style={{ width: "40%" }}>Order</TextButton>
             </div>
           </div>
         </div>

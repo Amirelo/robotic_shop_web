@@ -187,6 +187,7 @@ const ExplorePage = () => {
 
           <div style={{ flex: 8 }}>
             <CustomList
+              marginBottom={20}
               width={gridDisplay ?  screenWidth*0.16 : screenWidth*0.3}
               list={listProdsFiltered.slice(
                 (page - 1) * itemPerPage,

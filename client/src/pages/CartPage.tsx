@@ -1,9 +1,12 @@
 // Components
 import React from "react";
-import { CustomText } from "../components";
+import { CustomList, CustomText } from "../components";
 import { TextButton } from "../components/buttons";
+import { useSelector } from "react-redux";
+import { ItemProduct } from "../features/products";
 
 const CartPage = () => {
+  const userCart = useSelector((store: any) => store.user.carts);
   const [totalPrice, setTotalPrice] = React.useState(0);
   return (
     <div>
@@ -16,22 +19,29 @@ const CartPage = () => {
         }}
       >
         <div
-          style={{
-            flex: 2,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          Empty
-        </div>
+            style={{
+              flex: 3,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+        {userCart.length > 0 ? (
+          <CustomList
+            list={userCart}
+            render={(data) => <ItemProduct data={data} />}
+          />
+        ) : (
+          
+            <CustomText>Empty</CustomText>
+            )}
+            </div>
         <div
           style={{
             border: "1px solid black",
             borderRadius: 4,
-            width: "30%",
             padding: 12,
-            flex: 1,
+            flex:1
           }}
         >
           <div>
@@ -97,13 +107,13 @@ const CartPage = () => {
             </CustomText>
             <CustomText preset={"title"}>Payment</CustomText>
             <label>
-            <input
-              type="radio"
-              name="payment_group"
-              checked
-              style={{ marginRight: 4 }}
-            />
-            Cash
+              <input
+                type="radio"
+                name="payment_group"
+                checked
+                style={{ marginRight: 4 }}
+              />
+              Cash
             </label>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <TextButton style={{ width: "40%" }}>Add Coupon</TextButton>

@@ -1,10 +1,10 @@
 import { REMOVE_CARTS, UPDATE_CARTS } from "../../constants/AppConstant";
 
 const initialState = {
-  user: "some",
+  user: {},
   curLang: "vn",
   curTheme: "defaultTheme",
-  carts: "thing",
+  carts: [],
 };
 
 export default (state = initialState, action: any) => {
@@ -12,7 +12,7 @@ export default (state = initialState, action: any) => {
     case UPDATE_CARTS:
       return {
         ...state,
-        carts: [state.carts, action.payload.data],
+        carts: [...state.carts, action.payload.data],
       };
     case REMOVE_CARTS: {
       return { ...state, carts: [] };

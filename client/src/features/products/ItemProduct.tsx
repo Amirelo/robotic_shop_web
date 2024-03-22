@@ -19,6 +19,7 @@ import { priceFormat, screenWidth } from "../../utils/Utilities";
 interface Props {
   data: ProductModel;
   marginRight?: React.CSSProperties["marginRight"];
+  onClicked?():any;
 }
 
 const ItemProduct = (props: Props) => {
@@ -90,7 +91,7 @@ const ItemProduct = (props: Props) => {
           </CustomText>
         </div>
         {/* Button - Add To Cart */}
-        <TextButton style={{ marginTop: "auto" }}>Add To Cart</TextButton>
+        <TextButton onClicked={props.onClicked} style={{ marginTop: "auto" }}>Add To Cart</TextButton>
       </article>
     </div>
   );

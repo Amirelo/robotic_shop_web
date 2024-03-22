@@ -86,23 +86,23 @@ const ContactPage = () => {
         </CustomText>
         <div style={{display:'flex', justifyContent:'space-around', gap: 24, marginBottom:10}}>
         <article style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
-          <CustomImage preset={"team"} src={"https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg"}/>
+          <CustomImage preset={"team"} src={"https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress"}/>
           <CustomText preset={"title"}>SEO</CustomText>
           <CustomText preset={"subTitle"}>Random Girl 1</CustomText>
           </article>
 
           <article style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
-          <CustomImage preset={"team"} src={"https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg"}/>
+          <CustomImage preset={"team"} src={"https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress"}/>
           <CustomText preset={"title"}>Store Manager</CustomText>
           <CustomText preset={"subTitle"}>Random Guy 1</CustomText>
           </article>
           <article style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
-          <CustomImage preset={"team"} src={"https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg"}/>
+          <CustomImage preset={"team"} src={"https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress"}/>
           <CustomText preset={"title"}>Logistics</CustomText>
           <CustomText preset={"subTitle"}>Random Guy 2</CustomText>
           </article>
           <article style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
-          <CustomImage preset={"team"} src={"https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg"}/>
+          <CustomImage preset={"team"} src={"https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress"}/>
           <CustomText preset={"title"}>Delivery man</CustomText>
           <CustomText preset={"subTitle"}>Random Guy 3</CustomText>
           </article>

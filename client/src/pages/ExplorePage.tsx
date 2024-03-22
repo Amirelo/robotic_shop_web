@@ -29,8 +29,12 @@ import { getAllCategories } from "../services/CategoryServices";
 import ItemProductList from "../features/products/ItemProductList";
 import { useLocation } from "react-router-dom";
 import { screenWidth } from "../utils/Utilities";
+import { useDispatch, useSelector } from "react-redux";
+import { saveUserCart } from "../redux/actions/UserAction";
 
 const ExplorePage = () => {
+  const userCart = useSelector((store:any) => store.user.carts)
+
   const [listProducts, setListProducts] = React.useState<Array<ProductModel>>(
     []
   );
@@ -42,6 +46,7 @@ const ExplorePage = () => {
     Array<CategoryModel>
   >([]);
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const [itemPerPage, setItemPerPage] = React.useState(12);
   const [page, setPage] = React.useState(1);
@@ -98,9 +103,21 @@ const ExplorePage = () => {
     setDataChanged(!dataChanged);
   };
 
+  const onProductClicked = (item:ProductModel) =>{
+    if (!userCart.includes(item)) {
+
+      dispatch(saveUserCart(item));
+    } else{
+      console.log("Item already in cart")
+    }
+  }
+
   React.useEffect(() => {
     getData();
   }, []);
+  React.useEffect(() => {
+    console.log('user cart:', userCart)
+  }, [userCart]);
 
   const getDataAgain = async () => {
     console.log("Get data again");
@@ -195,7 +212,7 @@ const ExplorePage = () => {
               )}
               render={(data) =>
                 gridDisplay ? (
-                  <ItemProduct key={data.id} data={data} />
+                  <ItemProduct onClicked={()=>onProductClicked(data)} key={data.id} data={data} />
                 ) : (
                   <ItemProductList key={data.id} data={data} />
                 )

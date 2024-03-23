@@ -2,35 +2,35 @@
 import React from "react";
 
 // Models
-import { CategoryModel, ProductModel } from "../models";
+import { CategoryModel, ProductModel } from "../../models";
 
 // Services
 import {
   getAllProducts,
   getProductsByCategoryID,
   getProductsBySubCategoryID,
-} from "../services/ProductServices";
+} from "../../services/ProductServices";
 
 // Components
-import { CustomList } from "../components";
+import { CustomList } from "../../components";
 import {
   ItemProduct,
   PaginationTab,
   FilterOption,
   AdvanceFilterOption,
-} from "../features/products";
+} from "../../features/products";
 import {
   SORT_POPULAR,
   SORT_PRICE_HL,
   SORT_PRICE_LH,
   SORT_RATING,
-} from "../constants/AppConstant";
-import { getAllCategories } from "../services/CategoryServices";
-import ItemProductList from "../features/products/ItemProductList";
+} from "../../constants/AppConstant";
+import { getAllCategories } from "../../services/CategoryServices";
+import ItemProductList from "../../features/products/ItemProductList";
 import { useLocation } from "react-router-dom";
-import { screenWidth } from "../utils/Utilities";
+import { screenWidth } from "../../utils/Utilities";
 import { useDispatch, useSelector } from "react-redux";
-import { saveUserCart } from "../redux/actions/UserAction";
+import { saveUserCart } from "../../redux/actions/UserAction";
 
 const ExplorePage = () => {
   const userCart = useSelector((store:any) => store.user.carts)

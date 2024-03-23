@@ -1,9 +1,9 @@
 // Components
 import React from "react";
-import { CustomList, CustomText } from "../components";
-import { TextButton } from "../components/buttons";
+import { CustomList, CustomText } from "../../components";
+import { TextButton } from "../../components/buttons";
 import { useSelector } from "react-redux";
-import { ItemProduct } from "../features/products";
+import { ItemProduct } from "../../features/products";
 
 const CartPage = () => {
   const userCart = useSelector((store: any) => store.user.carts);

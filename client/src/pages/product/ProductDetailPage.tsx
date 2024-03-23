@@ -1,13 +1,13 @@
 // Components
 import { useLocation } from "react-router-dom";
-import { CustomImage, CustomText } from "../components";
+import { CustomImage, CustomText } from "../../components";
 import React from "react";
-import { ProductModel } from "../models";
-import { RatingStars } from "../features/products";
-import { priceFormat, screenWidth } from "../utils/Utilities";
-import { TextButton } from "../components/buttons";
-import { ic_add, ic_remove } from "../assets/icons";
-import themes from "../preferences/theme/themes";
+import { ProductModel } from "../../models";
+import { RatingStars } from "../../features/products";
+import { priceFormat, screenWidth } from "../../utils/Utilities";
+import { TextButton } from "../../components/buttons";
+import { ic_add, ic_remove } from "../../assets/icons";
+import themes from "../../preferences/theme/themes";
 
 const ProductDetailPage = () => {
   const location = useLocation();

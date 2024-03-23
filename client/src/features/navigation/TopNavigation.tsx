@@ -6,7 +6,7 @@ import { ButtonLink } from "../../components/buttons";
 import { CustomImage, CustomText } from "../../components";
 import { flag_vn } from "../../assets/flags";
 import { ic_chevron_left, ic_darkmode, ic_lightmode } from "../../assets/icons";
-import themes from "../../preferences/theme/themes";
+import { ROUTE_CART, ROUTE_CONTACT, ROUTE_EXPLORE, ROUTE_HOME, ROUTE_SIGN_IN } from "../../constants/AppConstant";
 
 const TopNavigation = () => {
   const [showLanguages, setShowLanguages] = React.useState(false)
@@ -26,15 +26,15 @@ const TopNavigation = () => {
         </div>
 
         </div>
-        <ButtonLink to="/contact">Contact us</ButtonLink>
-        <ButtonLink to="/signin" hideActive>Sign In</ButtonLink>
+        <ButtonLink to={ROUTE_CONTACT}>Contact us</ButtonLink>
+        <ButtonLink to={ROUTE_SIGN_IN} hideActive>Sign In</ButtonLink>
       </div>
 
       {/* Navigation - 2nd line */}
       <div style={styles.bottom}>
-        <ButtonLink to="/">Home</ButtonLink>
-        <ButtonLink to="/explore">Explore</ButtonLink>
-        <ButtonLink to="/cart">Cart</ButtonLink>
+        <ButtonLink to={ROUTE_HOME}>Home</ButtonLink>
+        <ButtonLink to={ROUTE_EXPLORE}>Explore</ButtonLink>
+        <ButtonLink to={ROUTE_CART}>Cart</ButtonLink>
 
       </div>
     </nav>

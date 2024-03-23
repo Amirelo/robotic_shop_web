@@ -1,6 +1,6 @@
 import React from "react";
-import { CustomText } from "../components";
-import { TextButton } from "../components/buttons";
+import { CustomText } from "../../components";
+import { TextButton } from "../../components/buttons";
 
 const SignInPage = () => {
     return (

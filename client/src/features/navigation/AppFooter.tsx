@@ -4,16 +4,17 @@ import React from "react";
 // Components
 import { CustomText } from "../../components";
 import { ButtonLink } from "../../components/buttons";
+import { ROUTE_CONTACT, ROUTE_SHIPPING } from "../../constants/AppConstant";
 
 const AppFooter = () => {
   return (
     <div style={styles.body}>
       <div style={styles.column}>
         <CustomText preset={"title"}>Information:</CustomText>
-        <ButtonLink to="/contact" hideActive>
+        <ButtonLink to={ROUTE_CONTACT} hideActive>
           About us
         </ButtonLink>
-        <ButtonLink to="/shipping_and_return" hideActive>
+        <ButtonLink to={ROUTE_SHIPPING} hideActive>
           Shipping and returns
         </ButtonLink>
       </div>

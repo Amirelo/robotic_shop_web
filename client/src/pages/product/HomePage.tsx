@@ -2,22 +2,22 @@
 import React from "react";
 
 // Models
-import { BannerModel, CategoryModel, ProductModel } from "../models";
+import { BannerModel, CategoryModel, ProductModel } from "../../models";
 
 // Services
 import {
   getAllProducts,
   getProductsByCategoryID,
-} from "../services/ProductServices";
-import { getAllCategories } from "../services/CategoryServices";
+} from "../../services/ProductServices";
+import { getAllCategories } from "../../services/CategoryServices";
 
 // Components
-import { CustomList, CustomText } from "../components";
-import { ItemCategory } from "../features/categories";
-import { ItemBanner, ItemProduct } from "../features/products";
+import { CustomList, CustomText } from "../../components";
+import { ItemCategory } from "../../features/categories";
+import { ItemBanner, ItemProduct } from "../../features/products";
 import { useNavigate } from "react-router-dom";
-import { getActiveBanner } from "../services/BannerServices";
-import { screenWidth } from "../utils/Utilities";
+import { getActiveBanner } from "../../services/BannerServices";
+import { screenWidth } from "../../utils/Utilities";
 
 const HomePage = () => {
   // Fields

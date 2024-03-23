@@ -1,6 +1,6 @@
 // Components
-import { ic_linkedin } from "../assets/social";
-import { CustomImage, CustomText } from "../components";
+import { ic_linkedin } from "../../assets/social";
+import { CustomImage, CustomText } from "../../components";
 
 const ContactPage = () => {
   return (

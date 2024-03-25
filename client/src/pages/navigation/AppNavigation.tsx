@@ -1,25 +1,16 @@
 // React and libs
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// Navigation components
+// Constants
+import { ROUTE_CART, ROUTE_CONTACT, ROUTE_DISCOUNT, ROUTE_EXPLORE, ROUTE_FAVORITES, ROUTE_HOME, ROUTE_NOTIFICATION, ROUTE_ORDER, ROUTE_PRODUCT_DETAIL, ROUTE_SHIPPING, ROUTE_SIGN_IN, ROUTE_SIGN_UP, ROUTE_UPDATE_INFO, ROUTE_USER_INFO } from "../../constants/AppConstant";
+
+// Components
 import { TopNavigation, AppFooter } from "../../features/navigation";
 
 // Pages
-
 import { HomePage, ExplorePage, ProductDetailPage, CartPage, ContactPage, ShippingDetailPage } from "../product";
 import { SignInPage, SignUpPage, UserInfoPage, UpdateInfoPage, OrderPage, DiscountPage, FavoritePage,NotificationPage, } from "../user";
-import { ROUTE_CART, ROUTE_CONTACT, ROUTE_DISCOUNT, ROUTE_EXPLORE, ROUTE_FAVORITES, ROUTE_HOME, ROUTE_NOTIFICATION, ROUTE_ORDER, ROUTE_PRODUCT_DETAIL, ROUTE_SHIPPING, ROUTE_SIGN_IN, ROUTE_SIGN_UP, ROUTE_UPDATE_INFO, ROUTE_USER_INFO } from "../../constants/AppConstant";
 
-// import {
-//   HomePage,
-//   ExplorePage,
-//   ProductDetailPage,
-//   CartPage,
-//   OnSalePage,
-//   ContactPage,
-//   ShippingDetailPage,
-// } from "../";
-// import SignInPage from "../user/SignInPage";
 
 const AppNavigation = () => {
   return (

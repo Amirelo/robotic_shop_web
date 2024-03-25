@@ -4,6 +4,7 @@ import { CustomList, CustomText } from "../../components";
 import { TextButton } from "../../components/buttons";
 import { useSelector } from "react-redux";
 import { ItemProduct } from "../../features/products";
+import { ItemCart } from "../../features/carts";
 
 const CartPage = () => {
   const userCart = useSelector((store: any) => store.user.carts);
@@ -29,7 +30,7 @@ const CartPage = () => {
         {userCart.length > 0 ? (
           <CustomList
             list={userCart}
-            render={(data) => <ItemProduct data={data} />}
+            render={(data) => <ItemCart data={data} />}
           />
         ) : (
           

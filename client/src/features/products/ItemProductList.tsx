@@ -46,7 +46,7 @@ const ItemProductList = (props: Props) => {
         <div style={{ width: 150, height: 150, paddingRight: 12 }}>
           <CustomImage
             src={props.data.images[0]}
-            preset={"fit"}
+            preset={"item"}
             marginBottom={8}
           />
         </div>

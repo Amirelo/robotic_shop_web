@@ -19,7 +19,7 @@ import { priceFormat, screenWidth } from "../../utils/Utilities";
 interface Props {
   data: ProductModel;
   marginRight?: React.CSSProperties["marginRight"];
-  onClicked?():any;
+  onClicked?(): any;
 }
 
 const ItemProduct = (props: Props) => {
@@ -59,6 +59,7 @@ const ItemProduct = (props: Props) => {
         <div onClick={onProductPressed} style={{ cursor: "pointer" }}>
           <div style={{ width: "100%", height: 150 }}>
             <CustomImage
+              style={{ width: "100%" }}
               src={props.data.images[0]}
               preset={"fit"}
               marginBottom={8}
@@ -91,7 +92,9 @@ const ItemProduct = (props: Props) => {
           </CustomText>
         </div>
         {/* Button - Add To Cart */}
-        <TextButton onClicked={props.onClicked} style={{ marginTop: "auto" }}>Add To Cart</TextButton>
+        <TextButton onClicked={props.onClicked} style={{ marginTop: "auto" }}>
+          Add To Cart
+        </TextButton>
       </article>
     </div>
   );

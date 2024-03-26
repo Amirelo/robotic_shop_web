@@ -103,7 +103,7 @@ const ExplorePage = () => {
     setDataChanged(!dataChanged);
   };
 
-  const onProductClicked = (item:ProductModel) =>{
+  const onSaveCartClicked = (item:ProductModel) =>{
     if (!userCart.includes(item)) {
 
       dispatch(saveUserCart(item));
@@ -212,7 +212,7 @@ const ExplorePage = () => {
               )}
               render={(data) =>
                 gridDisplay ? (
-                  <ItemProduct onClicked={()=>onProductClicked(data)} key={data.id} data={data} />
+                  <ItemProduct onClicked={()=>onSaveCartClicked(data)} key={data.id} data={data} />
                 ) : (
                   <ItemProductList key={data.id} data={data} />
                 )

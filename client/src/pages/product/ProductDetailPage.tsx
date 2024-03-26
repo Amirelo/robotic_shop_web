@@ -8,12 +8,12 @@ import { priceFormat, screenWidth } from "../../utils/Utilities";
 import { TextButton } from "../../components/buttons";
 import { ic_add, ic_remove } from "../../assets/icons";
 import themes from "../../preferences/theme/themes";
+import { useDispatch, useSelector } from "react-redux";
+import { saveUserCart } from "../../redux/actions/UserAction";
 
 const ProductDetailPage = () => {
   const location = useLocation();
-  const [product, setProduct] = React.useState<ProductModel>(
-    location.state.product
-  );
+  const [product, setProduct] = React.useState<ProductModel>(location.state.product);
   const randomSongs = [
     "https://www.youtube.com/embed/mKxzJzp6oes?si=pO21iRjxbc7X17sh",
     "https://www.youtube.com/embed/cJOkT28U4V4?si=ma7qcCAGyVp2CMlQ",
@@ -31,15 +31,28 @@ const ProductDetailPage = () => {
 
   const [mainImgHover, setMainImgHover] = React.useState(false);
 
+    const userCart = useSelector((store:any) => store.user.carts)
+    const dispatch = useDispatch()
+
   const onSubImageHover = (img: string) => {
     console.log("hover");
     setSelectedImage(img);
   };
 
+  const onSaveCartClicked = () =>{
+    if ( !userCart.includes(product)) {
+
+      dispatch(saveUserCart(product));
+    } else{
+      console.log("Item already in cart")
+    }
+  }
+
   React.useEffect(() => {
     const rando = Math.floor(Math.random() * randomSongs.length);
     setCurrentVideo(randomSongs[rando]);
     console.log("random video:", rando, randomSongs[rando]);
+    setProduct(location.state.product)
   }, []);
 
   const updateQuantity = (amount:number) => {
@@ -136,7 +149,7 @@ const ProductDetailPage = () => {
               />
             </div>
 
-            <TextButton style={{ width: "fit-content", paddingInline: 35 }}>
+            <TextButton style={{ width: "fit-content", paddingInline: 35 }} onClicked={onSaveCartClicked}>
               Add to cart
             </TextButton>
           </div>
@@ -161,7 +174,6 @@ const ProductDetailPage = () => {
             }}
             src={currentVideo}
             title="YouTube video player"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           ></iframe>

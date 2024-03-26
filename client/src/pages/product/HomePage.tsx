@@ -113,7 +113,9 @@ const HomePage = () => {
           title="Find product by Category"
           onSeeMoreClicked={onSeemoreClicked}
           list={listCategories.slice(0, 6)}
+          width={200}
           render={(data) => <ItemCategory data={data} onClicked={()=>onCategoryClicked(data)} />}
+          marginBottom={20}
         />
 
         {/* <CustomList
@@ -129,6 +131,7 @@ const HomePage = () => {
             .sort((a, b) => a.totalRating - b.totalRating)
             .slice(0, 8)}
           render={(data) => <ItemProduct data={data} />}
+          marginBottom={20}
         />
 
         <CustomList
@@ -136,6 +139,7 @@ const HomePage = () => {
           onSeeMoreClicked={onSeemoreClicked}
           list={listProductKit}
           render={(data) => <ItemProduct data={data} />}
+          marginBottom={20}
         />
 
         <CustomList
@@ -143,6 +147,7 @@ const HomePage = () => {
           onSeeMoreClicked={onSeemoreClicked}
           list={listProductArduino}
           render={(data) => <ItemProduct data={data} />}
+          marginBottom={20}
         />
 
         <CustomList

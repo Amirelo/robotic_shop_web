@@ -1,5 +1,6 @@
 // React and libs
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 // Models
 import { BannerModel, CategoryModel, ProductModel } from "../../models";
@@ -10,18 +11,16 @@ import {
   getProductsByCategoryID,
 } from "../../services/ProductServices";
 import { getAllCategories } from "../../services/CategoryServices";
+import { getActiveBanner } from "../../services/BannerServices";
 
 // Components
-import { CustomList, CustomText } from "../../components";
+import { CustomList } from "../../components";
 import { ItemCategory } from "../../features/categories";
 import { ItemBanner, ItemProduct } from "../../features/products";
-import { useNavigate } from "react-router-dom";
-import { getActiveBanner } from "../../services/BannerServices";
-import { screenWidth } from "../../utils/Utilities";
 
 const HomePage = () => {
   // Fields
-  const [listBanners, setListBanners] = React.useState<Array<BannerModel>>([])
+  const [listBanners, setListBanners] = React.useState<Array<BannerModel>>([]);
   const [listProducts, setListProducts] = React.useState<Array<ProductModel>>(
     []
   );
@@ -39,16 +38,17 @@ const HomePage = () => {
     Array<ProductModel>
   >([]);
 
-  const navigate =useNavigate()
+  const navigate = useNavigate();
 
-    const onSeemoreClicked = () => {
-      navigate('/explore')
-    }
+  // See more button clicked
+  const onSeemoreClicked = () => {
+    navigate("/explore");
+  };
 
   const getData = async () => {
     // Get Active banners
-    const banners: Array<BannerModel> = await getActiveBanner()
-    setListBanners(banners)
+    const banners: Array<BannerModel> = await getActiveBanner();
+    setListBanners(banners);
 
     // Get all products
     const products: Array<ProductModel> = await getAllProducts();
@@ -88,10 +88,11 @@ const HomePage = () => {
   };
 
   // On Category clicked
-  const onCategoryClicked = (data:CategoryModel) => {
-    navigate('/explore', {state:{category: data}})
-  }
+  const onCategoryClicked = (data: CategoryModel) => {
+    navigate("/explore", { state: { category: data } });
+  };
 
+  // Run at beginning
   React.useEffect(() => {
     setListProducts([]);
     setListCategories([]);
@@ -101,11 +102,11 @@ const HomePage = () => {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <main style={{ width: "90%" }}>
-        {listBanners.length > 0 ?
-        <ItemBanner
-        data={listBanners[0]}
-          marginBottom={20}/>
-          :<></>}
+        {listBanners.length > 0 ? (
+          <ItemBanner data={listBanners[0]} marginBottom={20} />
+        ) : (
+          <></>
+        )}
 
         {/* Category */}
 
@@ -114,7 +115,12 @@ const HomePage = () => {
           onSeeMoreClicked={onSeemoreClicked}
           list={listCategories.slice(0, 6)}
           width={200}
-          render={(data) => <ItemCategory data={data} onClicked={()=>onCategoryClicked(data)} />}
+          render={(data) => (
+            <ItemCategory
+              data={data}
+              onClicked={() => onCategoryClicked(data)}
+            />
+          )}
           marginBottom={20}
         />
 

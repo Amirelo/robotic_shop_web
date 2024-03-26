@@ -4,25 +4,29 @@ import React from "react";
 // Components
 import CustomText from "./CustomText";
 
+// Properties
 interface Props {
   title?: string;
   list: Array<any>;
   width?: number;
+  marginBottom?: React.CSSProperties["marginBottom"];
   render(data: any): any;
   onSeeMoreClicked?(): void;
-  marginBottom?: React.CSSProperties["marginBottom"];
 }
 
 const CustomList = (props: Props) => {
   const curWdith = props.width + "px";
   console.log(curWdith);
   return (
-    <div style={{marginBottom: props.marginBottom}}>
+    <div style={{ marginBottom: props.marginBottom }}>
       {props.title ? (
+        // Header
         <div style={{ ...styles.title }}>
+          {/* Title */}
           <CustomText preset={"title"} marginBottom={8}>
             {props.title + ""}
           </CustomText>
+          {/* Button - See more */}
           <CustomText
             style={{ cursor: "pointer", textDecoration: "underline" }}
             onClick={props.onSeeMoreClicked}
@@ -33,6 +37,7 @@ const CustomList = (props: Props) => {
       ) : (
         <></>
       )}
+      {/* List */}
       <div
         style={{
           ...styles.items,
@@ -49,6 +54,7 @@ const CustomList = (props: Props) => {
 
 export default CustomList;
 
+// Styles
 const styles: { [key: string]: React.CSSProperties } = {
   items: {
     display: "grid",

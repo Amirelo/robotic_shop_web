@@ -14,8 +14,8 @@ interface Props {
   style?: React.CSSProperties;
   onClicked?(): void;
   backgroundColor?: React.CSSProperties["backgroundColor"];
-  hasButton?: boolean
-  onAddButtonClicked?(): void
+  hasButton?: boolean;
+  onAddButtonClicked?(): void;
 }
 
 const TextButton = (props: Props) => {
@@ -30,22 +30,29 @@ const TextButton = (props: Props) => {
       style={{
         ...styles.button,
         marginBottom: props.marginBottom,
-        borderWidth: 0,
-        cursor: "pointer",
-        backgroundColor:  hover
+        backgroundColor: hover
           ? themes["defaultTheme"].primary_hover
-          : props.backgroundColor ? props.backgroundColor : themes["defaultTheme"].primary,
-        display:props.hasButton ? 'flex': '',
-        justifyContent:'space-between',
-        alignItems:'center',
-        height:props.hasButton ? 56 : 40,
+          : props.backgroundColor
+          ? props.backgroundColor
+          : themes["defaultTheme"].primary,
+        display: props.hasButton ? "flex" : "",
+
+        height: props.hasButton ? 56 : 40,
         ...props.style,
       }}
     >
-      <CustomText fontWeight={'bold'}>{props.children}</CustomText>
-      {props.hasButton?
-      <CustomImage src={ic_add} preset={"box"} backgroundcolor={themes['defaultTheme'].primary} onClick={props.onAddButtonClicked}/>
-:<></>}
+      {/* Button Title */}
+      <CustomText fontWeight={"bold"}>{props.children}</CustomText>
+      {props.hasButton ? (
+        <CustomImage
+          src={ic_add}
+          preset={"box"}
+          backgroundcolor={themes["defaultTheme"].primary}
+          onClick={props.onAddButtonClicked}
+        />
+      ) : (
+        <></>
+      )}
     </button>
   );
 };
@@ -58,6 +65,9 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: 4,
     width: "100%",
     transition: "500ms",
+    borderWidth: 0,
+    cursor: "pointer",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
-  
 };

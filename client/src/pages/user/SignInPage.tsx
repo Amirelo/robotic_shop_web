@@ -1,8 +1,13 @@
+// React and libs
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
+// Constants
+import { ROUTE_SIGN_UP, ROUTE_UPDATE_INFO } from "../../constants/AppConstant";
+
+// Components
 import { CustomText } from "../../components";
 import { TextButton } from "../../components/buttons";
-import { useNavigate } from "react-router-dom";
-import { ROUTE_SIGN_UP, ROUTE_UPDATE_INFO } from "../../constants/AppConstant";
 
 const SignInPage = () => {
     const navigation = useNavigate()

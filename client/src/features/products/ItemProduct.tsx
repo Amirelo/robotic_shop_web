@@ -28,10 +28,12 @@ const ItemProduct = (props: Props) => {
   const [display, setDisplay] = React.useState(false);
   const [hover, setHover] = React.useState(false);
 
+  // On Product click: navigate to Product Detail Page
   const onProductPressed = () => {
     navigate("/product_detail", { state: { product: props.data } });
   };
 
+  // Start animation
   React.useEffect(() => {
     setDisplay(true);
   }, []);
@@ -41,7 +43,6 @@ const ItemProduct = (props: Props) => {
       style={{
         ...styles.body,
         transform: display ? "scale(1)" : "scale(0)",
-        transition: "1000ms",
       }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
@@ -58,6 +59,7 @@ const ItemProduct = (props: Props) => {
       >
         <div onClick={onProductPressed} style={{ cursor: "pointer" }}>
           <div style={{ width: "100%", height: 150 }}>
+            {/* Product Image */}
             <CustomImage
               style={{ width: "100%" }}
               src={props.data.images[0]}
@@ -107,5 +109,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     width: screenWidth * 0.16,
     display: "flex",
     flexDirection: "column",
+    transition: "1000ms",
   },
 };

@@ -1,5 +1,15 @@
 // React and libs
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+
+// Constants
+import {
+  SORT_POPULAR,
+  SORT_PRICE_HL,
+  SORT_PRICE_LH,
+  SORT_RATING,
+} from "../../constants/AppConstant";
 
 // Models
 import { CategoryModel, ProductModel } from "../../models";
@@ -10,6 +20,10 @@ import {
   getProductsByCategoryID,
   getProductsBySubCategoryID,
 } from "../../services/ProductServices";
+import { getAllCategories } from "../../services/CategoryServices";
+
+// Redux actions
+import { saveUserCart } from "../../redux/actions/UserAction";
 
 // Components
 import { CustomList } from "../../components";
@@ -19,21 +33,15 @@ import {
   FilterOption,
   AdvanceFilterOption,
 } from "../../features/products";
-import {
-  SORT_POPULAR,
-  SORT_PRICE_HL,
-  SORT_PRICE_LH,
-  SORT_RATING,
-} from "../../constants/AppConstant";
-import { getAllCategories } from "../../services/CategoryServices";
 import ItemProductList from "../../features/products/ItemProductList";
-import { useLocation } from "react-router-dom";
+
+// Utilities
 import { screenWidth } from "../../utils/Utilities";
-import { useDispatch, useSelector } from "react-redux";
-import { saveUserCart } from "../../redux/actions/UserAction";
 
 const ExplorePage = () => {
-  const userCart = useSelector((store:any) => store.user.carts)
+  const userCart = useSelector((store: any) => store.user.carts);
+  const location = useLocation();
+  const dispatch = useDispatch();
 
   const [listProducts, setListProducts] = React.useState<Array<ProductModel>>(
     []
@@ -45,8 +53,6 @@ const ExplorePage = () => {
   const [listCategories, setListCategories] = React.useState<
     Array<CategoryModel>
   >([]);
-  const location = useLocation();
-  const dispatch = useDispatch();
 
   const [itemPerPage, setItemPerPage] = React.useState(12);
   const [page, setPage] = React.useState(1);
@@ -59,9 +65,10 @@ const ExplorePage = () => {
   const [minPrice, setMinPrice] = React.useState<number>();
   const [maxPrice, setMaxPrice] = React.useState<number>();
 
-  const [showAvailableStock, setShowAvailableStock] = React.useState(true)
-  const [selectedSubCategory, setSelectedSubCategory] = React.useState('')
+  const [showAvailableStock, setShowAvailableStock] = React.useState(true);
+  const [selectedSubCategory, setSelectedSubCategory] = React.useState("");
 
+  // Get data from server
   const getData = async () => {
     const products: Array<ProductModel> = await getAllProducts();
     setListProducts(products);
@@ -76,16 +83,19 @@ const ExplorePage = () => {
     }
   };
 
+  // Show product match category ID
   const onCategoryClicked = (id: string) => {
     console.log("Category ID:", id);
     setSelectedCategory(id);
   };
 
-  const onSubCategoryClicked = (id:string) => {
-    setSelectedCategory('')
-    setSelectedSubCategory(id)
-  }
+  // Show product match sub category ID
+  const onSubCategoryClicked = (id: string) => {
+    setSelectedCategory("");
+    setSelectedSubCategory(id);
+  };
 
+  // Filter by min - max price
   const onPriceApplied = () => {
     console.log(
       "apply price click, maxprice: " + maxPrice + ", minprice:" + minPrice
@@ -103,46 +113,53 @@ const ExplorePage = () => {
     setDataChanged(!dataChanged);
   };
 
-  const onSaveCartClicked = (item:ProductModel) =>{
+  // Save cart to Redux
+  const onSaveCartClicked = (item: ProductModel) => {
     if (!userCart.includes(item)) {
-
       dispatch(saveUserCart(item));
-    } else{
-      console.log("Item already in cart")
+    } else {
+      console.log("Item already in cart");
     }
-  }
+  };
 
+  // Get data
   React.useEffect(() => {
     getData();
   }, []);
+
+  // Log cart status
   React.useEffect(() => {
-    console.log('user cart:', userCart)
+    console.log("user cart:", userCart);
   }, [userCart]);
 
+  // Apply filter
   const getDataAgain = async () => {
     console.log("Get data again");
     var products: Array<ProductModel> = listProducts;
+    // Filter by category
     if (selcetedCategory.length > 0) {
-      setSelectedSubCategory('')
-      console.log('category selected:', selectedSubCategory)
+      setSelectedSubCategory("");
+      console.log("category selected:", selectedSubCategory);
       products = await getProductsByCategoryID(selcetedCategory, 50);
       setListProdsFiltered(products);
       console.log("New product", products);
+      // Filter by sub category
     } else if (selectedSubCategory.length > 0) {
-      console.log('sub category selected:', selectedSubCategory)
+      console.log("sub category selected:", selectedSubCategory);
       products = await getProductsBySubCategoryID(selectedSubCategory, 50);
       setListProdsFiltered(products);
       console.log("New product", products);
     } else {
       console.log("category empty");
     }
-
-    if(!showAvailableStock){
-      console.log("Available status deactivate")
-      products = products.filter(item => item.quantity <= 0)
-      setListProdsFiltered(products)
+    // Filter status
+    if (!showAvailableStock) {
+      console.log("Available status deactivate");
+      products = products.filter((item) => item.quantity <= 0);
+      setListProdsFiltered(products);
     }
 
+    // Sort
     switch (sort) {
       case SORT_POPULAR:
         setListProdsFiltered(products.sort((a, b) => b.sold - a.sold));
@@ -160,14 +177,17 @@ const ExplorePage = () => {
         setListProdsFiltered(products.sort((a, b) => a.price - b.price));
         break;
     }
-    setListProdsFiltered(products)
+    // Set list
+    setListProdsFiltered(products);
     setDataChanged(!dataChanged);
   };
 
+  // Run filter when changed
   React.useEffect(() => {
     getDataAgain();
   }, [sort, selcetedCategory, selectedSubCategory, showAvailableStock]);
 
+  // Search
   React.useEffect(() => {
     console.log("Searching...");
     const filteredList = listProducts.filter((item) =>
@@ -180,6 +200,7 @@ const ExplorePage = () => {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <main style={{ width: "90%", paddingTop: 20 }}>
+        {/* Top */}
         <FilterOption
           search={search}
           currentView={gridDisplay}
@@ -188,37 +209,47 @@ const ExplorePage = () => {
           onViewChanged={(status) => setGridDisplay(status)}
           onSearchChange={(text) => setSearch(text)}
           onSortChange={(text) => setSort(text)}
-          onItemPerPageChange={(number) => {setItemPerPage(number)}}
+          onItemPerPageChange={(number) => {
+            setItemPerPage(number);
+          }}
         />
         <div style={{ display: "flex" }}>
+          {/* Left */}
           <AdvanceFilterOption
             onCategoryClicked={(id: string) => onCategoryClicked(id)}
-            onSubCategoryClicked={(id:string) => onSubCategoryClicked(id)}
+            onSubCategoryClicked={(id: string) => onSubCategoryClicked(id)}
             style={{ flex: 2 }}
             categories={listCategories}
             setMinPrice={(amount: number) => setMinPrice(amount)}
             setMaxPrice={(amount: number) => setMaxPrice(amount)}
             onApplyClicked={onPriceApplied}
-            onAvailableChecked={(status)=>{setShowAvailableStock(status); console.log("Changed:", status)}}
+            onAvailableChecked={(status) => {
+              setShowAvailableStock(status);
+              console.log("Changed:", status);
+            }}
           />
 
           <div style={{ flex: 8 }}>
             <CustomList
               marginBottom={20}
-              width={gridDisplay ?  screenWidth*0.16 : screenWidth*0.3}
+              width={gridDisplay ? screenWidth * 0.16 : screenWidth * 0.3}
               list={listProdsFiltered.slice(
                 (page - 1) * itemPerPage,
                 itemPerPage * page
               )}
               render={(data) =>
                 gridDisplay ? (
-                  <ItemProduct onClicked={()=>onSaveCartClicked(data)} key={data.id} data={data} />
+                  <ItemProduct
+                    onClicked={() => onSaveCartClicked(data)}
+                    key={data.id}
+                    data={data}
+                  />
                 ) : (
                   <ItemProductList key={data.id} data={data} />
                 )
               }
             />
-
+            {/* Pagination */}
             {listProdsFiltered.length / itemPerPage > 1 ? (
               <PaginationTab
                 data={listProdsFiltered}

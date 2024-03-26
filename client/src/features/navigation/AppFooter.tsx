@@ -20,8 +20,22 @@ const AppFooter = () => {
       </div>
       <div style={styles.column}>
         <CustomText preset={"title"}>Contact</CustomText>
-        <CustomText style={{cursor:'pointer'}} onClick={()=>{navigator.clipboard.writeText("0582814653")}}>Phone: 058 281 4653</CustomText>
-        <CustomText style={{cursor:'pointer'}} onClick={()=> {navigator.clipboard.writeText("trandang210799@gmail.com")}}>Email: trandang210799@gmail.com</CustomText>
+        <CustomText
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            navigator.clipboard.writeText("0582814653");
+          }}
+        >
+          Phone: 058 281 4653
+        </CustomText>
+        <CustomText
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            navigator.clipboard.writeText("trandang210799@gmail.com");
+          }}
+        >
+          Email: trandang210799@gmail.com
+        </CustomText>
       </div>
     </div>
   );
@@ -36,7 +50,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     justifyContent: "space-around",
     backgroundColor: "#FFFFF0",
     paddingBlock: 30,
-    marginTop:30
+    marginTop: 30,
   },
   column: {
     display: "flex",

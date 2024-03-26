@@ -20,8 +20,8 @@ const CustomText = (props: Props) => {
     <p
       onClick={props.onClick}
       style={{
-        fontWeight: props.fontWeight,
         ...textStyles[selectedStyle],
+        fontWeight: props.fontWeight,
         color: props.color ?? themes["defaultTheme"].text,
         marginBottom: props.marginBottom,
         maxHeight: props.maxLines ? props.maxLines * 20 : 500 * 20,

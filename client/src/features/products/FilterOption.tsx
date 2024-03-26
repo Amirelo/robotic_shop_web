@@ -1,8 +1,13 @@
 // React and libs
 import React from "react";
 
-// Assets
-import { ic_filter_alt, ic_grid_view, ic_list_view } from "../../assets/icons";
+// Constants
+import {
+  SORT_POPULAR,
+  SORT_PRICE_HL,
+  SORT_PRICE_LH,
+  SORT_RATING,
+} from "../../constants/AppConstant";
 
 // Components
 import { CustomImage, CustomText, OptionBox } from "../../components";
@@ -10,8 +15,11 @@ import SearchBar from "./SearchBar";
 
 // User Preferences
 import themes from "../../preferences/theme/themes";
-import { SORT_POPULAR, SORT_PRICE_HL, SORT_PRICE_LH, SORT_RATING } from "../../constants/AppConstant";
 
+// Icons
+import { ic_grid_view, ic_list_view } from "../../assets/icons";
+
+// Properties
 interface Props {
   search: string;
   currentView: boolean;
@@ -28,37 +36,34 @@ const FilterOption = (props: Props) => {
   return (
     <div style={{ marginBottom: 20 }}>
       <div style={styles.body}>
-        <div
-          style={{
-            display: "flex",
-            gap: 8,
-            alignItems: "center",
-            backgroundColor: "white",
-            borderRadius: 4,
-            paddingInline: 12,
-            paddingBlock: 8,
-            border: '1px solid black',
-          }}
-        >
+        {/* Display */}
+        <div style={styles.displayBlock}>
           <CustomText>View as</CustomText>
+          {/* Grid View */}
           <CustomImage
             src={ic_grid_view}
             preset={"box"}
             backgroundcolor={
-              props.currentView ? themes["defaultTheme"].primary : themes['defaultTheme'].background
+              props.currentView
+                ? themes["defaultTheme"].primary
+                : themes["defaultTheme"].background
             }
             onClick={() => props.onViewChanged(true)}
           />
+          {/* List View */}
           <CustomImage
             src={ic_list_view}
             preset={"box"}
             backgroundcolor={
-              !props.currentView ? themes["defaultTheme"].primary : themes['defaultTheme'].background
+              !props.currentView
+                ? themes["defaultTheme"].primary
+                : themes["defaultTheme"].background
             }
             onClick={() => props.onViewChanged(false)}
           />
         </div>
 
+        {/* Select - sort */}
         <OptionBox
           title="Sort by"
           onChanged={(e) => props.onSortChange(e.target.value)}
@@ -69,6 +74,7 @@ const FilterOption = (props: Props) => {
           <option value={SORT_PRICE_HL}>Price: High to low</option>
         </OptionBox>
 
+        {/* Select - items per page */}
         <OptionBox
           title="Show"
           onChanged={(e) => props.onItemPerPageChange(e.target?.value)}
@@ -77,7 +83,9 @@ const FilterOption = (props: Props) => {
           <option value="16">16/pages</option>
           <option value="20">20/pages</option>
         </OptionBox>
-        <SearchBar onChangedText={(text) => props.onSearchChange(text)}/>
+
+        {/* Search Bar */}
+        <SearchBar onChangedText={(text) => props.onSearchChange(text)} />
       </div>
     </div>
   );
@@ -94,7 +102,17 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: 8,
     marginBottom: 4,
     alignItems: "center",
-    border:'1px solid black',
-    backgroundColor: themes['defaultTheme'].primary
+    border: "1px solid black",
+    backgroundColor: themes["defaultTheme"].primary,
+  },
+  displayBlock: {
+    display: "flex",
+    gap: 8,
+    alignItems: "center",
+    backgroundColor: "white",
+    borderRadius: 4,
+    paddingInline: 12,
+    paddingBlock: 8,
+    border: "1px solid black",
   },
 };

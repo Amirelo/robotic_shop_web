@@ -10,30 +10,30 @@ interface Props {
   //   height?: React.CSSProperties["height"];
   marginBottom?: React.CSSProperties["marginBottom"];
   cursor?: React.CSSProperties["cursor"];
-  onClick?(): void;
   preset?: keyof typeof imageStyles;
   backgroundcolor?: React.CSSProperties["backgroundColor"];
   style?: React.CSSProperties;
-  onMouseEnter?():void
-  onMouseLeave?():void
+  onClick?(): void;
+  onMouseEnter?(): void;
+  onMouseLeave?(): void;
 }
 
 const CustomImage = (props: Props) => {
   const [hover, setHover] = React.useState(false);
 
   const onUserMouseEnter = () => {
-    if (props.onMouseEnter){
-      props.onMouseEnter()
+    if (props.onMouseEnter) {
+      props.onMouseEnter();
     }
-    setHover(true)
-  }
+    setHover(true);
+  };
 
   const onUserMouseLeave = () => {
-    if (props.onMouseLeave){
-      props.onMouseLeave()
+    if (props.onMouseLeave) {
+      props.onMouseLeave();
     }
-    setHover(false)
-  }
+    setHover(false);
+  };
 
   return (
     <img
@@ -55,7 +55,9 @@ const CustomImage = (props: Props) => {
             ? themes["defaultTheme"].primary_hover
             : props.backgroundcolor
           : "",
-        borderRadius: imageStyles[props.preset ?? "icon"]?.borderRadius ? imageStyles[props.preset ?? "icon"].borderRadius : 4,
+        borderRadius: imageStyles[props.preset ?? "icon"]?.borderRadius
+          ? imageStyles[props.preset ?? "icon"].borderRadius
+          : 4,
         ...props.style,
       }}
       src={props.src}
@@ -89,30 +91,30 @@ const imageStyles: { [key: string]: React.CSSProperties } = {
     paddingInline: 12,
     cursor: "pointer",
   },
-  detail:{
-    width:'100%',
-    height:'60%',
-    border: '1px solid black'
+  detail: {
+    width: "100%",
+    height: "60%",
+    border: "1px solid black",
   },
-  detail_small:{
-    width:'20%',
-    border: '1px solid black'
+  detail_small: {
+    width: "20%",
+    border: "1px solid black",
   },
-  social:{
-    width:40,
-    height:40
+  social: {
+    width: 40,
+    height: 40,
   },
-  team:{
-    width:300,
-    height:300,
-    borderRadius: 150
+  team: {
+    width: 300,
+    height: 300,
+    borderRadius: 150,
   },
-  flag:{
-    width:40,
-    height:24
+  flag: {
+    width: 40,
+    height: 24,
   },
-  item:{
-    width:150,
-    height:150
-  }
+  item: {
+    width: 150,
+    height: 150,
+  },
 };

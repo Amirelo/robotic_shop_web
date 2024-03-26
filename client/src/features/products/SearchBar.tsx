@@ -6,30 +6,37 @@ import { CustomImage } from "../../components";
 
 // User Preferences
 import themes from "../../preferences/theme/themes";
+
+// Icons
 import { ic_search } from "../../assets/icons";
 
-interface Props{
-  onChangedText?(text:string): void
+// Properties
+interface Props {
+  onChangedText?(text: string): void;
 }
 
-const SearchBar = (props:Props) => {
+const SearchBar = (props: Props) => {
   const [hover, setHover] = React.useState(false);
   return (
     <div style={styles.body}>
+      {/* Input */}
       <input
         type="text"
         placeholder="Search.."
-        onChange={(e)=>props.onChangedText ? props.onChangedText(e.target.value) : ''}
+        onChange={(e) =>
+          props.onChangedText ? props.onChangedText(e.target.value) : ""
+        }
         style={styles.input}
       />
       <div
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
         style={{
           ...styles.image_box,
-          backgroundColor: hover ? themes['defaultTheme'].primary_hover : '',
+          backgroundColor: hover ? themes["defaultTheme"].primary_hover : "",
         }}
       >
+        {/* Icon */}
         <CustomImage src={ic_search} />
       </div>
     </div>
@@ -64,6 +71,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     justifyContent: "center",
     cursor: "pointer",
     borderLeft: "1px solid black",
-    transition:'500ms'
+    transition: "500ms",
   },
 };

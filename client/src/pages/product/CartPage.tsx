@@ -1,9 +1,10 @@
-// Components
+// React and libs
 import React from "react";
+import { useSelector } from "react-redux";
+
+// Components
 import { CustomList, CustomText } from "../../components";
 import { TextButton } from "../../components/buttons";
-import { useSelector } from "react-redux";
-import { ItemProduct } from "../../features/products";
 import { ItemCart } from "../../features/carts";
 
 const CartPage = () => {
@@ -11,52 +12,36 @@ const CartPage = () => {
   const [totalPrice, setTotalPrice] = React.useState(0);
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          width: "90%",
-          justifySelf: "center",
-          alignSelf: "center",
-        }}
-      >
-        <div
-            style={{
-              flex: 3,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-        {userCart.length > 0 ? (
-          <CustomList
-            list={userCart}
-            render={(data) => <ItemCart data={data} />}
-          />
-        ) : (
-          
+      <div style={styles.body}>
+        {/* Cart item */}
+        <div style={styles.cardItems}>
+          {userCart.length > 0 ? (
+            <CustomList
+              list={userCart}
+              render={(data) => <ItemCart data={data} />}
+            />
+          ) : (
             <CustomText>Empty</CustomText>
-            )}
-            </div>
-        <div
-          style={{
-            border: "1px solid black",
-            borderRadius: 4,
-            padding: 12,
-            flex:1
-          }}
-        >
+          )}
+        </div>
+        {/* Cart Detail */}
+        <div style={styles.cardInfo}>
           <div>
             <CustomText preset={"title"}>Cart Info</CustomText>
-            <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            {/* Address */}
+            <div style={styles.row}>
               <CustomText>Deliver to: </CustomText>
               <TextButton style={{ width: "fit-content", paddingInline: 8 }}>
                 Choose Address
               </TextButton>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            {/* Price */}
+            <div style={styles.row}>
               <CustomText>Price: </CustomText>
               <CustomText>{totalPrice.toString()}</CustomText>
             </div>
+
+            {/* Delivery methods */}
             <CustomText>Giao hàng:</CustomText>
             <div
               style={{
@@ -66,7 +51,7 @@ const CartPage = () => {
                 paddingBottom: 10,
               }}
             >
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div style={styles.row}>
                 <label>
                   <input
                     type="radio"
@@ -77,7 +62,7 @@ const CartPage = () => {
                 </label>
                 <CustomText>+50.000d</CustomText>
               </div>
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div style={styles.row}>
                 <label>
                   <input
                     type="radio"
@@ -88,7 +73,7 @@ const CartPage = () => {
                 </label>
                 <CustomText>+100.000d</CustomText>
               </div>
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div style={styles.row}>
                 <label>
                   <input
                     type="radio"
@@ -100,23 +85,30 @@ const CartPage = () => {
                 <CustomText>+150.000d</CustomText>
               </div>
             </div>
+
+            {/* Divider */}
             <div
               style={{ borderBottom: "1px solid lightgray", marginBottom: 20 }}
             ></div>
+
+            {/* Total */}
             <CustomText preset={"subTitle"} marginBottom={8}>
               Total price:
             </CustomText>
+
+            {/* Payment Method */}
             <CustomText preset={"title"}>Payment</CustomText>
             <label>
               <input
                 type="radio"
                 name="payment_group"
                 checked
-                style={{ marginRight: 4 }}
+                style={{ marginRight: 4 ,marginBottom:20}}
               />
               Cash
             </label>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            {/* Button: Add Coupon & Orders */}
+            <div style={styles.row}>
               <TextButton style={{ width: "40%" }}>Add Coupon</TextButton>
               <TextButton style={{ width: "40%" }}>Order</TextButton>
             </div>
@@ -128,3 +120,29 @@ const CartPage = () => {
 };
 
 export default CartPage;
+
+const styles: { [key: string]: React.CSSProperties } = {
+  body: {
+    display: "flex",
+    width: "90%",
+  },
+  cardInfo: {
+    border: "1px solid black",
+    borderRadius: 4,
+    padding: 12,
+    flex: 1,
+    height: "fit-content",
+  },
+  cardItems: {
+    flex: 3,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  row: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom:8
+  },
+};

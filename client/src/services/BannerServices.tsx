@@ -1,5 +1,6 @@
 import { BannerModel } from "../models";
 
+// Get active banner
 export const getActiveBanner = async () => {
   const res = (await fetch("http://localhost:3001/api/banner"))
     .json()

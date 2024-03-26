@@ -12,6 +12,7 @@ interface Props {
 }
 
 const ButtonLink = (props: Props) => {
+  // State
   const [hover, setHover] = React.useState(false);
   const [active, setActive] = React.useState(false);
 
@@ -32,9 +33,9 @@ const ButtonLink = (props: Props) => {
             : hover
             ? themes["defaultTheme"].primary
             : themes["defaultTheme"].text,
-        transition: "500ms",
         fontWeight: active ? "bold" : "normal",
         fontSize: active ? 20 : 16,
+        transition: "500ms",
       }}
     >
       {props.children}

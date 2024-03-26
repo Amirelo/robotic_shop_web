@@ -7,6 +7,7 @@ import { ic_chevron_left, ic_chevron_right } from "../../assets/icons";
 // Components
 import { CustomImage, CustomText } from "../../components";
 
+// Properties
 interface Props {
   data: Array<any>;
   itemPerPage: number;
@@ -16,6 +17,7 @@ interface Props {
 }
 
 const PaginationTab = (props: Props) => {
+  // Change page on Chevron clicked
   const onChevronPressed = (amount: number) => {
     if (
       props.currentPage + amount >= 1 &&
@@ -28,12 +30,14 @@ const PaginationTab = (props: Props) => {
 
   return (
     <div style={styles.body}>
+      {/* Back button */}
       <CustomImage
         src={ic_chevron_left}
         preset={"box"}
         onClick={() => onChevronPressed(-1)}
       />
 
+      {/* First 3 pages */}
       {props.numOfTabs >= 1 ? (
         [
           props.currentPage > props.numOfTabs - 3 ? (
@@ -65,12 +69,14 @@ const PaginationTab = (props: Props) => {
             }
           ),
 
+          // Middle when pages > 6
           props.numOfTabs > 3 && props.currentPage < props.numOfTabs - 3 ? (
             <CustomText preset={"box"}>..........</CustomText>
           ) : (
             <></>
           ),
 
+          // Last 3 pages when total number of pages > 6
           props.numOfTabs > 6 && props.currentPage < props.numOfTabs - 3 ? (
             Array.from(
               Array(props.numOfTabs).slice(
@@ -98,6 +104,7 @@ const PaginationTab = (props: Props) => {
         <></>
       )}
 
+      {/* Forward button */}
       <CustomImage
         src={ic_chevron_right}
         preset={"box"}

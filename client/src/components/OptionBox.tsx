@@ -1,6 +1,10 @@
+// React and libs
 import React from "react";
+
+// Components
 import CustomText from "./CustomText";
 
+// Properties
 interface Props {
   children: any;
   title: string;
@@ -27,8 +31,8 @@ const styles: { [key: string]: React.CSSProperties } = {
     display: "flex",
     alignItems: "center",
     border: "1px solid black",
-    borderRadius: 4,
     width: "fit-content",
+    borderRadius: 4,
     paddingInline: 12,
     paddingBlock: 14,
     overflow: "hidden",

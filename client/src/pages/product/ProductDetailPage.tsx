@@ -1,19 +1,35 @@
-// Components
-import { useLocation } from "react-router-dom";
-import { CustomImage, CustomText } from "../../components";
+// React and libs
 import React from "react";
-import { ProductModel } from "../../models";
-import { RatingStars } from "../../features/products";
-import { priceFormat, screenWidth } from "../../utils/Utilities";
-import { TextButton } from "../../components/buttons";
-import { ic_add, ic_remove } from "../../assets/icons";
-import themes from "../../preferences/theme/themes";
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+
+// Services
+
+// Models
+import { ProductModel } from "../../models";
+
+// Redux actions
 import { saveUserCart } from "../../redux/actions/UserAction";
+
+// Components
+import { CustomImage, CustomText } from "../../components";
+import { RatingStars } from "../../features/products";
+import { TextButton } from "../../components/buttons";
+
+// Utilities
+import { priceFormat, screenWidth } from "../../utils/Utilities";
+
+// Icons
+import { ic_add, ic_remove } from "../../assets/icons";
+
+// User Preferences
+import themes from "../../preferences/theme/themes";
 
 const ProductDetailPage = () => {
   const location = useLocation();
-  const [product, setProduct] = React.useState<ProductModel>(location.state.product);
+  const [product, setProduct] = React.useState<ProductModel>(
+    location.state.product
+  );
   const randomSongs = [
     "https://www.youtube.com/embed/mKxzJzp6oes?si=pO21iRjxbc7X17sh",
     "https://www.youtube.com/embed/cJOkT28U4V4?si=ma7qcCAGyVp2CMlQ",
@@ -31,44 +47,58 @@ const ProductDetailPage = () => {
 
   const [mainImgHover, setMainImgHover] = React.useState(false);
 
-    const userCart = useSelector((store:any) => store.user.carts)
-    const dispatch = useDispatch()
+  const userCart = useSelector((store: any) => store.user.carts);
+  const dispatch = useDispatch();
 
+  // Change main image on hover
   const onSubImageHover = (img: string) => {
     console.log("hover");
     setSelectedImage(img);
   };
 
-  const onSaveCartClicked = () =>{
-    if ( !userCart.includes(product)) {
-
+  // Save product to cart
+  const onSaveCartClicked = () => {
+    if (!userCart.includes(product)) {
       dispatch(saveUserCart(product));
-    } else{
-      console.log("Item already in cart")
+    } else {
+      console.log("Item already in cart");
     }
-  }
+  };
 
+  // Update product quantity
+  const updateQuantity = (amount: number) => {
+    if (
+      (amount > 0 && amount <= product.quantity) ||
+      (amount < 0 && amount > 0)
+    ) {
+      setQuantity(amount);
+    }
+  };
+
+  // Random songs
   React.useEffect(() => {
     const rando = Math.floor(Math.random() * randomSongs.length);
     setCurrentVideo(randomSongs[rando]);
     console.log("random video:", rando, randomSongs[rando]);
-    setProduct(location.state.product)
+    setProduct(location.state.product);
   }, []);
-
-  const updateQuantity = (amount:number) => {
-    if(amount >0 && amount <=product.quantity || amount <0 && amount >0){
-      setQuantity(amount)
-    }
-  }
 
   return (
     <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
       <div style={{ width: "90%" }}>
-        <div style={{ display: "flex", marginBottom:20 }}>
+        <div style={{ display: "flex", marginBottom: 20 }}>
           {/* Images */}
-          <div style={{ flex: 1, height:'fit-content', overflow:'hidden', paddingRight:4 }}>
+          <div
+            style={{
+              flex: 1,
+              height: "fit-content",
+              overflow: "hidden",
+              paddingRight: 4,
+            }}
+          >
+            {/* Main Image */}
             <CustomImage
               style={{
                 transform: mainImgHover ? "scale(2)" : "",
@@ -79,8 +109,9 @@ const ProductDetailPage = () => {
               onMouseEnter={() => setMainImgHover(true)}
               onMouseLeave={() => setMainImgHover(false)}
             />
-            <div style={{ display: "flex", justifyContent: "space-between", }}>
-              {product.images.length > 1 ? 
+            {/* Sub images */}
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              {product.images.length > 1 ? (
                 product.images.map((item) => (
                   <CustomImage
                     onMouseEnter={() => onSubImageHover(item)}
@@ -88,9 +119,9 @@ const ProductDetailPage = () => {
                     src={item}
                   />
                 ))
-               : 
+              ) : (
                 <></>
-              }
+              )}
             </div>
           </div>
           {/* Info */}
@@ -125,7 +156,7 @@ const ProductDetailPage = () => {
                 preset={"box"}
                 backgroundcolor={themes["defaultTheme"].primary}
                 src={ic_remove}
-                onClick={() => updateQuantity(quantity -1)}
+                onClick={() => updateQuantity(quantity - 1)}
               />
 
               <input
@@ -145,11 +176,14 @@ const ProductDetailPage = () => {
                 preset={"box"}
                 backgroundcolor={themes["defaultTheme"].primary}
                 src={ic_add}
-                onClick={() => updateQuantity(quantity+1)}
+                onClick={() => updateQuantity(quantity + 1)}
               />
             </div>
 
-            <TextButton style={{ width: "fit-content", paddingInline: 35 }} onClicked={onSaveCartClicked}>
+            <TextButton
+              style={{ width: "fit-content", paddingInline: 35 }}
+              onClicked={onSaveCartClicked}
+            >
               Add to cart
             </TextButton>
           </div>

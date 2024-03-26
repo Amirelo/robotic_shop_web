@@ -2,6 +2,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+// Models
+import { BannerModel } from "../../models";
+
 // Components
 import { CustomText, CustomImage } from "../../components";
 import { TextButton } from "../../components/buttons";
@@ -11,40 +14,40 @@ import { screenHeight } from "../../utils/Utilities";
 
 // User Preferences
 import themes from "../../preferences/theme/themes";
-import { BannerModel } from "../../models";
 
 // Interface
-interface Props{
+interface Props {
   data: BannerModel;
-  marginBottom?: React.CSSProperties['marginBottom']
+  marginBottom?: React.CSSProperties["marginBottom"];
 }
 
-const ItemBanner = (props:Props) => {
-  const navigate = useNavigate()
+const ItemBanner = (props: Props) => {
+  const navigate = useNavigate();
 
-  const onShopClicked =() =>{
-    navigate('/explore')
-  }
+  const onShopClicked = () => {
+    navigate("/explore");
+  };
 
   return (
-    <div style={{...styles.body, marginBottom: props.marginBottom}}>
+    <div style={{ ...styles.body, marginBottom: props.marginBottom }}>
       <div style={{ width: "40%" }}>
         {/* Text - Header */}
-        <CustomText preset={"header"} color={themes['defaultTheme'].background}>
+        <CustomText preset={"header"} color={themes["defaultTheme"].background}>
           {props.data.title}
         </CustomText>
         {/* Text - Body */}
-        <CustomText preset={"title"} marginBottom={20} color={themes['defaultTheme'].background}>
+        <CustomText
+          preset={"title"}
+          marginBottom={20}
+          color={themes["defaultTheme"].background}
+        >
           {props.data.description}
         </CustomText>
         {/* Button - shop */}
         <TextButton onClicked={onShopClicked}>Shop</TextButton>
       </div>
       {/* Image */}
-      <CustomImage
-        preset={"banner"}
-        src={props.data.image}
-      />
+      <CustomImage preset={"banner"} src={props.data.image} />
     </div>
   );
 };
@@ -55,7 +58,7 @@ export default ItemBanner;
 const styles: { [key: string]: React.CSSProperties } = {
   body: {
     height: screenHeight,
-    backgroundColor: themes['defaultTheme'].text,
+    backgroundColor: themes["defaultTheme"].text,
     borderRadius: 4,
     display: "flex",
     justifyContent: "space-around",

@@ -10,22 +10,23 @@ import { CustomImage, CustomText } from "../../components";
 // User Preferences
 import themes from "../../preferences/theme/themes";
 
+// Properties
 interface Props {
   marginBottom?: React.CSSProperties["marginBottom"];
   data: CategoryModel;
-  onClicked?(): void
+  onClicked?(): void;
 }
 
 const ItemCategory = (props: Props) => {
-  const [hover, setHover] = React.useState(false)
+  const [hover, setHover] = React.useState(false);
 
   return (
-    <div style={{...styles.body,
-      boxShadow: hover ? '-2px 2px 5px' : '' ,
-    }} 
-    onClick={props.onClicked} 
-    onMouseEnter={()=> setHover(true)} 
-    onMouseLeave={()=> setHover(false)}>
+    <div
+      style={{ ...styles.body, boxShadow: hover ? "-2px 2px 5px" : "" }}
+      onClick={props.onClicked}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
       <CustomImage preset={"fit"} src={props.data.image} />
 
       <div
@@ -55,7 +56,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderWidth: 1,
     borderStyle: "solid",
     borderColor: "green",
-    transition:'250ms'
+    transition: "250ms",
   },
   textFrame: {
     width: "100%",

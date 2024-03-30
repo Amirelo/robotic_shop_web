@@ -42,7 +42,7 @@ const TextButton = (props: Props) => {
       }}
     >
       {/* Button Title */}
-      <CustomText fontWeight={"bold"}>{props.children}</CustomText>
+      <CustomText fontWeight={"bold"} color={props.backgroundColor == themes["defaultTheme"].background ? themes['defaultTheme'].text : themes['defaultTheme'].background}>{props.children}</CustomText>
       {props.hasButton ? (
         <CustomImage
           src={ic_add}

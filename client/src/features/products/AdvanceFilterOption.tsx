@@ -75,13 +75,9 @@ const AdvanceFilterOption = (props: Props) => {
   return (
     <div style={{ ...props.style, paddingRight: 12 }}>
       {/* Price */}
-      <div
-        style={styles.card}
-      >
+      <div style={styles.card}>
         {/* Card Header */}
-        <div
-          style={styles.cardHeader}
-        >
+        <div style={styles.cardHeader}>
           <CustomText preset={"title"}>Price</CustomText>
           <CustomImage
             onClick={() => setShowPrice(!showPrice)}
@@ -92,12 +88,10 @@ const AdvanceFilterOption = (props: Props) => {
         <div
           style={{
             maxHeight: showPrice ? 400 : 0,
-            ...styles.openAnim
+            ...styles.openAnim,
           }}
         >
-          <div
-            style={styles.cardHeaderPadding}
-          >
+          <div style={styles.cardHeaderPadding}>
             <CustomText>Min (đ)</CustomText>
             <CustomText>Max (đ)</CustomText>
           </div>
@@ -127,14 +121,8 @@ const AdvanceFilterOption = (props: Props) => {
         </div>
       </div>
       {/* Categories */}
-      <div
-        style={
-          styles.card
-        }
-      >
-        <div
-          style={styles.cardHeader}
-        >
+      <div style={styles.card}>
+        <div style={styles.cardHeader}>
           <CustomText preset={"title"}>Categories</CustomText>
           <CustomImage
             onClick={() => setShowCategories(!showCategories)}
@@ -147,7 +135,7 @@ const AdvanceFilterOption = (props: Props) => {
         <div
           style={{
             maxHeight: showCategories ? 1000 : 0,
-            ...styles.openAnim
+            ...styles.openAnim,
           }}
         >
           {props.categories?.map((item) => {
@@ -175,9 +163,7 @@ const AdvanceFilterOption = (props: Props) => {
 
       {/* Stock status */}
       <div style={styles.card}>
-        <div
-          style={styles.cardHeader}
-        >
+        <div style={styles.cardHeader}>
           <CustomText preset={"title"}>Stock status</CustomText>
           <CustomImage
             onClick={() => setShowStockStatus(!showStockStatus)}
@@ -190,7 +176,7 @@ const AdvanceFilterOption = (props: Props) => {
         <div
           style={{
             maxHeight: showStockStatus ? 500 : 0,
-            ...styles.openAnim
+            ...styles.openAnim,
           }}
         >
           <div style={{ display: "flex", flexDirection: "column" }}>
@@ -213,25 +199,25 @@ const AdvanceFilterOption = (props: Props) => {
 
 export default AdvanceFilterOption;
 
-const styles : {[key:string]:React.CSSProperties} = {
-  card:{
+const styles: { [key: string]: React.CSSProperties } = {
+  card: {
     border: "1px solid black",
     padding: 12,
     borderRadius: 4,
     marginBottom: 20,
   },
-  cardHeader:{
+  cardHeader: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
   },
-  cardHeaderPadding:{
+  cardHeaderPadding: {
     display: "flex",
-              justifyContent: "space-between",
-              marginBottom: 10,
+    justifyContent: "space-between",
+    marginBottom: 10,
   },
-  openAnim:{
+  openAnim: {
     overflow: "hidden",
     transition: "500ms",
   },
-}
+};

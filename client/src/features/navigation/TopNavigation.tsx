@@ -16,7 +16,8 @@ import { CustomImage, CustomText } from "../../components";
 
 // Icons
 import { flag_vn } from "../../assets/flags";
-import { ic_chevron_left, ic_darkmode, ic_lightmode } from "../../assets/icons";
+import { ic_chevron_left, ic_darkmode, ic_lightmode, ic_logo } from "../../assets/icons";
+import themes from "../../preferences/theme/themes";
 
 const TopNavigation = () => {
   const [showLanguages, setShowLanguages] = React.useState(false);
@@ -26,6 +27,10 @@ const TopNavigation = () => {
       {/* Navigation - 1st line */}
       <div style={styles.top}>
         {/* Search bar */}
+        <div >
+        <CustomImage src={ic_logo}/>
+        <CustomText>Emporium</CustomText>
+        </div>
         <CustomImage
           onClick={() => setDarkMode(!darkMode)}
           src={darkMode ? ic_lightmode : ic_darkmode}

@@ -13,6 +13,7 @@ import ic_expand from "./ic_expand.png";
 import ic_remove from "./ic_remove.svg";
 import ic_darkmode from "./dark_mode.svg";
 import ic_lightmode from "./light_mode.svg";
+import ic_logo from './Logo.svg'
 
 export {
   ic_cart,
@@ -30,4 +31,5 @@ export {
   ic_remove,
   ic_darkmode,
   ic_lightmode,
+  ic_logo
 };

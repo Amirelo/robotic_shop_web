@@ -16,6 +16,8 @@ interface Props {
   backgroundColor?: React.CSSProperties["backgroundColor"];
   hasButton?: boolean;
   onAddButtonClicked?(): void;
+  isTertiary?: boolean;
+  width?: React.CSSProperties['width']
 }
 
 const TextButton = (props: Props) => {
@@ -34,15 +36,16 @@ const TextButton = (props: Props) => {
           ? themes["defaultTheme"].primary_hover
           : props.backgroundColor
           ? props.backgroundColor
-          : themes["defaultTheme"].primary,
+          : props.isTertiary ? '#00000000' : 
+          themes["defaultTheme"].primary,
         display: props.hasButton ? "flex" : "",
-
+        width: props.width ?? '100%',
         height: props.hasButton ? 56 : 40,
         ...props.style,
       }}
     >
       {/* Button Title */}
-      <CustomText fontWeight={"bold"} color={props.backgroundColor == themes["defaultTheme"].background ? themes['defaultTheme'].text : themes['defaultTheme'].background}>{props.children}</CustomText>
+      <CustomText fontWeight={"bold"} color={props.isTertiary ? themes['defaultTheme'].text : themes['defaultTheme'].background}>{props.children}</CustomText>
       {props.hasButton ? (
         <CustomImage
           src={ic_add}

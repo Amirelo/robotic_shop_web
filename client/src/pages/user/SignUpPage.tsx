@@ -30,13 +30,13 @@ const SignUpPage = () => {
         placeholder="Confirm Password"
         type="password"
       />
-      <TextButton style={{ width: "30%" }}>Sign Up</TextButton>
+      <TextButton >Sign Up</TextButton>
       <CustomText marginBottom={10}>Or sign In with</CustomText>
-      <TextButton style={{ width: "30%" }} marginBottom={10}>
+      <TextButton  marginBottom={10}>
         Google
       </TextButton>
       <TextButton
-        style={{ width: "30%", backgroundColor: "#00000000" }}
+      isTertiary
         onClicked={onSignInClicked}
       >
         Back to Sign In
@@ -52,9 +52,11 @@ const styles: { [key: string]: React.CSSProperties } = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    width:'30%',
+    margin:'auto'
   },
   input: {
-    width: "30%",
+    width: "100%",
     height: 40,
     flexDirection: "column",
     display: "flex",

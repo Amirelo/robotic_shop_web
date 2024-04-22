@@ -80,6 +80,10 @@ const LocationPick = (props: Props) => {
       .map((item) => item.name)
       .sort((a, b) => b.localeCompare(a));
     setDistricts(districtList);
+
+    setCurDistrict(districtList[0])
+    setCurWard(roads.districts[0].wards[0].name)
+    setCurRoad(roads.districts[0].streets[0].name)
   }, []);
 
   return (

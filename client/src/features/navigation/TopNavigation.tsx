@@ -16,7 +16,12 @@ import { CustomImage, CustomText } from "../../components";
 
 // Icons
 import { flag_vn } from "../../assets/flags";
-import { ic_chevron_left, ic_darkmode, ic_lightmode, ic_logo } from "../../assets/icons";
+import {
+  ic_chevron_left,
+  ic_darkmode,
+  ic_lightmode,
+  ic_logo,
+} from "../../assets/icons";
 import themes from "../../preferences/theme/themes";
 
 const TopNavigation = () => {
@@ -27,9 +32,27 @@ const TopNavigation = () => {
       {/* Navigation - 1st line */}
       <div style={styles.top}>
         {/* Search bar */}
-        <div >
-        <CustomImage src={ic_logo}/>
-        <CustomText>Emporium</CustomText>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: 4,
+            alignItems: "center",
+            backgroundColor: themes["defaultTheme"].primary,
+            padding:4,
+            borderRadius:4,
+            position:'absolute',
+            left: 12,
+            top: 8
+          }}
+        >
+          <CustomImage src={ic_logo} />
+          <CustomText
+            preset={"title"}
+            color={themes["defaultTheme"].background}
+          >
+            Emporium
+          </CustomText>
         </div>
         <CustomImage
           onClick={() => setDarkMode(!darkMode)}
@@ -83,6 +106,8 @@ const styles: { [key: string]: React.CSSProperties } = {
     height: 52,
     gap: 16,
     paddingRight: 16,
+    background: `linear-gradient(to right, ${themes['defaultTheme'].primary},${themes['defaultTheme'].primary + '30'}, ${themes['defaultTheme'].primary})`,
+    marginBottom:10
   },
   bottom: {
     display: "flex",

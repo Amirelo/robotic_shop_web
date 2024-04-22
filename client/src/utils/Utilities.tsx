@@ -1,3 +1,5 @@
+import AddressModel from "../models/AddressModel";
+
 // Screen width and height
 export const screenWidth = window.innerWidth;
 export const screenHeight = window.innerHeight;
@@ -17,3 +19,7 @@ export const priceFormat = (price: number) => {
   newPrice = priceString + newPrice + "đ";
   return newPrice;
 };
+
+export const addressFormat = (address:AddressModel) =>{
+  return address.roadNumber + ' ' + address.road +', ' + address.ward +', ' + address.district+', ' + address.city
+}

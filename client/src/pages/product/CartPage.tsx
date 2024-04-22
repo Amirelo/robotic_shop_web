@@ -5,11 +5,27 @@ import { useSelector } from "react-redux";
 // Components
 import { CustomList, CustomText } from "../../components";
 import { TextButton } from "../../components/buttons";
-import { ItemCart } from "../../features/carts";
+import { ItemCart, LocationPick } from "../../features/carts";
+import AddressModel from "../../models/AddressModel";
+import { addressFormat } from "../../utils/Utilities";
 
 const CartPage = () => {
   const userCart = useSelector((store: any) => store.user.carts);
   const [totalPrice, setTotalPrice] = React.useState(0);
+
+  const [showLocationPicker, setShowLocationPicker] = React.useState(false);
+  const [address, setAddress] = React.useState<AddressModel>();
+
+  const onChooseAddress = () => {
+    setShowLocationPicker(true);
+  };
+
+  const onAddressPicked = (action: string) => {
+    if (action == "CLOSE") {
+      setShowLocationPicker(false);
+    }
+  };
+
   return (
     <div>
       <div style={styles.body}>
@@ -31,8 +47,11 @@ const CartPage = () => {
             {/* Address */}
             <div style={styles.row}>
               <CustomText>Deliver to: </CustomText>
-              <TextButton style={{ width: "fit-content", paddingInline: 8 }}>
-                Choose Address
+              <TextButton
+                style={{ width: "fit-content", paddingInline: 8 }}
+                onClicked={onChooseAddress}
+              >
+                {address ? addressFormat(address) :'Choose Address'}
               </TextButton>
             </div>
             {/* Price */}
@@ -103,7 +122,7 @@ const CartPage = () => {
                 type="radio"
                 name="payment_group"
                 checked
-                style={{ marginRight: 4 ,marginBottom:20}}
+                style={{ marginRight: 4, marginBottom: 20 }}
               />
               Cash
             </label>
@@ -115,6 +134,14 @@ const CartPage = () => {
           </div>
         </div>
       </div>
+      <LocationPick
+        onSelect={(action) => onAddressPicked(action)}
+        maxHeight={showLocationPicker ? 1000 : 0}
+        onSelectPressed={(address) => {
+          setAddress(address);
+          setShowLocationPicker(false)
+        }}
+      />
     </div>
   );
 };
@@ -143,6 +170,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom:8
+    marginBottom: 8,
   },
 };

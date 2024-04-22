@@ -3,8 +3,6 @@ const defaultTheme = {
   background: "#FFFFFF",
   primary: '#FAA300',
   primary_hover: '#F5DD61',
-  secondary:"",
-  secondary_hover:"",
 };
 
 export default defaultTheme;

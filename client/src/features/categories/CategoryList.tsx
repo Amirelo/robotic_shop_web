@@ -26,6 +26,7 @@ const CategoryList = (props: Props) => {
     <>
       {/* Category name */}
       <TextButton
+        isTertiary
         style={styles.body}
         backgroundColor={themes["defaultTheme"].background}
         hasButton
@@ -46,12 +47,13 @@ const CategoryList = (props: Props) => {
             .filter((subCate) => subCate.categoryID == props.category.id)
             .map((filtered) => (
               <TextButton
+                isTertiary
                 onClicked={() =>
                   props.onSubCategoryClick
                     ? props.onSubCategoryClick(filtered.id)
                     : ""
                 }
-                style={styles.subItem}
+                style={{...styles.subItem}}
                 backgroundColor={themes["defaultTheme"].background}
               >
                 {filtered.name}

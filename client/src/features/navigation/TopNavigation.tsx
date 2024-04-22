@@ -23,14 +23,28 @@ import {
   ic_logo,
 } from "../../assets/icons";
 import themes from "../../preferences/theme/themes";
+import { useDispatch, useSelector } from "react-redux";
+import { updateTheme } from "../../redux/actions/UserAction";
 
 const TopNavigation = () => {
+  const userTheme: keyof typeof themes = useSelector((store:any) => store.user.curTheme)
+  const dispatch = useDispatch()  
+  
   const [showLanguages, setShowLanguages] = React.useState(false);
   const [darkMode, setDarkMode] = React.useState(false);
+
+  React.useEffect(()=>{
+    if (darkMode == true){
+      dispatch(updateTheme('dark'))
+    } else{
+      dispatch(updateTheme('defaultTheme'))
+    }
+  },[darkMode])
+
   return (
     <nav style={styles.body}>
       {/* Navigation - 1st line */}
-      <div style={styles.top}>
+      <div style={{...styles.top,background: `linear-gradient(to right, ${themes[userTheme].primary},${themes[userTheme].primary + '30'}, ${themes[userTheme].primary})`,}}>
         {/* Search bar */}
         <div
           style={{
@@ -38,7 +52,7 @@ const TopNavigation = () => {
             flexDirection: "row",
             gap: 4,
             alignItems: "center",
-            backgroundColor: themes["defaultTheme"].primary,
+            backgroundColor: themes[userTheme].primary,
             padding:4,
             borderRadius:4,
             position:'absolute',
@@ -49,14 +63,14 @@ const TopNavigation = () => {
           <CustomImage src={ic_logo} />
           <CustomText
             preset={"title"}
-            color={themes["defaultTheme"].background}
+            color={themes[userTheme].background}
           >
             Emporium
           </CustomText>
         </div>
         <CustomImage
           onClick={() => setDarkMode(!darkMode)}
-          src={darkMode ? ic_lightmode : ic_darkmode}
+          src={darkMode ? ic_darkmode : ic_lightmode}
         />
         <div style={{ gap: 4 }}>
           <CustomImage preset={"flag"} src={flag_vn} />
@@ -77,7 +91,7 @@ const TopNavigation = () => {
             <CustomText>English</CustomText>
           </div>
         </div>
-        <ButtonLink to={ROUTE_CONTACT}>Contact us</ButtonLink>
+        <ButtonLink to={ROUTE_CONTACT} hideActive>Contact us</ButtonLink>
         <ButtonLink to={ROUTE_SIGN_IN} hideActive>
           Sign In
         </ButtonLink>
@@ -106,7 +120,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     height: 52,
     gap: 16,
     paddingRight: 16,
-    background: `linear-gradient(to right, ${themes['defaultTheme'].primary},${themes['defaultTheme'].primary + '30'}, ${themes['defaultTheme'].primary})`,
+    
     marginBottom:10
   },
   bottom: {

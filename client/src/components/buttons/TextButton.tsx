@@ -6,6 +6,7 @@ import CustomText from "../CustomText";
 import themes from "../../preferences/theme/themes";
 import CustomImage from "../CustomImage";
 import { ic_add } from "../../assets/icons";
+import { useSelector } from "react-redux";
 
 // Properties
 interface Props {
@@ -21,6 +22,7 @@ interface Props {
 }
 
 const TextButton = (props: Props) => {
+  const userTheme:keyof typeof themes = useSelector((store:any) => store.user.curTheme)
   // Fields
   const [hover, setHover] = React.useState(false);
 
@@ -33,11 +35,11 @@ const TextButton = (props: Props) => {
         ...styles.button,
         marginBottom: props.marginBottom,
         backgroundColor: hover
-          ? themes["defaultTheme"].primary_hover
+          ? themes[userTheme].primary_hover
           : props.backgroundColor
           ? props.backgroundColor
           : props.isTertiary ? '#00000000' : 
-          themes["defaultTheme"].primary,
+          themes[userTheme].primary,
         display: props.hasButton ? "flex" : "",
         width: props.width ?? '100%',
         height: props.hasButton ? 56 : 40,
@@ -45,12 +47,12 @@ const TextButton = (props: Props) => {
       }}
     >
       {/* Button Title */}
-      <CustomText fontWeight={"bold"} color={props.isTertiary ? themes['defaultTheme'].text : themes['defaultTheme'].background}>{props.children}</CustomText>
+      <CustomText fontWeight={"bold"} color={props.isTertiary ? themes[userTheme].text : themes[userTheme].background}>{props.children}</CustomText>
       {props.hasButton ? (
         <CustomImage
           src={ic_add}
           preset={"box"}
-          backgroundcolor={themes["defaultTheme"].primary}
+          backgroundcolor={themes[userTheme].primary}
           onClick={props.onAddButtonClicked}
         />
       ) : (

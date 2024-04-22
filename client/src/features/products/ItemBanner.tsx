@@ -14,6 +14,7 @@ import { screenHeight } from "../../utils/Utilities";
 
 // User Preferences
 import themes from "../../preferences/theme/themes";
+import { useSelector } from "react-redux";
 
 // Interface
 interface Props {
@@ -22,6 +23,7 @@ interface Props {
 }
 
 const ItemBanner = (props: Props) => {
+  const userTheme:keyof typeof themes = useSelector((store:any) => store.user.curTheme)
   const navigate = useNavigate();
 
   const onShopClicked = () => {
@@ -29,17 +31,17 @@ const ItemBanner = (props: Props) => {
   };
 
   return (
-    <div style={{ ...styles.body, marginBottom: props.marginBottom }}>
+    <div style={{ ...styles.body, marginBottom: props.marginBottom,backgroundColor: themes[userTheme].text, }}>
       <div style={{ width: "40%" }}>
         {/* Text - Header */}
-        <CustomText preset={"header"} color={themes["defaultTheme"].background}>
+        <CustomText preset={"header"} color={themes[userTheme].background}>
           {props.data.title}
         </CustomText>
         {/* Text - Body */}
         <CustomText
           preset={"title"}
           marginBottom={20}
-          color={themes["defaultTheme"].background}
+          color={themes[userTheme].background}
         >
           {props.data.description}
         </CustomText>
@@ -58,7 +60,7 @@ export default ItemBanner;
 const styles: { [key: string]: React.CSSProperties } = {
   body: {
     height: screenHeight,
-    backgroundColor: themes["defaultTheme"].text,
+    
     borderRadius: 4,
     display: "flex",
     justifyContent: "space-around",

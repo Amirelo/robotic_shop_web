@@ -5,13 +5,16 @@ import React from "react";
 import { CustomText } from "../../components";
 import { ButtonLink } from "../../components/buttons";
 import { ROUTE_CONTACT, ROUTE_SHIPPING } from "../../constants/AppConstant";
+import themes from "../../preferences/theme/themes";
+import { useSelector } from "react-redux";
 
 const AppFooter = () => {
+  const userTheme: keyof typeof themes = useSelector((store:any) => store.user.curTheme)
   return (
-    <div style={styles.body}>
+    <div style={{...styles.body,backgroundColor:themes[userTheme].primary,}}>
       <div style={styles.column}>
-        <CustomText preset={"title"}>Information:</CustomText>
-        <ButtonLink to={ROUTE_CONTACT} hideActive>
+        <CustomText color="white" preset={"title"}>Information:</CustomText>
+        <ButtonLink color="white" to={ROUTE_CONTACT} hideActive>
           About us
         </ButtonLink>
         <ButtonLink to={ROUTE_SHIPPING} hideActive>
@@ -48,7 +51,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
-    backgroundColor: "#FFFFF0",
+    
     paddingBlock: 30,
     marginTop: 30,
   },

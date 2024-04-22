@@ -26,6 +26,7 @@ import { ic_add, ic_remove } from "../../assets/icons";
 import themes from "../../preferences/theme/themes";
 
 const ProductDetailPage = () => {
+  const userTheme:keyof typeof themes = useSelector((store:any) => store.user.curTheme)
   const location = useLocation();
   const [product, setProduct] = React.useState<ProductModel>(
     location.state.product
@@ -154,7 +155,7 @@ const ProductDetailPage = () => {
             >
               <CustomImage
                 preset={"box"}
-                backgroundcolor={themes["defaultTheme"].primary}
+                backgroundcolor={themes[userTheme].primary}
                 src={ic_remove}
                 onClick={() => updateQuantity(quantity - 1)}
               />
@@ -174,7 +175,7 @@ const ProductDetailPage = () => {
 
               <CustomImage
                 preset={"box"}
-                backgroundcolor={themes["defaultTheme"].primary}
+                backgroundcolor={themes[userTheme].primary}
                 src={ic_add}
                 onClick={() => updateQuantity(quantity + 1)}
               />

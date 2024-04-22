@@ -1,4 +1,4 @@
-import { REMOVE_CARTS, UPDATE_CARTS } from "../../constants/AppConstant";
+import { CHANGE_THEME, REMOVE_CARTS, UPDATE_CARTS } from "../../constants/AppConstant";
 
 const initialState = {
   user: {},
@@ -16,6 +16,12 @@ export default (state = initialState, action: any) => {
       };
     case REMOVE_CARTS: {
       return { ...state, carts: [] };
+    }
+    case CHANGE_THEME:{
+      return {
+        ...state,
+        curTheme: action.payload.data
+      }
     }
     default:
       return state;

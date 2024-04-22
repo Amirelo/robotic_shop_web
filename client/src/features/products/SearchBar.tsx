@@ -9,6 +9,7 @@ import themes from "../../preferences/theme/themes";
 
 // Icons
 import { ic_search } from "../../assets/icons";
+import { useSelector } from "react-redux";
 
 // Properties
 interface Props {
@@ -16,9 +17,10 @@ interface Props {
 }
 
 const SearchBar = (props: Props) => {
+  const userTheme:keyof typeof themes = useSelector((store:any) => store.user.curTheme)
   const [hover, setHover] = React.useState(false);
   return (
-    <div style={styles.body}>
+    <div style={{...styles.body,backgroundColor: themes[userTheme].background,}}>
       {/* Input */}
       <input
         type="text"
@@ -33,7 +35,7 @@ const SearchBar = (props: Props) => {
         onMouseLeave={() => setHover(false)}
         style={{
           ...styles.image_box,
-          backgroundColor: hover ? themes["defaultTheme"].primary_hover : "",
+          backgroundColor: hover ? themes[userTheme].primary_hover : "",
         }}
       >
         {/* Icon */}
@@ -55,7 +57,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     width: "30%",
     display: "flex",
     alignItems: "center",
-    backgroundColor: themes["defaultTheme"].background,
+    
   },
   input: {
     height: "100%",

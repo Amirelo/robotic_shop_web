@@ -7,13 +7,17 @@ import { CustomList, CustomText } from "../../components";
 import { TextButton } from "../../components/buttons";
 import { ItemCart, LocationPick } from "../../features/carts";
 import AddressModel from "../../models/AddressModel";
-import { addressFormat } from "../../utils/Utilities";
+import { addressFormat, priceFormat } from "../../utils/Utilities";
+import { ProductModel } from "../../models";
+import themes from "../../preferences/theme/themes";
 
 const CartPage = () => {
   const userCart = useSelector((store: any) => store.user.carts);
+  const userTheme:keyof typeof themes = useSelector((store: any) => store.user.curTheme)
   const [totalPrice, setTotalPrice] = React.useState(0);
 
   const [showLocationPicker, setShowLocationPicker] = React.useState(false);
+  const [delivery, setDelivery] = React.useState(0)
   const [address, setAddress] = React.useState<AddressModel>();
 
   const onChooseAddress = () => {
@@ -25,6 +29,15 @@ const CartPage = () => {
       setShowLocationPicker(false);
     }
   };
+
+  React.useEffect(()=>{
+    setTotalPrice(0)
+    var total = 0
+    if (userCart.length > 0) {
+      userCart.map((item:ProductModel) => {total += item.price})
+    }
+    setTotalPrice(total)
+  },[])
 
   return (
     <div>
@@ -56,8 +69,8 @@ const CartPage = () => {
             </div>
             {/* Price */}
             <div style={styles.row}>
-              <CustomText>Price: </CustomText>
-              <CustomText>{totalPrice.toString()}</CustomText>
+              <CustomText fontWeight={'bold'} color={themes[userTheme].error}>Price: </CustomText>
+              <CustomText fontWeight={'bold'} color={themes[userTheme].error}>{priceFormat(totalPrice)}</CustomText>
             </div>
 
             {/* Delivery methods */}
@@ -73,6 +86,8 @@ const CartPage = () => {
               <div style={styles.row}>
                 <label>
                   <input
+                    onChange={(event) => setDelivery(Number(event.target.value))}
+                    value={50000}
                     type="radio"
                     name="delivery_group"
                     style={{ marginRight: 4 }}
@@ -84,6 +99,8 @@ const CartPage = () => {
               <div style={styles.row}>
                 <label>
                   <input
+                  onChange={(event) => setDelivery(Number(event.target.value))}
+                  value={100000}
                     type="radio"
                     name="delivery_group"
                     style={{ marginRight: 4 }}
@@ -95,6 +112,8 @@ const CartPage = () => {
               <div style={styles.row}>
                 <label>
                   <input
+                  onChange={(event) => setDelivery(Number(event.target.value))}
+                  value={150000}
                     type="radio"
                     name="delivery_group"
                     style={{ marginRight: 4 }}
@@ -111,10 +130,12 @@ const CartPage = () => {
             ></div>
 
             {/* Total */}
-            <CustomText preset={"subTitle"} marginBottom={8}>
+            <div style={{display:"flex", justifyContent:'space-between'}}>
+            <CustomText preset={"title"} color={themes[userTheme].error} fontWeight={'bold'} marginBottom={8}>
               Total price:
             </CustomText>
-
+            <CustomText preset={'title'} color={themes[userTheme].error}>{priceFormat(totalPrice + delivery)}</CustomText>
+            </div>
             {/* Payment Method */}
             <CustomText preset={"title"}>Payment</CustomText>
             <label>
@@ -126,9 +147,7 @@ const CartPage = () => {
               />
               Cash
             </label>
-            {/* Button: Add Coupon & Orders */}
-            <div style={styles.row}>
-              <TextButton style={{ width: "40%" }}>Add Coupon</TextButton>
+            <div>
               <TextButton style={{ width: "40%" }}>Order</TextButton>
             </div>
           </div>

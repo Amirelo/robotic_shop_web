@@ -18,6 +18,7 @@ import themes from "../../preferences/theme/themes";
 
 // Icons
 import { ic_grid_view, ic_list_view } from "../../assets/icons";
+import { useSelector } from "react-redux";
 
 // Properties
 interface Props {
@@ -33,9 +34,10 @@ interface Props {
 }
 
 const FilterOption = (props: Props) => {
+  const userTheme:keyof typeof themes = useSelector((store:any) => store.user.curTheme)
   return (
     <div style={{ marginBottom: 20 }}>
-      <div style={styles.body}>
+      <div style={{...styles.body,backgroundColor: themes[userTheme].primary,}}>
         {/* Display */}
         <div style={styles.displayBlock}>
           <CustomText>View as</CustomText>
@@ -45,8 +47,8 @@ const FilterOption = (props: Props) => {
             preset={"box"}
             backgroundcolor={
               props.currentView
-                ? themes["defaultTheme"].primary
-                : themes["defaultTheme"].background
+                ? themes[userTheme].primary
+                : themes[userTheme].background
             }
             onClick={() => props.onViewChanged(true)}
           />
@@ -56,8 +58,8 @@ const FilterOption = (props: Props) => {
             preset={"box"}
             backgroundcolor={
               !props.currentView
-                ? themes["defaultTheme"].primary
-                : themes["defaultTheme"].background
+                ? themes[userTheme].primary
+                : themes[userTheme].background
             }
             onClick={() => props.onViewChanged(false)}
           />
@@ -103,7 +105,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     marginBottom: 4,
     alignItems: "center",
     border: "1px solid black",
-    backgroundColor: themes["defaultTheme"].primary,
+    
   },
   displayBlock: {
     display: "flex",

@@ -39,7 +39,9 @@ const ContactPage = () => {
             <CustomText preset={"title"} marginBottom={8}>
               Social media
             </CustomText>
+            <a href="https://www.linkedin.com/in/%C4%91%C4%83ng-tr%E1%BA%A7n-485b4a288/">
             <CustomImage preset={"social"} src={ic_linkedin} />
+            </a>
           </div>
         </div>
 
@@ -255,5 +257,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: 4,
     padding: 8,
     width: "20%",
+    overflow:'hidden'
   },
 };

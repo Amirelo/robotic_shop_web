@@ -1,6 +1,7 @@
 // React and libs
 import React from "react";
 import themes from "../preferences/theme/themes";
+import { useSelector } from "react-redux";
 
 // Properties
 interface Props {
@@ -19,6 +20,7 @@ interface Props {
 }
 
 const CustomImage = (props: Props) => {
+  const userTheme: keyof typeof themes = useSelector((store:any) => store.user.curTheme)
   const [hover, setHover] = React.useState(false);
 
   const onUserMouseEnter = () => {
@@ -52,7 +54,7 @@ const CustomImage = (props: Props) => {
           : "",
         backgroundColor: props.backgroundcolor
           ? hover
-            ? themes["defaultTheme"].primary_hover
+            ? themes[userTheme].primary_hover
             : props.backgroundcolor
           : "",
         borderRadius: imageStyles[props.preset ?? "icon"]?.borderRadius

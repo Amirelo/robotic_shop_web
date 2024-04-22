@@ -12,6 +12,7 @@ export const THEME_CHANGE = "THEMECHANGE"
 export const LANGUAGE_CHANGE = "LANGUAGECHANGE"
 export const UPDATE_CARTS = "UPDATECARTS"
 export const REMOVE_CARTS = "REMOVECARTS"
+export const CHANGE_THEME = "CHANGETHEME"
 
 // Path
 export const ROUTE_HOME = "/"

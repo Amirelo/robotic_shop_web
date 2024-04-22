@@ -7,6 +7,7 @@ import themes from "../../preferences/theme/themes";
 import roads from "../../utils/roads.json";
 import AddressModel from "../../models/AddressModel";
 import { addressFormat } from "../../utils/Utilities";
+import { useSelector } from "react-redux";
 
 interface Props {
   onSelect?(action: string): void;
@@ -15,6 +16,7 @@ interface Props {
 }
 
 const LocationPick = (props: Props) => {
+  const userTheme:keyof typeof themes = useSelector((store:any) => store.user.curTheme)
   const [cities, setCities] = React.useState<Array<any>>([]);
   const [districts, setDistricts] = React.useState<Array<any>>([]);
   const [wards, setWards] = React.useState<Array<any>>([]);
@@ -90,11 +92,12 @@ const LocationPick = (props: Props) => {
     <div
       style={{
         ...styles.background,
+        backgroundColor: themes[userTheme].text + "20",
         maxHeight: props.maxHeight,
         overflow: "hidden",
       }}
     >
-      <div style={{ ...styles.body }}>
+      <div style={{ ...styles.body,borderColor: themes[userTheme].primary, backgroundColor: themes[userTheme].background,}}>
         <CustomImage
           onClick={onClosePressed}
           src={ic_clear}
@@ -103,7 +106,7 @@ const LocationPick = (props: Props) => {
         <CustomText
           style={{ textAlign: "center" }}
           preset={"title"}
-          color={themes["defaultTheme"].primary}
+          color={themes[userTheme].primary}
           fontWeight={"bold"}
           marginBottom={20}
         >
@@ -185,17 +188,17 @@ const styles: { [key: string]: React.CSSProperties } = {
     alignItems: "center",
     overflow: "hidden",
     transition: "500ms",
-    backgroundColor: themes["defaultTheme"].text + "20",
+    
     display: "flex",
     justifyItems: "center",
   },
   body: {
     width: "50%",
-    borderColor: themes["defaultTheme"].primary,
+    
     borderWidth: 1,
     borderStyle: "solid",
     padding: 12,
-    backgroundColor: themes["defaultTheme"].background,
+    
     position: "relative",
   },
 };
